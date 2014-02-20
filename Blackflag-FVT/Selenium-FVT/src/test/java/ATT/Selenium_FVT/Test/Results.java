@@ -35,7 +35,7 @@ public class Results {
 	public void openExcel(){
 		try {
 			inputFile = new FileInputStream(new File(" C:\\files\\Input.xls "));
-			out = new FileOutputStream(new File(" C:\\files\\Input.xls"));
+			out = new FileOutputStream(new File(" C:\\files\\Result.xls"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
