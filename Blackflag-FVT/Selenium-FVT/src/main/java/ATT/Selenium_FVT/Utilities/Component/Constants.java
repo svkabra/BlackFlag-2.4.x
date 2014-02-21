@@ -4,8 +4,8 @@ public class Constants {
 
 		
 	
-	public static final String BROWSER = "FIREFOX";
-	//public static final String BROWSER = "CHROME";
+	//public static final String BROWSER = "FIREFOX";
+	public static final String BROWSER = "CHROME";
 	public static final String KEYWORD_FAIL = "Fail";
 	public static final String KEYWORD_PASS = "Pass";
 	public static final String ERROR_CODE = "00000";
