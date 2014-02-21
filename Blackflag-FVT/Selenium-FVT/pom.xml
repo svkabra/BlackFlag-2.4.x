@@ -20,9 +20,9 @@
 			<url>repo1.maven.org/maven2/</url>
 			<layout>default</layout>
 		</repository>
-		
-			
-		
+
+
+
 		<repository>
 			<id>springsource-release</id>
 			<url>http://repository.springsource.com/maven/bundles/release</url>
@@ -60,8 +60,8 @@
 			<artifactId>xml-apis</artifactId>
 			<version>1.4.01</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
@@ -74,16 +74,16 @@
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
 			<version>2.37.0</version>
 		</dependency>
-		
-		
-			<dependency>
+
+
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.10-beta2</version>
@@ -91,41 +91,41 @@
 
 
 
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-firefox-driver</artifactId>
-					<version>2.37.0</version>
-				</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>2.37.0</version>
+		</dependency>
 
 
 
 
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-chrome-driver</artifactId>
-					<version>2.37.0</version>
-				</dependency>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-htmlunit-driver</artifactId>
-					<version>2.37.0</version>
-				</dependency>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-ie-driver</artifactId>
-					<version>2.37.0</version>
-				</dependency>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-safari-driver</artifactId>
-					<version>2.37.0</version>
-				</dependency>
-								
-				
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>2.37.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>2.37.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>2.37.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>2.37.0</version>
+		</dependency>
+
+
 	</dependencies>
-	
-	
-	
+
+
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -139,7 +139,7 @@
 				<artifactId>selenium-java</artifactId>
 				<version>2.37.0</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>net.sourceforge.jexcelapi</groupId>
 				<artifactId>jxl</artifactId>
@@ -213,12 +213,7 @@
 							</includes>
 						</configuration>
 					</execution>
-				</executions>
-				<configuration>
-					<includes>
-						<include>**/Results.java</include>
-					</includes>
-				</configuration>
+				</executions>				
 			</plugin>
 
 		</plugins>

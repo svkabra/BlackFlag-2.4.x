@@ -2,12 +2,15 @@ package ATT.Selenium_FVT.Utilities.Component;
 
 public class Constants {
 
-	public static final String BROWSER = "FIREFOX";
-	//public static final String BROWSER = "CHROME";
+		
+	
+	//public static String BROWSER = "FIREFOX";
+	public static final String BROWSER = "CHROME";
 	public static final String KEYWORD_FAIL = "Fail";
 	public static final String KEYWORD_PASS = "Pass";
 	public static final String ERROR_CODE = "00000";
-	public static final String APIM_HOME_URL = "https://devpgm-uat-app.eng.mobilephone.net/";
+	public static String APIM_HOME_URL = "https://devpgm-uat-app.eng.mobilephone.net/";
+	//public static String APIM_HOME_URL = "https://developer.att.com";
 	public static final String USERNAME_F4 = "Ruphus";
 	public static final String PASSWORD_F4 = "asf2012";
 	public static final String USERNAME_F3 = "test12345";
