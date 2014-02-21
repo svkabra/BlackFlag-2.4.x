@@ -211,9 +211,14 @@
 							<includes>
 								<include>**/Results.java</include>
 							</includes>
-						</configuration>
+						</configuration>						
 					</execution>
-				</executions>				
+				</executions>	
+				<configuration>
+					<includes>
+						<include>**/Results.java</include>
+					</includes>
+				</configuration>							
 			</plugin>
 
 		</plugins>

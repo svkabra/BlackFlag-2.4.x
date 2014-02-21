@@ -187,7 +187,11 @@ public class APIMLoginPage extends WebPage {
 
 		signIn.click();
 		waitForPageToLoad();
-		signIn.click();
+	    waitForElement(userNamePopup);           
+        if(!elementExist(userNamePopup)){
+               signIn.click();
+               waitForElement(userNamePopup);                        
+        }
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.OPA_USERNAME);
 		waitForElement(password);
