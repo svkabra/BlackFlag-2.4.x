@@ -26,7 +26,7 @@ public class TC_AccountSettingsLinkValidation extends TestUtil {
 		apimLoginPage.openURL();
 
 		// method to log into Dev Portal as an OPA
-		apimLoginPage.playGroundLogIn();
+		apimLoginPage.playGroundLogin();
 
 		// Method to validate Login
 		apimLoginPage.validateLogin();

@@ -13,6 +13,7 @@ import com.gargoylesoftware.htmlunit.PageCreator;
 
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
+import ATT.Selenium_FVT.Utilities.Component.Headers;
 import ATT.Selenium_FVT.Utilities.Component.PageTitleConstant;
 
 public class APIMLoginPage extends WebPage {
@@ -108,6 +109,13 @@ public class APIMLoginPage extends WebPage {
 		waitForPageToLoad();
 		PageFactory.initElements(driver, this);
 	}
+	
+
+	/* Method to Initialize APIMLoginPage */
+	public Headers headers() {
+		waitForPageToLoad();
+		return PageFactory.initElements(driver, Headers.class);
+	}
 
 	/* Method to Click hackathon and events from home page */
 	public APIMLoginPage clickHackathonEventsButton() {
@@ -131,7 +139,7 @@ public class APIMLoginPage extends WebPage {
 	}
 
 	/* Playground Login Method for f3 Environment */
-	public APIMLoginPage playGroundLogIn() {
+	public APIMLoginPage playGroundLogin() {
 
         signIn.click();
         waitForPageToLoad();        
@@ -187,11 +195,12 @@ public class APIMLoginPage extends WebPage {
 
 		signIn.click();
 		waitForPageToLoad();
-	    waitForElement(userNamePopup);           
-        if(!elementExist(userNamePopup)){
-               signIn.click();
-               waitForElement(userNamePopup);                        
-        }
+		signIn.click();
+		waitForElement(userNamePopup);
+	      if(!elementExist(userNamePopup)){
+              signIn.click();
+              waitForElement(userNamePopup);                        
+       }
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.OPA_USERNAME);
 		waitForElement(password);
@@ -378,9 +387,10 @@ public class APIMLoginPage extends WebPage {
 
 	/* Method to validate Hackathon Events Page */
 	public Boolean validateHackathonEventsPage() {
-
-		String titleExpected = PageTitleConstant.HACKATHONSEVENTSPAGE;
-		Boolean result=validatePageTitle(titleExpected);
+		String titleExpected1 = PageTitleConstant.HACKATHONS_EVENTS_PAGE1;
+		String titleExpected2 = PageTitleConstant.HACKATHONS_EVENTS_PAGE2;
+		boolean result = validatePageTitle(titleExpected1)||validatePageTitle(titleExpected2);
+	
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -415,7 +425,6 @@ public class APIMLoginPage extends WebPage {
 
 				}
 			}
-		System.out.println(driver.getTitle());
 		return result;
 
 	}

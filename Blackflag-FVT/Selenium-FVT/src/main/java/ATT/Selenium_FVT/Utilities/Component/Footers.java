@@ -7,6 +7,7 @@ import junit.framework.Assert;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.lift.find.PageTitleFinder;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -53,7 +54,7 @@ public class Footers extends WebPage{
 	public WebElement techLib;
 	
 	// Page Object "2014 AT&T Intellectual Property"
-	@FindBy(how = How.LINK_TEXT, using = "2014 AT&T Intellectual Property")
+	@FindBy(how = How.LINK_TEXT, using = "©2014 AT&T Intellectual Property.")
 	public WebElement intProperty; 
 	
 	// Page Object "AT&T AppCenter for Consumer Apps"
@@ -68,7 +69,7 @@ public class Footers extends WebPage{
 	@FindBy(how = How.LINK_TEXT, using = "Device References and Specs")
 	public WebElement device;
 	
-	// Page Object "Device References and Specs"
+	// Page Object "Support Overview"
 	@FindBy(how = How.LINK_TEXT, using = "Support Overview")
 	public WebElement supportOverview;
     
@@ -85,7 +86,7 @@ public class Footers extends WebPage{
 	public WebElement facebook;
 	
 	// Page Object "Twitter"
-	@FindBy(how = How.CLASS_NAME, using = "twitter")
+	@FindBy(how = How.LINK_TEXT, using = "Twitter")
 	public WebElement twitter;
 	
 	// Page Object "GitHub"
@@ -103,108 +104,36 @@ public class Footers extends WebPage{
 	public void openURL() {		
 	//	PageFactory.initElements(driver,this);
 	}
-
+	
 	/*Method to click on footer link "Facebook"*/	
-	public void clkFacebookIcon(){		
-		String mwh=driver.getWindowHandle(); 
-		facebook.click();	
+	public Footers clickFacebookIcon(){	
+		facebook.click();
 		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                validatePageTitle("AT&T Developer Program | Facebook");
-		                driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}		
-
+		return this;
 	}	
+	
 	/*Method to click on footer link "Twitter"*/	
-	public void clkTwitterIcon(){		
-		String mwh=driver.getWindowHandle(); 
+	public Footers clickTwitterIcon(){		
 		twitter.click();	
-		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                validatePageTitle("AT&T Dev Program (attdeveloper) on Twitter");
-		                driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}		
-
+		waitForPageToLoad();	
+		return this;
 	}
 	/*Method to click on footer link "Github"*/	
-	public void clkGithubIcon(){		
-		String mwh=driver.getWindowHandle(); 
+	public Footers clickGithubIcon(){	
 		github.click();	
 		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                validatePageTitle("AT&T Developer Support Program · GitHub");
-		                driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}		
-
+		return this;
 	}	
 	/*Method to click on footer link "Terms of Use"*/	
-	public void clkTermsnCondition(){		
-		String mwh=driver.getWindowHandle(); 
+	public Footers clickTermsnCondition(){		
+		 
 		termConditions.click();	
 		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		                Assert.assertEquals("AT&T Terms of Use", text);	
-		                System.out.println(text);
-		                driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}		
-
+		return this;
 	}	
 	
 	/*Method to click on footer link "Privacy Policy"*/	
-	public void clkPrivacynPolicy(){	
+	public Footers clickPrivacynPolicy(){	
 		String mwh=driver.getWindowHandle();
 		privacyPolicy.click();		
 		waitForPageToLoad();	
@@ -219,103 +148,97 @@ public class Footers extends WebPage{
 		    if(!popupHandle.contains(mwh))
 		    {
 		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();	
-		                Assert.assertEquals("AT&T Privacy Policy", text);	
-		                System.out.println(text);
 		                driver.close();
 		                driver.switchTo().window(mwh);
 		    }
-		}			
+		}
+		return this;
 	}
 	
-	
 	/*Method to click on footer link "Our APIs"*/	
-	public void clkOurApi(){	
+	public Footers clickOurApi(){	
 		ourApis.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T APIs | Build Speech, Messaging & Payment into your mobile app | AT&T Developer");
+		return this;
 	}	
 	
 	/*Method to click on footer link "AT&T AppCenter for Consumer Apps"*/	
-	public void clkConsumerApp(){	
+	public Footers clickConsumerApp(){	
 		consumerApp.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T AppCenter for Consumer Apps | AT&T Developer");
+		return this;
 	}	
 	
 	/*Method to click on footer link "AT&T Certified Solution Catalog for B2B Apps"*/	
-	public void clkB2BApp(){	
+	public Footers clickB2BApp(){	
 		b2bApp.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T Certified Solution Catalog for B2B Apps | AT&T Developer");
+		return this;
 	}	
 	
 	/*Method to click on footer link "Device References and Specs"*/	
-	public void clkDevice(){	
+	public Footers clickDevice(){	
 		device.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T Devices: Overview, Detailed Specifications and Comparisions");
+		return this;
 	}	
 	
 	/*Method to click on footer link "Support Overview"*/	
-	public SupportOverviewPage clkSupportOverview(){	
+	public SupportOverviewPage clickSupportOverview(){	
 		supportOverview.click();
 		waitForPageToLoad();
-		validatePageTitle("Support | AT&T Developer");
 		return PageFactory.initElements(driver, SupportOverviewPage.class);
 	}	
 	
 	/*Method to click on footer link "Live Chat"*/	
-	public void clkLiveChat(){	
+	public Footers clickLiveChat(){	
 		liveChat.click();
 		waitForPageToLoad();
-		validatePageTitle("Chat Window");
+		return this;
 	}	
 	
 	/*Method to click on footer link "FAQs"*/	
-	public void clkFaqs(){	
+	public Footers clickFaqs(){	
 		faqs.click();
 		waitForPageToLoad();
-		validatePageTitle("Frequently Asked Questions | AT&T Developer");
+		return this;
 	}	
 	
 	/*Method to click on footer link "AT&T Application Resource Optimizer"*/	
-	public void clkAttAro(){	
+	public Footers clickAttAro(){	
 		attAro.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T Application Resource Optimizer (ARO) | AT&T Developer");
+		return this;
 	}	
 	
 	/*Method to click on footer link "SDKs, Plugins & more"*/	
-	public void clkSdkPlugin(){	
+	public Footers clickSdkPlugin(){	
 		sdk.click();
 		waitForPageToLoad();
-		validatePageTitle("SDKs, Plugins & Tools | AT&T Developer Program");
+		return this;
 	}	
 	
 	/*Method to click on footer link "AT&T TextButton"*/	
-	public void clkTextButton(){	
+	public Footers clickTextButton(){	
 		textButton.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T Text Button | AT&T Developer");
+		return this;
 	}	
-	
 	/*Method to click on footer link "Technical Library"*/	
-	public void clkTechnicalLib(){	
+	public Footers clickTechnicalLib(){	
 		techLib.click();
 		waitForPageToLoad();
-		validatePageTitle("Technical Library | AT&T Developer");
+		return this;
 	}	
 	
-	/*Method to click on footer link "AT&T AppCenter for Consumer Apps"*/	
-	public void clkContactUs(){	
-		consumerApp.click();
+	/*Method to click on footer link "Contact Us"*/	
+	public Footers clickContactUs(){	
+		contactUs.click();
 		waitForPageToLoad();
-		validatePageTitle("AT&T Developer Program Contact Us Form");
+		return this;
 	}	
 	/*Method to click on footer link "2014 AT&T Intellectual Property"*/
-	public void clkCopyRight(){		
+	public Footers clickCopyRight(){		
 		String mwh=driver.getWindowHandle();
 		intProperty.click();
 		waitForPageToLoad();
@@ -330,15 +253,457 @@ public class Footers extends WebPage{
 		    if(!popupHandle.contains(mwh))
 		    {
 		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		                Assert.assertEquals("AT&T Intellectual Property", text);	
-		                System.out.println(text);
 		                driver.close();
 		                driver.switchTo().window(mwh);
 		    }
 		}
-		
+		return this;
+	}
+	
+	/* Method to click on Submit a Ticket tab from Dev portal page */	
+	public Footers clickSubmitTicket(){	
+		submitTicket.click();		
+		waitForPageToLoad();
+		return this;
+	}		
+	
+	/*Method to validate page title on footer link "2014 AT&T Intellectual Property"*/
+	public Boolean validateCopyRight(){	
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.COPYRIGHT;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+	
+	}
+	
+	/*Method to validate page title on footer link "Our APIs"*/	
+	public Boolean validateOurApi(){	
+		String titleExpected = PageTitleConstant.OUR_API;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}
+	
+	/*Method to validate page title on footer link "AT&T AppCenter for Consumer Apps"*/	
+	public Boolean validateConsumerApp(){	
+		String titleExpected = PageTitleConstant.CONSUMER_APP;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	/*Method to validate page title on footer link "AT&T Certified Solution Catalog for B2B Apps"*/	
+	public Boolean validateB2BApp(){	
+		String titleExpected = PageTitleConstant.B2B_APP;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "Device References and Specs"*/	
+	public Boolean validateDevice(){	
+		String titleExpected = PageTitleConstant.DEVICE;
+		System.out.println(driver.getTitle());
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "Support Overview"*/	
+	public Boolean validateSupportOverview(){	
+		String titleExpected = PageTitleConstant.SUPPORT;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "Live Chat"*/	
+	public Boolean validateLiveChat(){	
+			boolean result = false;
+			String mwh = driver.getWindowHandle();
+			Set<String> s = driver.getWindowHandles();
+			Iterator<String> ite5 = s.iterator();
+
+			while (ite5.hasNext()) {
+				String popupHandle = ite5.next().toString();
+				if (!popupHandle.contains(mwh)) {
+
+					driver.switchTo().window(popupHandle);
+					String titleExpected = PageTitleConstant.LIVE_CHAT;
+					String currentTitle = driver.getTitle();
+					result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+					if (result) {
+
+						storeVerificationResults(true, "Page Title displayed");
+
+					} else {
+
+						storeVerificationResults(false, "Page Title not displayed");
+					}
+					driver.close();
+					driver.switchTo().window(mwh);
+
+				}
+			}
+
+			return result;
+	}	
+	
+	/*Method to validate page title on footer link "FAQs"*/	
+	public Boolean validateFaqs(){	
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.FAQ;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+         
+	}	
+	
+	/*Method to validate page title on footer link "AT&T Application Resource Optimizer"*/	
+	public Boolean validateAttAro(){
+		String titleExpected = PageTitleConstant.ARO;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "SDKs, Plugins & more"*/	
+	public Boolean validateSdkPlugin(){	
+		String titleExpected = PageTitleConstant.SDK_PLUGINS_TOOLS;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "AT&T TextButton"*/	
+	public Boolean validateTextButton(){	
+		String titleExpected = PageTitleConstant.TEXT_BUTTON;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "Technical Library"*/	
+	public Boolean validateTechnicalLib(){	
+		String titleExpected = PageTitleConstant.TECHNICAL_LIBRARY;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	
+	/*Method to validate page title on footer link "Contact Us"*/	
+	public Boolean validateContactUs(){	
+		System.out.println(driver.getTitle());
+		String titleExpected = PageTitleConstant.CONTACT_US;
+		boolean result=validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+		}
+		return result;
+	}	
+	/*Method to validate page title on footer link "AT&T Terms and Conditions"*/	
+	public Boolean validateTermsConditions(){	
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.TERMS_OF_USE;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+	}	
+	/*Method to validate page title on footer link "Facebook"*/	
+	public Boolean validateFacebookIcon(){		
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.FACEBOOK;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+         
+	}
+	/*Method to validate page title on footer link "Twitter"*/	
+	public Boolean validateTwitterIcon(){
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.TWITTER;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+
+	}
+	
+	/*Method to validate page title on footer link "Github"*/	
+	public Boolean validateGithubIcon(){		
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.GITHUB;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+         
+	}
+	/*Method to validate page title on footer link "Privacy Policy"*/	
+	public Boolean validatePrivacyPolicy(){
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.PRIVACY_POLICY;
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
+	}
+	/* Method to validate page title on Submit a Ticket tab from Dev portal page */	
+	public Boolean validateSubmitTicket(){	
+		boolean result = false;
+		String mwh = driver.getWindowHandle();
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite5 = s.iterator();
+
+		while (ite5.hasNext()) {
+			String popupHandle = ite5.next().toString();
+			if (!popupHandle.contains(mwh)) {
+
+				driver.switchTo().window(popupHandle);
+				String titleExpected = PageTitleConstant.PRIVACY_POLICY; //this functionality is not working. A ticket has been logged for the same. 
+				String currentTitle = driver.getTitle();
+				result = titleExpected.equalsIgnoreCase(currentTitle.trim());
+				if (result) {
+
+					storeVerificationResults(true, "Page Title displayed");
+
+				} else {
+
+					storeVerificationResults(false, "Page Title not displayed");
+				}
+				driver.close();
+				driver.switchTo().window(mwh);
+
+			}
+		}
+
+		return result;
 	}
 	
 	/* Method to Initialize APIMLoginPage */
@@ -347,32 +712,6 @@ public class Footers extends WebPage{
 		return PageFactory.initElements(driver, APIMLoginPage.class);
 	}	
 	
-	/* Method to click on Submit a Ticket tab from Dev portal page */	
-	public void clkLogTicket(){	
-		String mwh=driver.getWindowHandle();
-		submitTicket.click();		
-		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                validatePageTitle("Pricing");
-		        		driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}
-		
-		
-		
-	}		
 	
 	
 }

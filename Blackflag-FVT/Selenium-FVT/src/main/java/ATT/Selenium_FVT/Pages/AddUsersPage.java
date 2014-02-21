@@ -28,6 +28,10 @@ public class AddUsersPage extends WebPage {
 	@FindBy(xpath = "(//button[@type='button'])[4]")
 	private WebElement Yes_Button;
 
+	// Page Object "Organization Details" header
+	 @FindBy(how=How.CSS, using="label[class=field_error][for=emailAddresses_0][generated=true]")
+	private WebElement fieldErrorForEmailAddress;
+	 
 	public AddUsersPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -93,7 +97,7 @@ public class AddUsersPage extends WebPage {
 	/* method to validate error message on invalid email id */
 	public boolean validateEmailIdErrorMesaage() {
 
-		String error_message = driver.findElement(By.id("label0")).getText();
+		String error_message = fieldErrorForEmailAddress.getText();
 		boolean result = error_message
 				.equalsIgnoreCase("Must contain a valid e-mail.");
 		if (result) {

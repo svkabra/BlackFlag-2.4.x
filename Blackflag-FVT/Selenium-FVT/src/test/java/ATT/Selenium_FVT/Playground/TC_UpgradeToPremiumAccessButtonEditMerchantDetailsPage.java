@@ -18,17 +18,17 @@ public class TC_UpgradeToPremiumAccessButtonEditMerchantDetailsPage extends Test
 
 	@Test
 	public void upgradeToPremiumAccessButtonEditMerchantDetailsPage_test() {
-		boolean result=false;
+		
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		
 		//method to load the URL
 		apimLoginPage.openURL();
 		
 		//method to log into Dev Portal as an OPA
-		apimLoginPage.playGroundLogIn();
+		apimLoginPage.playGroundLogin();
 		
 		//method to validate LogIn
-		result=apimLoginPage.validateLogin();
+		apimLoginPage.validateLogin();
 		
 		//method to click on Manage My Account Link
 		ManageMyAccount manageMyAcct = apimLoginPage.clickManageMyAcctLink();

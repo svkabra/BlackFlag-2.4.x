@@ -38,7 +38,7 @@ public class TC_ManageMyCreditCardLinkValidation extends TestUtil {
 		manageMyAcct.clickManageMyCreditCardLink();
 
 		// method to validate user lands on Manage My Credit Card page
-		//manageMyAcct.validateManageMyCreditCardPage();
+		manageMyAcct.validateManageMyCreditCardPage();
 
 		// method to publish Test result
 		apimLoginPage.publishTestResult();

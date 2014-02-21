@@ -9,17 +9,24 @@ import org.openqa.selenium.support.PageFactory;
 
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
+import ATT.Selenium_FVT.Utilities.Component.PageTitleConstant;
 
-public class JoinNowPage extends WebPage{
-	@FindBy(how = How.ID ,using="text_email")
+public class JoinNowPage extends WebPage {
+
+	// Page Object "Text Email"
+	@FindBy(how = How.ID, using = "text_email")
 	private WebElement email;
-	
-	@FindBy(how = How.ID ,using="submitButton")
+
+	// Page Object "Join Now" button
+	@FindBy(how = How.ID, using = "submitButton")
 	private WebElement joinNow;
-	
-	@FindBy(how = How.ID ,using="email_validity_output")
+
+	// Page Object "Email Validity"
+	@FindBy(how = How.ID, using = "email_validity_output")
 	private WebElement emailValidity;
-	public JoinNowPage(WebDriver driver){
+
+	// Parameterized Constructors
+	public JoinNowPage(WebDriver driver) {
 		super(driver);
 
 	}
@@ -28,32 +35,65 @@ public class JoinNowPage extends WebPage{
 	public void openURL() {
 		driver.navigate().to(Constants.APIM_HOME_URL);
 		waitForPageToLoad();
-		PageFactory.initElements(driver, this);	
+		PageFactory.initElements(driver, this);
 	}
 
-	public void enterEmailID(){
-		email.sendKeys("testdev937@gmail.com");
+	// method to input email id
+	public JoinNowPage enterEmailID() {
+		email.sendKeys("afchoudhary@deloitte.com");
+		return this;
 	}
-	public void emailValidation(){
-		String emailStr = emailValidity.getText();
-		String errMsg = "Email in use.";
-		if(emailStr.contains(errMsg)){
-			storeVerificationResults(true, "Email in use");
-		}
-		else{
-			storeVerificationResults(false, "User able to reuse email id");
-		}
-	}
-	public void signInFromErrorMsg(){
+
+	public JoinNowPage signinFromErrorMsg() {
 		emailValidity.findElement(By.linkText("Sign In")).click();
-		validatePageTitle("AT&T Developer Program");
+		return this;
 	}
-	public void resetPwdFromErrorMsg(){
+
+	public JoinNowPage resetPasswordFromErrorMsg() {
 		emailValidity.findElement(By.linkText("Reset Your Password")).click();
-		validatePageTitle("AT&T Developer Program");
+		//emailValidity.findElement(By.xpath("a[contains(@href='/developer/resetpassword')]")).click();
+		
+		return this;
 	}
-	public void clkJoinNow(){
+
+	public JoinNowPage clickJoinNow() {
 		joinNow.click();
 		waitForPageToLoad();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
+		return this;
 	}
+
+	/********************** Validations ******************/
+	// method to validate email id
+	public boolean validateEmail() {
+		String emailString = emailValidity.getText();
+		String errorMsg = "Email in use.";
+		boolean result = emailString.contains(errorMsg);
+		if (result) {
+			storeVerificationResults(true, "Email in use");
+			result = true;
+		} else {
+			storeVerificationResults(false, "User able to reuse email id");
+		}
+		return result;
+	}
+
+	// method to validate sign in
+	public boolean validateSignin() {
+		String titleExpected = PageTitleConstant.SIGN_IN_PAGE;
+
+		boolean result = validatePageTitle(titleExpected);
+		if (result) {
+
+			storeVerificationResults(true, "Page Title displayed");
+
+		} else {
+
+			storeVerificationResults(false, "Page Title not displayed");
+
+		}
+
+		return result;
+	}
+
 }

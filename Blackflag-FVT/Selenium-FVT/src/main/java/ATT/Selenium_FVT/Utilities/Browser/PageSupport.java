@@ -239,6 +239,7 @@ public class PageSupport {
     		storeVerificationResults(true, "Element is present");
 
     }
+    
     protected void validateWebElementNotPresent(String identifier, String method){
     	int size=0;
     	if(method.equalsIgnoreCase("xpath")){
@@ -253,6 +254,7 @@ public class PageSupport {
     		storeVerificationResults(false, "Element is present");
 
     }
+    
     protected void validateWebElementPresent(String xpath){
         
         int size=  driver.findElements(By.xpath(xpath)).size();
@@ -263,6 +265,7 @@ public class PageSupport {
                storeVerificationResults(true, "Element is present");
         
    }
+    
     protected void validateWebElementNotPresent(String xpath){
         
         int size=  driver.findElements(By.xpath(xpath)).size();
@@ -273,6 +276,7 @@ public class PageSupport {
                storeVerificationResults(false, "Element is present");
         
    }
+    
 protected boolean validateWebElementEnabled(WebElement element){
 	   boolean result = element.isEnabled();
 	   if( result){
@@ -391,14 +395,14 @@ protected boolean validateWebElementEnabled(WebElement element){
 
 
   }
-	  protected void validateText(WebElement element,String s){
-	         String S2 = element.getText(); 
-	          if( S2.equals(s)){
-	           storeVerificationResults(true, "Element is displayed");
+	  protected boolean validateText(WebElement element,String expectedText){
+	         String actualText = element.getText(); 
+	         boolean result =false;
+	          if( actualText.equals(expectedText)){
+	           result = true;
 	          }
-	           else{
-	                 storeVerificationResults(false, "Element is not displayed");
-	          }
+	          
+	         return result; 
 	  }
   public void publishTestResult(){
  	 

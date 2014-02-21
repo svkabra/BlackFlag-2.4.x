@@ -42,10 +42,7 @@ public class TC_AddUserbyInviteFailure extends TestUtil{
 		
 		//method to send an invite
 		addUsersPage.sendInvite();
-		
-		//method to click yes on the pop up
-		addUsersPage.clickYes();
-		
+				
 		//validate error message sent when an invalid email is sent for invite
 		addUsersPage.validateEmailIdErrorMesaage();
 		

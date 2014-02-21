@@ -90,11 +90,11 @@ public class ManageMyAccount extends WebPage {
 	private WebElement cancelButton;
 
 	// Page Object "Upgrade My Subscription Now" link
-	 @FindBy(how = How.XPATH, using = "//button[@type='button'][2]")
+	 @FindBy(how = How.XPATH, using = "(//button[@type='button'])[2]")
 	private WebElement updateMySubscriptionNowButton;
 
 	// Page Object "Name" header
-	 @FindBy(how=How.CSS, using="css=div.floatRight.manageAccountItemCall > a.button > span")
+	 @FindBy(how=How.XPATH, using="div.floatRight.manageAccountItemCall > a.button > span")
 	private WebElement upgradeToPremiumAccessButtonEditMErchantDetailsPage;
 
 	// Page Object "Cancel My Subscription" link

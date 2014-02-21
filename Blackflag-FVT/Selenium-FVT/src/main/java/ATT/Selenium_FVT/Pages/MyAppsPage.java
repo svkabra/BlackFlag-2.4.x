@@ -1,275 +1,148 @@
 package ATT.Selenium_FVT.Pages;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.Set;
-
-import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import ATT.Selenium_FVT.Components.CreateAnApp;
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
+import ATT.Selenium_FVT.Utilities.Component.Constants;
 import ATT.Selenium_FVT.Utilities.Excel.ReadXLSX;
 
 public class MyAppsPage extends WebPage {
-	
-	public static final String MY_APPS_URL ="https://devpgm-f3t-apimatrix.api-dev.mars.bf.sl.attcompute.com/apps";
-	
-	
-	//Page Object "API Analytics"
-	@FindBy(id= "all_apps_analytics")
-	public WebElement apiAnalytics;
-	
-	//Page Object "Advertising Analytics"
-	@FindBy(id= "all_adv_apps_analytics")
-	public WebElement advAnalytics;
-	// Page Object "APIs"
-	@FindBy(how = How.LINK_TEXT, using = "APIs")
-	public WebElement apiLink;
-	
-	// Page Object "Tutorials"
-	@FindBy(how = How.LINK_TEXT, using = "Tutorials")
-	public WebElement tutorialsLink;
-	
-	// Page Object "Sample Apps"
-	@FindBy(how = How.LINK_TEXT, using = "Sample Apps")
-	public WebElement sampleAppsLink;
-	
-	// Page Object "Console"
-	@FindBy(how = How.LINK_TEXT, using = "API Console")
-	public WebElement consoleLink;
-	
-	// Page Object "Docs"
-	@FindBy(how = How.LINK_TEXT, using = "Docs")
-	public WebElement DocsLink;
-	
-	// Page Object "My Apps"
-	@FindBy(how = How.LINK_TEXT, using = "My Apps")
-	public WebElement myAppsLink;
-	
-	// Page Object "Pricing"
-	@FindBy(how = How.LINK_TEXT, using = "Pricing")
-	public WebElement pricingLink;
-	
-	// Page Object "Log A Ticket"
-	@FindBy(how = How.LINK_TEXT, using = "Submit a Ticket")
-	public WebElement logTicketLink;			
-	
-	@FindBy(css="div#link-nav div#link-nav-content div#links ul li[3] a")
-	public WebElement createAnApp;
-	
+		
 	// Page Object "Upgrade to full access"
 	@FindBy(css="input.btn-darkblue")	
 	public WebElement upgardeToFullAccess;
 	
-	//Page Object "Setup New Application"
+	//Page Object "Setup New Application" link
 	@FindBy(id= "add_an_resource")
 	public WebElement setupNewApp;
 	
-	//Page Object "Setup New Application"
-	@FindBy(how = How.LINK_TEXT, using = "Call Management")
-	public WebElement AppName;
+	//Page Object "App Key"
+	@FindBy(css = "span.appkey_label")
+	public WebElement AppKey;
+	
+	//Page Object "App Secret"
+	@FindBy(css= "span.appsecret_label")
+	public WebElement AppSecret;
 
-
-	//Page Object "API-Analytics" - Hemant
+	//Page Object "Manage Sandbox button"
+	@FindBy(css= "a.myappsinfo.sandboxstatus-active")
+	public WebElement manageSandboxbutton;
+	
+	//Page Object "Delete Sandbox button"
+	@FindBy(css= "a.Sandbox.myappsinfo")
+	public WebElement deleteSandboxAppButton;
+	
+	//Page Object "Delete Production button"
+	@FindBy(css= "a.Production.myappsinfo")
+	public WebElement deleteProductionAppButton;
+	
+	@FindBy(css="span.futuristic_edit > a.myappsinfo")
+	public WebElement editButton;
+	
+	//Page Object "API-Analytics" 
     @FindBy(id="all_apps_analytics")
-    public WebElement btnAppAnalytics;
+    public WebElement buttonAppAnalytics;
     
-    //Page Object "ADV Analytics" - Hemant
+    //Page Object "ADV Analytics" 
     @FindBy(id = "all_adv_apps_analytics") 
-    public WebElement btnADVAnalytics;
+    public WebElement buttonAdvAnalytics;
     
-    //Page Object "All Apps Advertising Analytics Heading" - Hemant
+    //Page Object "All Apps Advertising Analytics Heading" 
     @FindBy(xpath = "//*[@id='app-list']/div[1]/div/form/div[1]/span[1]") 
-    public WebElement lblAllApsADVAnalytics;
+    public WebElement labelAllAppsAdvAnalytics;
            
     
-    //Page Object " API Range From Date" -Hemant
+    //Page Object " API Range From Date" 
     @FindBy(id="analytics-api-form-from")
-    public WebElement dtRangeFrom;
+    public WebElement dateRangeFrom;
     
-    //Page Object "API Range To Date" -Hemant
+    //Page Object "API Range To Date" 
     @FindBy(id="analytics-api-form-to")
-    public WebElement dtRangeTo;
+    public WebElement dateRangeTo;
     
-    //Page Object "APIs DropDown" -Hemant
+    //Page Object "APIs DropDown" 
     @FindBy(id="analytics-api-form-trend")
-    public WebElement ddAPIs;
+    public WebElement dropdownAPIs;
     
-    //Page Object "View DropDown" -Hemant
+    //Page Object "View DropDown" 
     @FindBy(id="analytics-api-form-view")
-    public WebElement ddView;
+    public WebElement dropdownView;
     
-    //Page Object "By DropDown" -Hemant
+    //Page Object "By DropDown" 
     @FindBy(id="chart")
-    public WebElement ddByChart;
+    public WebElement dropdownByChart;
     
-    //Page Object "API Update Button" -Hemant
+    //Page Object "API Update Button" 
     //@FindBy(xpath="//a[contains(text(),'Export Excel')]/../../span[3]/a")
     @FindBy(xpath="//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[3]/a")    
-    public WebElement btnRefresh;
+    public WebElement buttonRefresh;
            
     
-    //Page Object "API Export Excel" -Hemant
+    //Page Object "API Export Excel" 
     //@FindBy(xpath="//a[contains(text(),'Export Excel')]")
     @FindBy(xpath="//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[2]/a")                                   
-    public WebElement btnExportExcel;
+    public WebElement buttonExportExcel;
 
 
-    //Page Object "API Export CSV" -Hemant
+    //Page Object "API Export CSV" 
     //@FindBy(xpath="//a[contains(text(),'Export CSV')]")
     @FindBy(xpath="//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[1]/a")
-    public WebElement btnExportCSV;
+    public WebElement buttonExportCSV;
 
 
-    //Page Object "Range From Date -Advertising Analytics" -Hemant
+    //Page Object "Range From Date -Advertising Analytics" 
     @FindBy(id="adv-analytics-api-form-from")
-    public WebElement dtADVRangeFrom;
+    public WebElement dateAdvRangeFrom;
     
 
-    //Page Object "Range To Date -Advertising Analytics" -Hemant
+    //Page Object "Range To Date -Advertising Analytics" 
     @FindBy(id="adv-analytics-api-form-to")
-    public WebElement dtADVRangeTo;
+    public WebElement dateAdvRangeTo;
     
-    //Page Object "ADV Update Button" -Hemant
+    //Page Object "ADV Update Button" 
     @FindBy(xpath="//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[2]/a")                           
-    public WebElement btnADVRefresh;
+    public WebElement buttonAdvRefresh;
     
-    //Page Object "ADV Export Button" -Hemant
+    //Page Object "ADV Export Button" 
     @FindBy(xpath="//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[1]/a")
-    public WebElement btnADVExport;
+    public WebElement buttonAdvExport;
     
 
-    //Page Object "Estimated Revenue Head" -Hemant
+    //Page Object "Estimated Revenue Head" 
     @FindBy(xpath="//*[@id='app-list']/div[2]/div/form/div[2]/div[3]/div[1]")
-    public WebElement lblRevnuHead;
+    public WebElement labelRevenueHead;
     
     
-    //Page Object "Request Legend" -Hemant
+    //Page Object "Request Legend" 
     @FindBy(xpath="//*[@id='highcharts-2']/svg/g[6]/text[1]/tspan")
-    public WebElement lblRequest;
+    public WebElement labelRequest;
     
-    //Page Object "Impressions Legend" -Hemant
+    //Page Object "Impressions Legend" 
     @FindBy(xpath="//*[@id='highcharts-2']/svg/g[6]/text[2]/tspan")
-    public WebElement lblImpressions;
+    public WebElement labelImpressions;
     
     
-    //Page Object "Clicks Legend" -Hemant
+    //Page Object "Clicks Legend" 
     @FindBy(xpath="//*[@id='highcharts-2']/svg/g[6]/text[3]/tspan")
-    public WebElement lblClicks;
+    public WebElement labelClicks;
     
-    //Page Object "Application list" -Hemant
+    //Page Object "Application list" 
     @FindBy(id ="app-list")
-    public WebElement eleAppList;
+    public WebElement elementAppList;
     
 
-    //Page Object "Loading Image" -Hemant
+    //Page Object "Loading Image" 
     @FindBy(xpath ="//*[@id='content-area']/div[4]/img")
-    public WebElement eleLoadingImage;
+    public WebElement elementLoadingImage;
     
 
-
-/** ======================================== Rohit Singh ============================================= */
-    
-    //Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "004_TestShortCode")
-    public WebElement testAppSandbox;
-
-//Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "002_TestShortCode")
-    public WebElement testAppProduction;
-    
-//Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "001_TestShortCode")
-    public WebElement testSmsAppSandbox;
-    
-//Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "005_TestShortCode")
-    public WebElement testSmsAppProduction;
-    
-//Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "003_TestShortCode")
-    public WebElement testMmsAppSandbox;
-    
-    
-//Page Object "Setup New Application"
-    @FindBy(how = How.LINK_TEXT, using = "006_TestShortCode")
-    public WebElement testMmsAppProduction;
-
-    
-    //method to click on a Test App
-    public AppPage clickTestAppSandbox()
-    {
-           waitForElement(testAppSandbox);
-           testAppSandbox.click();
-           waitForPageToLoad();
-           return PageFactory.initElements(driver, AppPage.class);
-           
-    }
-    
-    //method to click on a Test App
-                 public AppPage clickTestSmsAppSandbox()
-                 {
-                        waitForElement(testAppSandbox);
-                        testSmsAppSandbox.click();
-                        waitForPageToLoad();
-                        return PageFactory.initElements(driver, AppPage.class);
-                        
-                 }
-    
-    //method to click on a Test App
-    public AppPage clickTestAppProduction()
-    {
-                 waitForElement(testAppProduction);
-                 testAppProduction.click();
-                 waitForPageToLoad();
-                 return PageFactory.initElements(driver, AppPage.class);
-                        
-    }
-    
-    //method to click on a Test App
-    public AppPage clickTestSmsAppProduction()
-    {
-                 waitForElement(testAppProduction);
-                 testSmsAppProduction.click();
-                 waitForPageToLoad();
-                 return PageFactory.initElements(driver, AppPage.class);
-                        
-    }
-    
-    //method to click on a Test App
-    public AppPage clickTestMmsAppSandbox()
-    {
-           waitForElement(testAppSandbox);
-           testMmsAppSandbox.click();
-           waitForPageToLoad();
-           return PageFactory.initElements(driver, AppPage.class);
-           
-    }
-    
-    //method to click on a Test App
-    public AppPage clickTestMmsAppProduction()
-    {
-                        waitForElement(testAppSandbox);
-                        testMmsAppProduction.click();
-                        waitForPageToLoad();
-                        return PageFactory.initElements(driver, AppPage.class);
-                        
-    }
-
-
-           /** ======================================== Rohit Singh ============================================= */
-
-	
-	
-//---------------------------------------------------------------------------------------------------------------------------------------------------
 	public MyAppsPage(WebDriver driver) {
 		super(driver);
 		//PageFactory.initElements(driver, this);
@@ -279,238 +152,187 @@ public class MyAppsPage extends WebPage {
 
 	@Override
 	public void openURL() {
-		driver.get(MY_APPS_URL);
+		//driver.get(MY_APPS_URL);
 		PageFactory.initElements(driver, this);
 	}
 	
-
-	public CreateAnApp clickCreateAnApp(){
-		createAnApp.click();
-		WebElement createAppForm = driver.findElement(By.id("new_app"));
-		return new CreateAnApp(driver, createAppForm);
-		
-	}
-	
-	public NewAppPage setUpNewApp(){
+	  //***************************************Methods Created by Binny*******************************************************************
+	/* metthod to click on Setup New App button */
+	public NewAppPage setUpNewApp() {
 		setupNewApp.click();
 		waitForPageToLoad();
-		implicitWait(3);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
 		return PageFactory.initElements(driver, NewAppPage.class);
 	}
-	
-	/*method to click on Setup App Button after deleting all the apps for a playground user */
-	
-	public NewAppPage setUpNewAppAfterCleanup(){
+
+	/*
+	 * method to click on Setup App Button after deleting all the apps for a
+	 * playground user
+	 */
+
+	public NewAppPage setUpNewAppAfterCleanup() {
 		driver.findElement(By.id("add_an_resource")).click();
 		waitForPageToLoad();
 		implicitWait(3);
 		return PageFactory.initElements(driver, NewAppPage.class);
 	}
 	
+	/*
+	 * Method to clicks on Key button on my apps page
+	 */
+	public MyAppsPage clickKeyIcon() {
+		WebElement keyicon;
+
+		// If the App Key and Secret Key section is already expanded
+		if (driver
+				.findElement(By
+						.cssSelector("span.futuristic_key.button_depressed > a.myappsinfo")).isDisplayed()) {
+			keyicon = driver
+					.findElement(By
+							.cssSelector("span.futuristic_key.button_depressed > a.myappsinfo"));
+		}
+		// If the App Key and Secret Key section is not expanded, click on the
+		// Key Icon
+		else {
+			keyicon = driver.findElement(By
+					.cssSelector("span.futuristic_key > a.myappsinfo"));
+			keyicon.click();
+			implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		}
+
+	return this;
+	}
 	
-	/*method to click on edit button*/
-	public EditAppPage editApp(){
-		AppName.click();
+	/*
+	 * Method to Validate Sandbox App Key and Secret key is displayed when Dev
+	 * clicks on Sandbox Key button on my apps page
+	 */
+
+	public boolean validateAppKeyAppSecretDisplayed() {
+
+		boolean result = false;
+
+		if (validateWebElementDisplayed(AppKey)) {
+			result = validateWebElementDisplayed(AppSecret);
+
+		}
+		return result;
+	}
+
+	/* Method to click on Manage Sandbox button */
+	public MyAppsPage clickManageSandboxButton() {
+		manageSandboxbutton.click();
 		waitForPageToLoad();
+		return this;
+	}
+
+	/*
+	 * Method to verify that user can view sandbox app detail page by clicking
+	 * on Manage Sandbox button
+	 */
+	public boolean validateManageSandboxButton() {
+
+		WebElement appTitle = driver.findElement(By.className("title"));
+		boolean result = validateWebElementDisplayed(appTitle);
+		return result;
+	}
+
+	/* Method to click on delete sandbox app button */
+	public MyAppsPage clickDeleteSandbox() {
+
+		deleteSandboxAppButton.click();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		return this;
+	}
+
+	/* Method to click on delete button below a particular production app */
+	public MyAppsPage clickDeleteProduction() {
+
+		deleteProductionAppButton.click();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		return this;
+	}
+
+	public MyAppsPage deleteSandboxAppPlayground() {
+
+		while (driver
+				.findElements(
+						By.xpath("//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]"))
+				.size() > 0) {
+			driver.findElement(
+					By.xpath("//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]"))
+					.click();
+			implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+			driver.findElement(By.id("confirmationDeleteButton")).click();
+			implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
+			waitForPageToLoad();
+		}
+		return this;
+	}
+
+	// Page Object "Edit Button"
+	
+	@FindBy(id="confirmationCancelButton")
+	public WebElement orCancelButton;	
+	
+	/** Method to click on Orcancel delete button */
+	public MyAppsPage clickOrCancelButton(){
+		
+		orCancelButton.click();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);	
+		return this;
+	}
+	
+	/* Method to click on Orcancel delete button */
+	public boolean validateCancelDeleteApp(String appName){
+		boolean result =false;
+		WebElement title = driver.findElement(By.id("location_header")).findElement(By.tagName("h1"));
+		if(validateText(title, "My Apps") && driver.findElement(By.linkText(appName)).isDisplayed()){
+		
+			storeVerificationResults(true, "App is not Deleted on clicking OrCancel delete button");
+			result = true;
+		}	
+		else{
+	    storeVerificationResults(false, "App is Deleted on clicking OrCancel delete button");
+		}	
+		return result;
+	
+	}
+	
+	/* Method to click Edit Sandbox button */
+	public EditAppPage clickEditSandboxButton(){			
+		editButton.click();
+		waitForPageToLoad();	
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
 		return PageFactory.initElements(driver, EditAppPage.class);	
 	}
 	
-	
-	/* Method to Initialize APIMLoginPage */
-	public APIMLoginPage apimLoginPage(){
-		waitForPageToLoad();
-		return PageFactory.initElements(driver, APIMLoginPage.class);
-	}	
-	
-	/* Method to click on API tab on My Apps page */
-	
-	public APIPage clkAPI(){			
-		apiLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("AT&T APIs - Find Developer APIs from AT&T", text);
-		return PageFactory.initElements(driver, APIPage.class);
-	}	
-
-	/* Method to click on Tutorials tab on My Apps page */
-	public TutorialPage clkTutorials(){	
-		tutorialsLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("Tutorials", text);
-		return PageFactory.initElements(driver, TutorialPage.class);
-	}	
-	
-	/* Method to click on Sample Apps tab on My Apps page */
-	public SampleAppPage clkSampleApp(){	
-		sampleAppsLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("Sample Apps", text);
-		return PageFactory.initElements(driver, SampleAppPage.class);
-	}	
-	
-	/* Method to click on Console tab on My Apps page */
-	public ConsolePage clkConsole(){	
-		consoleLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("AT&T API Console", text);
-		return PageFactory.initElements(driver, ConsolePage.class);
-	}	
-
-	/* Method to click on Docs tab on My Apps page */
-	public DocPage clkDocs(){	
-		DocsLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("AT&T API Documentation - API Sample Code, Methods & Callbacks", text);
-		return PageFactory.initElements(driver, DocPage.class);
-	}	
-	
-	/* Method to click on Pricing tab on My Apps page */
-	public PricingPage clkPricing(){	
-		pricingLink.click();		
-		waitForPageToLoad();
-		String text = driver.getTitle();
-		Assert.assertEquals("Pricing", text);
-		return PageFactory.initElements(driver, PricingPage.class);
-	}	
-
-	/* Method to click on Log a Ticket tab on My Apps page */	
-	public void clkLogTicket(){	
-		String mwh=driver.getWindowHandle();
-		logTicketLink.click();		
-		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
-		//this method will you handle of all opened windows
-
-		Iterator ite=s.iterator();
-
-		while(ite.hasNext())
-		{
-		    String popupHandle=ite.next().toString();
-		    if(!popupHandle.contains(mwh))
-		    {
-		                driver.switchTo().window(popupHandle);
-		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		        		Assert.assertEquals("Pricing", text);  // Title of Log a ticket page need to be inserted here. Currently Log a Ticket page is not opening. 
-		                System.out.println(text);
-		                driver.close();
-		                driver.switchTo().window(mwh);
-		    }
-		}
-		
-		
-		
-	}	
-    //***************************************Methods Created by Binny*******************************************************************	
-	/** Method to verify that Api analytics tab is not displayed (for playground user) */ 
-	public void isApiAnalyticsNotDisplayed(){
-		validateWebElementPresent("//*[id = 'all_apps_analytics']");
-
-		publishTestResult();
-	}
-	
-	/** Method to verify that Advertising analytics tab is not displayed (for playground user) */ 
-	public void isAdvAnalyticsNotDisplayed(){
-		waitForPageToLoad();
-		validateWebElementPresent("//*[id = 'all_adv_apps_analytics']");
-		publishTestResult();
-	}
-	
-	
-	/** Method to verify that Advertising analytics tab is displayed (for Dev, OPA user) */ 
-	public void isAdvAnalyticsDisplayed(){
-			
-		validateWebElementDisplayed(advAnalytics);
-		publishTestResult();
-	}
-	
-	
-	/** Method to verify that API analytics tab is displayed (for Dev, OPA user) */ 
-	public void isApiAnalyticsDisplayed(){
-		validateWebElementDisplayed(apiAnalytics);
-		publishTestResult();
-	}
-	
-	/** Method to Validate Sandbox App Key and Secret key is displayed when Dev clicks on Sandbox Key button on my apps page*/
-	public void clkKeyIcon(){
-		WebElement keyicon;
-		
-		// If the App Key and Secret Key section is already expanded 
-		if(driver.findElement(By.cssSelector("span.futuristic_key.button_depressed > a.myappsinfo")) != null){
-			keyicon = driver.findElement(By.cssSelector("span.futuristic_key.button_depressed > a.myappsinfo"));
-			}
-		// If the App Key and Secret Key section is not expanded, click on the Key Icon
-		else{
-			keyicon = driver.findElement(By.cssSelector("span.futuristic_key > a.myappsinfo"));	
-			keyicon.click();
-			waitForAjaxInactivity();	
-		}
-			
-		WebElement AppKey  = driver.findElement(By.cssSelector("span.appkey_label"));
-		WebElement AppSecret  = driver.findElement(By.cssSelector("span.appsecret_label"));
-		
-		validateWebElementDisplayed(AppKey);
-		validateWebElementDisplayed(AppSecret);
-		publishTestResult();
-	}
-	
-	
-	/**  Method to verify that user can view sandbox app detail page by clicking on Manage Sandbox button */
-	public void clkManageSandbox(){
-		
-		WebElement sandboxbtn = driver.findElement(By.cssSelector("a.myappsinfo.sandboxstatus-active"));	
-		sandboxbtn.click();
-		waitForPageToLoad();	
+	/* Method to verify that user can view Edit Sandbox app detail page by clicking on Edit Sandbox App button */
+	public boolean validateEditSandboxButton(){			
+		boolean result = false;
 		WebElement apptitle  = driver.findElement(By.className("title"));
-		validateWebElementDisplayed(apptitle);
-		publishTestResult();
+		if(validateWebElementDisplayed(apptitle)){
+			result = true;
+		}
+		return result;	
 	}
 	
-	/** Method to click on delete button below a particular sandbox app */
-	public void clkDeleteSandbox(){
-	/*	appName = "/apps/"+appName;
-		String path = "//a[contains(@href,'" + appName + "') and contains(@original-title,'Trash')]"; 
-		//and contains(@class,'Sandbox.myappsinfo') 
-		WebElement deleteBtn = driver.findElement(By.xpath(path));*/
-		WebElement deleteBtn = driver.findElement(By.cssSelector("a.Sandbox.myappsinfo"));	
-		deleteBtn.click();
-		waitForAjaxInactivity();	
-	}
-	
-	
-	/** Method to click on delete button below a particular production app */
-	public void clkDeleteProduction(){
-		
-		WebElement deletebtn = driver.findElement(By.cssSelector("a.Production.myappsinfo"));	
-		deletebtn.click();
-		waitForAjaxInactivity();	
-	}
-	
-	/** Method to click on Orcancel delete button */
-	public void clkOrCancel(String appName){
-		
-		WebElement orcancelbtn = driver.findElement(By.id("confirmationCancelButton"));	
-		orcancelbtn.click();
-		waitForAjaxInactivity();	
-		WebElement title = driver.findElement(By.id("location_header")).findElement(By.tagName("h1"));
-		validateText(title, "My Apps");
-		
-		if(driver.findElement(By.linkText(appName)).isDisplayed())
-			storeVerificationResults(true, "App is not Deleted");
+	public boolean validateAuthMessage(){
+		WebElement authMessage = driver.findElement(By.cssSelector("div.alert-box.notice"));
+		String expectedMessage = "Successfully authenticated from Att account.";
+		String actualMessage = authMessage.getText().toString();
+		boolean result = false;
+		if (actualMessage.contains(expectedMessage)) {
+			storeVerificationResults(true, "Authentication message is displayed");
+			return true;
+		}
 		else{
-	    storeVerificationResults(false, "App is Deleted");
-		}	
-		publishTestResult();
+		    storeVerificationResults(false, "Authentication message is not displayed");
+		}		
+		return result;		
 	}
-	public AppPage click_AppLink(String appname){
-
-		//a= a.toLowerCase();
-
-		//String abc = "//a[contains(@href,'" + a + "') and contains(@class,'myappsinfo') and contains(@original-title,'Edit')]"; 
+	
+	public AppPage clickAppLink(String appname){
 
 		try{
 
@@ -527,53 +349,9 @@ public class MyAppsPage extends WebPage {
 		} 
 
 
-	/** Menthod to verify that usre can view sandbox app detail page by clicking on Manage Sandbox button */
-	public void clkEditBtn(){
-		
-		WebElement editbtn = driver.findElement(By.cssSelector("span.futuristic_edit > a.myappsinfo"));	
-		editbtn.click();
-		waitForPageToLoad();	
-		WebElement apptitle  = driver.findElement(By.className("title"));
-		validateWebElementDisplayed(apptitle);
-	//	WebElement edittext = driver.findElement(By.xpath("//div[@id='location_header']/h1/span[2]"));	
-	//	validateText(edittext, "- Edit");
-		publishTestResult();
-	}
-	
-	public void validateAuthMsg(){
-		WebElement msg = driver.findElement(By.cssSelector("div.alert-box.notice"));
-		String s1 = "Successfully authenticated from Att account.";
-		String s2 = msg.getText().toString();
-		if (s2.contains(s1)) {
-			storeVerificationResults(true, "Authentication message is displayed");
-		}
-		else{
-		    storeVerificationResults(false, "Authentication message is not displayed");
-		}
-		//validateText(msg, s);
-		msg.getText();
-		publishTestResult();
-	}
+
 	
 
-	public void deleteSandboxAppPG(){
-		
-		while(driver.findElements(By.xpath("//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]")).size()>0)
-		{
-			driver.findElement(By.xpath("//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]")).click(); 
-			waitForAjaxInactivity();
-			
-			driver.findElement(By.id("confirmationDeleteButton")).click();
-			waitForAjaxInactivity();
-			waitForPageToLoad();  
-			
-		}
-	
-	
-	}
-	
-	
-	
 	
     //***************************************Methods Created by Binny*******************************************************************
 	
@@ -590,7 +368,7 @@ public class MyAppsPage extends WebPage {
            }
            
            //Click on API Analytics
-           btnAppAnalytics.click();
+           buttonAppAnalytics.click();
            
            //wait till data not displayed
            int i;
@@ -648,7 +426,7 @@ public class MyAppsPage extends WebPage {
            String xyz = "//*[@id='app-list']/div[1]/div/form/div[1]/span[1]";
            boolean flagPresent =validateWebElementPresentBy(By.xpath(xyz));
             if (flagPresent){
-	            boolean x =  lblAllApsADVAnalytics.isDisplayed();
+	            boolean x =  labelAllAppsAdvAnalytics.isDisplayed();
 	            if (!x){
 	                   System.out.println("Pass - ADV-Analytics is collapsed");
 	                   storeVerificationResults(true, "Pass - ADV-Analytics is collapsed");
@@ -663,7 +441,7 @@ public class MyAppsPage extends WebPage {
            //Click on ADV Analytics
            flagPresent = validateWebElementPresentBy(By.id("all_adv_apps_analytics"));
            if (flagPresent){
-                  btnADVAnalytics.click();
+                  buttonAdvAnalytics.click();
            }else{
         	   storeVerificationResults(false, "Element is not present");
            }
@@ -682,7 +460,7 @@ public class MyAppsPage extends WebPage {
            //flagPresent = (!driver.findElements(By.xpath(xyz)).isEmpty());
            flagPresent = validateWebElementPresentBy(By.xpath(xyz));
            if(flagPresent ){
-                  boolean y =  lblAllApsADVAnalytics.isDisplayed();
+                  boolean y =  labelAllAppsAdvAnalytics.isDisplayed();
                   if (y){
                         System.out.println("Pass - ADV-Analytics is expanded");
                         storeVerificationResults(true, "ADV-Analytics is expanded");
@@ -749,7 +527,7 @@ public class MyAppsPage extends WebPage {
            String xyz = "//*[@id='app-list']/div[1]/div/form/div[1]/span[1]";
            boolean flagPresent =validateWebElementPresentBy(By.xpath(xyz));
             if (flagPresent){
-	            boolean x =  lblAllApsADVAnalytics.isDisplayed();
+	            boolean x =  labelAllAppsAdvAnalytics.isDisplayed();
 	            if (!x){
 	                   System.out.println("Pass - ADV-Analytics is collapsed");
 	            }else{
@@ -763,7 +541,7 @@ public class MyAppsPage extends WebPage {
            //Click on ADV Analytics
            flagPresent = validateWebElementPresentBy(By.id("all_adv_apps_analytics"));
            if (flagPresent){
-                  btnADVAnalytics.click();
+                  buttonAdvAnalytics.click();
            }else{
         	   storeVerificationResults(false, "Element is not present");
            }
@@ -782,7 +560,7 @@ public class MyAppsPage extends WebPage {
            //flagPresent = (!driver.findElements(By.xpath(xyz)).isEmpty());
            flagPresent = validateWebElementPresentBy(By.xpath(xyz));
            if(flagPresent ){
-                  boolean y =  lblAllApsADVAnalytics.isDisplayed();
+                  boolean y =  labelAllAppsAdvAnalytics.isDisplayed();
                   if (y){
                         System.out.println("Pass - ADV-Analytics is expanded");
                   }else{
@@ -795,7 +573,7 @@ public class MyAppsPage extends WebPage {
            //Click on ADV Analytics
            flagPresent = validateWebElementPresentBy(By.id("all_adv_apps_analytics"));
            if (flagPresent){
-                  btnADVAnalytics.click();
+                  buttonAdvAnalytics.click();
            }else{
         	   storeVerificationResults(false, "Element is not present");
            }
@@ -814,7 +592,7 @@ public class MyAppsPage extends WebPage {
            xyz = "//*[@id='app-list']/div[1]/div/form/div[1]/span[1]";
            flagPresent =validateWebElementPresentBy(By.xpath(xyz));
             if (flagPresent){
-	            boolean x =  lblAllApsADVAnalytics.isDisplayed();
+	            boolean x =  labelAllAppsAdvAnalytics.isDisplayed();
 	            if (!x){
 	                   System.out.println("Pass - ADV-Analytics is collapsed");
 	            }else{
@@ -835,8 +613,8 @@ public class MyAppsPage extends WebPage {
     //Function to select From Date from Range -Hemant 
     //***********************************************************************************************************************************                     
     public void fnSetFROMDateAPI(String sDate){            
-           dtRangeFrom.clear();
-           dtRangeFrom.sendKeys(sDate);
+           dateRangeFrom.clear();
+           dateRangeFrom.sendKeys(sDate);
            driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[3]/button[2]")).click();          
     }      
     //***********************************************************************************************************************************
@@ -844,8 +622,8 @@ public class MyAppsPage extends WebPage {
     //Function to select To Date from Range -Hemant 
     //***********************************************************************************************************************************                     
     public void fnSetTODateAPI(String sDate){              
-           dtRangeTo.clear();
-           dtRangeTo.sendKeys(sDate);
+           dateRangeTo.clear();
+           dateRangeTo.sendKeys(sDate);
            driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[3]/button[2]")).click();          
     }      
     //***********************************************************************************************************************************
@@ -858,8 +636,8 @@ public class MyAppsPage extends WebPage {
       
     	try{
     	
-    		dtADVRangeFrom.clear();
-           dtADVRangeFrom.sendKeys(sDate);
+    		dateAdvRangeFrom.clear();
+           dateAdvRangeFrom.sendKeys(sDate);
            driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/button[2]")).click();
     	}catch(Exception e){
     		storeVerificationResults(false, "From Date Range set failure");
@@ -872,8 +650,8 @@ public class MyAppsPage extends WebPage {
     //***********************************************************************************************************************************                     
     public void fnSetTODateAPIADV(String sDate){           
     	try{
-            dtADVRangeTo.clear();
-            dtADVRangeTo.sendKeys(sDate);
+            dateAdvRangeTo.clear();
+            dateAdvRangeTo.sendKeys(sDate);
             driver.findElement(By.xpath("//*[@id='ui-datepicker-div']/div[2]/button[2]")).click();              		
     	}catch(Exception e){
     		storeVerificationResults(false, "To Date Range set failure");
@@ -888,7 +666,7 @@ public class MyAppsPage extends WebPage {
     public void fnClickRefresh(){            
            
            //Click on Refresh Button
-           btnRefresh.click();
+           buttonRefresh.click();
 
            //wait till data not displayed
            int i;
@@ -910,12 +688,12 @@ public class MyAppsPage extends WebPage {
     	
            //Click on Refresh Button
            wait(2000);
-           btnADVRefresh.click();
+           buttonAdvRefresh.click();
 
            //wait till data not displayed
            int i;
            i=0;
-           //eleLoadingImage.isDisplayed()
+           //elementLoadingImage.isDisplayed()
            while(i<5){
                   //System.out.println("Wait for trend");
                   wait(2000);
@@ -936,10 +714,10 @@ public class MyAppsPage extends WebPage {
            
            try{
                   
-                  Select s = new Select(ddAPIs);
+                  Select s = new Select(dropdownAPIs);
                   s.selectByValue(sAPI);
                   
-                  ddAPIs.sendKeys(sAPI);
+                  dropdownAPIs.sendKeys(sAPI);
                   
            }catch(Exception e){
                   
@@ -955,7 +733,7 @@ public class MyAppsPage extends WebPage {
     //Function to select Duration from View dropdown-Hemant 
     //***********************************************************************************************************************************                     
     public void fnSetView(String sView){            
-           Select s = new Select(ddView);
+           Select s = new Select(dropdownView);
            s.selectByValue(sView);
     }      
     //***********************************************************************************************************************************
@@ -964,7 +742,7 @@ public class MyAppsPage extends WebPage {
     //Function to select Daily, hourly from By dropdown-Hemant 
     //***********************************************************************************************************************************                     
     public void fnSetBy(String sBy){         
-           Select s = new Select(ddByChart);
+           Select s = new Select(dropdownByChart);
            s.selectByValue(sBy);
     }      
     //***********************************************************************************************************************************
@@ -1012,7 +790,7 @@ public class MyAppsPage extends WebPage {
            //DeleteFile(filePathString);
 
            
-           btnExportExcel.click();
+           buttonExportExcel.click();
            
                         
            //wait for the file to get created
@@ -1039,7 +817,7 @@ public class MyAppsPage extends WebPage {
     //***********************************************************************************************************************************                     
     public void fnExportFileADV(String filePathString)
     {
-           btnADVExport.click();
+           buttonAdvExport.click();
            
            //Code to create the folder
            int in  = filePathString.lastIndexOf("\\");            
@@ -1082,7 +860,7 @@ public class MyAppsPage extends WebPage {
     //***********************************************************************************************************************************                     
     public void fnExportcsv(String filePathString)
     {
-           btnExportCSV.click();
+           buttonExportCSV.click();
                                       
            //wait for the file to get created
            File f = new File(filePathString);
@@ -1107,18 +885,18 @@ public class MyAppsPage extends WebPage {
     
     
     
-    //Function to verify dtADVRangeFrom-Hemant 
+    //Function to verify dateAdvRangeFrom-Hemant 
     //***********************************************************************************************************************************                     
            public boolean fnVerifydtADVRangeFrom(){
                   
-                  if(dtADVRangeFrom.isDisplayed()){
+                  if(dateAdvRangeFrom.isDisplayed()){
                         System.out.println("Adv From Date is Visible");
                   }else{
                         System.out.println("Adv From Date is Not Visible");
                         return false;
                   }
                                       
-                  if(!dtADVRangeFrom.getAttribute("value").isEmpty()){
+                  if(!dateAdvRangeFrom.getAttribute("value").isEmpty()){
                         System.out.println("From Date is past 7 days");
                         return true;
                   }else{
@@ -1129,17 +907,17 @@ public class MyAppsPage extends WebPage {
     //***********************************************************************************************************************************
            
 
-           //Function to verify dtADVRangeTo-Hemant 
+           //Function to verify dateAdvRangeTo-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifydtADVRangeTo(){                        
-                        if(dtADVRangeTo.isDisplayed()){
+                        if(dateAdvRangeTo.isDisplayed()){
                                System.out.println("Adv To Date is Visible");
                         }else{
                                System.out.println("Adv To Date is Not Visible");
                                return false;
                         }
                                              
-                        if(!dtADVRangeTo.getAttribute("value").isEmpty()){
+                        if(!dateAdvRangeTo.getAttribute("value").isEmpty()){
                                System.out.println("From To is past 7 days");
                                return true;
                         }else{
@@ -1149,10 +927,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
 
-           //Function to verify btnADVRefresh-Hemant 
+           //Function to verify buttonAdvRefresh-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifybtnADVRefresh(){                       
-                        if(btnADVRefresh.isDisplayed()){
+                        if(buttonAdvRefresh.isDisplayed()){
                                System.out.println("Refresh is Visible");
                                return true;
                         }else{
@@ -1165,7 +943,7 @@ public class MyAppsPage extends WebPage {
            //Function to verify fnVerifybtnADVExport-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifybtnADVExport(){                        
-                        if(btnADVExport.isDisplayed()){
+                        if(buttonAdvExport.isDisplayed()){
                                System.out.println("Pass - Export button is Visible");
                                return true;
                         }else{
@@ -1178,7 +956,7 @@ public class MyAppsPage extends WebPage {
            //Function to verify fnVerifylblRevnuHead-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifylblRevnuHead(){                        
-                        if(lblRevnuHead.isDisplayed()){
+                        if(labelRevenueHead.isDisplayed()){
                                System.out.println("Pass - Revenue heading is Visible");
                                return true;
                         }else{
@@ -1188,10 +966,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
 
-           //Function to verify dtRangeFrom API-Hemant 
+           //Function to verify dateRangeFrom API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifydtRangeFrom(){                         
-                        if(dtRangeFrom.isDisplayed()){
+                        if(dateRangeFrom.isDisplayed()){
                                System.out.println("Pass - From Date text box is Visible");
                                return true;
                         }else{
@@ -1201,10 +979,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
 
-           //Function to verify dtRangeTo API-Hemant 
+           //Function to verify dateRangeTo API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifydtRangeTo(){                           
-                        if(dtRangeTo.isDisplayed()){
+                        if(dateRangeTo.isDisplayed()){
                                System.out.println("Pass - To Date text box is Visible");
                                return true;
                         }else{
@@ -1214,10 +992,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
                   
-           //Function to verify ddAPIs API-Hemant 
+           //Function to verify dropdownAPIs API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifyddAPIs(){                       
-                        if(ddAPIs.isDisplayed()){
+                        if(dropdownAPIs.isDisplayed()){
                                System.out.println("Pass - API dropdown box is Visible");
                                return true;
                         }else{
@@ -1227,10 +1005,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
 
-           //Function to verify ddView API-Hemant 
+           //Function to verify dropdownView API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifyddView(){                       
-                        if(ddView.isDisplayed()){
+                        if(dropdownView.isDisplayed()){
                                System.out.println("Pass - View box is Visible");
                                return true;
                         }else{
@@ -1240,10 +1018,10 @@ public class MyAppsPage extends WebPage {
                   }
            //***********************************************************************************************************************************
                   
-           //Function to verify ddByChart API-Hemant 
+           //Function to verify dropdownByChart API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifyddByChart(){                           
-                        if(ddByChart.isDisplayed()){
+                        if(dropdownByChart.isDisplayed()){
                                System.out.println("Pass - By box is Visible");
                                return true;
                         }else{
@@ -1254,10 +1032,10 @@ public class MyAppsPage extends WebPage {
            //***********************************************************************************************************************************
 
                   
-           //Function to verify  btnRefresh API-Hemant 
+           //Function to verify  buttonRefresh API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifybtnRefresh(){                          
-                        if( btnRefresh.isDisplayed()){
+                        if( buttonRefresh.isDisplayed()){
                                System.out.println("Pass - Refresh button is Visible");
                                return true;
                         }else{
@@ -1268,10 +1046,10 @@ public class MyAppsPage extends WebPage {
            //***********************************************************************************************************************************
                   
                   
-           //Function to verify  btnExportCSV API-Hemant 
+           //Function to verify  buttonExportCSV API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifybtnExportCSV(){                        
-                        if( btnExportCSV.isDisplayed()){
+                        if( buttonExportCSV.isDisplayed()){
                                System.out.println("Pass - Export button is Visible");
                                return true;
                         }else{
@@ -1284,7 +1062,7 @@ public class MyAppsPage extends WebPage {
                   
                   
            
-           //Function to verify  btnExportCSV API-Hemant 
+           //Function to verify  buttonExportCSV API-Hemant 
            //***********************************************************************************************************************************                     
                   public boolean fnVerifyAPIGraphIsDisplayed(){                        
                         if(driver.findElements(By.xpath("//*[@id='highcharts-7']/svg/g[10]/g/path")).size()>1){
@@ -1471,26 +1249,26 @@ public class MyAppsPage extends WebPage {
            //***********************************************************************************************************************************                            
                   public void fnVerifyADVAnalyticsGraph(){
                   
-                  if(lblRevnuHead.isDisplayed()){
+                  if(labelRevenueHead.isDisplayed()){
                         System.out.println("Pass - Revenue heading is Visible");                          
                   }else{
                         System.out.println("Fail - Revenue heading is Not Visible");                      
                   }
                   
-//                if(lblRequest.isDisplayed()){
+//                if(labelRequest.isDisplayed()){
 //                      System.out.println("Pass - Revenue heading is Visible");                          
 //                }else{
 //                      System.out.println("Fail - Revenue heading is Not Visible");                      
 //                }
 //                
-//                if(lblImpressions.isDisplayed()){
+//                if(labelImpressions.isDisplayed()){
 //                      System.out.println("Pass - Revenue heading is Visible");                          
 //                }else{
 //                      System.out.println("Fail - Revenue heading is Not Visible");                      
 //                }
 //                
 //                
-//                if(lblClicks.isDisplayed()){
+//                if(labelClicks.isDisplayed()){
 //                      System.out.println("Pass - Revenue heading is Visible");                          
 //                }else{
 //                      System.out.println("Fail - Revenue heading is Not Visible");                      

@@ -1,8 +1,9 @@
 package ATT.Selenium_FVT.Utilities.Component;
 
 public class PageTitleConstant {
-
-	public static final String HACKATHONSEVENTSPAGE="Developer Events | AT&T Developer Program  | AT&T Developer";
+	public static final String HOME_PAGE= "AT&T Developer Program | APIs, SDKs & Developer Resources | AT&T Developer";
+	public static final String HACKATHONS_EVENTS_PAGE1="Developer Events | AT&T Developer Program  | AT&T Developer";
+	public static final String HACKATHONS_EVENTS_PAGE2="Developer Events | AT&T Developer Program   | AT&T Developer";
 	public static final String LOGINPAGE= "AT&T Developer Program";
 	public static final String GETSTARTEDFREEPAGE= "Get Free Basic Access and Join the AT&T Developer Program";
 	public static final String MANAGEMYACCOUNTPAGE= "Manage My Account";
@@ -20,5 +21,34 @@ public class PageTitleConstant {
 	public static final String SUBSCRIPTIONDETAILSPAGE= "Subscription Details";
 	public static final String MANAGEMYCREDITCARDPAGE= "New Subscription Confirmation";
 	public static final String MANAGEMYACCOUNT= "Manage My Account";
-
+	public static final String SEARCH_PAGE= "Search | AT&T Developer";
+	public static final String BLOG_PAGE= "AT&T Developer Program Blogs - Forums Blogs Events News | AT&T Developer Program";
+	public static final String FORUMS_PAGE= "Forums - Forums Blogs Events News | AT&T Developer Program";
+	public static final String PRICING_PAGE= "Pricing | AT&T Developer";
+	public static final String COMMUNITY_PAGE= "Community | AT&T Developer"; 
+	public static final String ADVERTISING_DOCS= "Advertising Documentation";
+	public static final String SPEECH_DOCS= "Speech Documentation";
+	public static final String In_APP_MESSAGING_DOC= "In-App Messaging Documentation";
+	public static final String SMS_DOCUMENTATION= "SMS Documentation";
+	public static final String PAYMENT_DOCUMENTATION= "Payment Documentation";
+	public static final String FACEBOOK = "AT&T Developer Program | Facebook";
+	public static final String TWITTER = "AT&T Dev Program (attdeveloper) on Twitter";
+	public static final String GITHUB = "AT&T Developer Support Program Â· GitHub";
+	public static final String TERMS_OF_USE = "AT&T Terms of Use";
+	public static final String CONTACT_US = "AT&T Developer Program Contact Us Form";
+	public static final String TECHNICAL_LIBRARY = "Technical Library | AT&T Developer";
+	public static final String TEXT_BUTTON = "AT&T Text Button | AT&T Developer";
+	public static final String SDK_PLUGINS_TOOLS = "SDKs, Plugins, & Tools | AT&T Developer Program";
+	public static final String ARO = "AT&T Application Resource Optimizer (ARO) | AT&T Developer";
+	public static final String FAQ = "Frequently Asked Questions | AT&T Developer";
+	public static final String LIVE_CHAT = "Chat Window";
+	public static final String SUPPORT = "Support | AT&T Developer";
+	public static final String DEVICE = "AT&T Devices: Overview, Detailed Specifications and Comparisons";
+	public static final String B2B_APP = "AT&T Certified Solutions Catalog for B2B Apps | AT&T Developer";
+	public static final String CONSUMER_APP = "AT&T AppCenter for Consumer Apps | AT&T Developer";
+	public static final String SPEECH = "AT&T APIs | Build Speech, Messaging & Payment into your mobile app | AT&T Developer";
+	public static final String COPYRIGHT ="AT&T Intellectual Property";
+	public static final String OUR_API = "AT&T APIs | Build Speech, Messaging, & Payment into your mobile app | AT&T Developer";
+	public static final String PRIVACY_POLICY = "AT&T Privacy Policy";
+	public static final String SIGN_IN_PAGE= "AT&T Developer Program";
 }
