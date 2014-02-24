@@ -64,7 +64,7 @@ public class TC_DefaultSmsShortCodeSandbox extends TestUtil {
 		mngShortCode.validateRatingOfShortCode(rating, "zero_rated");
 		
 		//method to publish Test Result
-		mngShortCode.testResult();
+		mngShortCode.publishTestResult();
 		flag=true;
 	}
 	

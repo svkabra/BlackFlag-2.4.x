@@ -69,7 +69,7 @@ public class TC_DefaultSmsMmsShortCodeProduction extends TestUtil {
 		mngShortCode.validateRatingOfShortCode(rating, "Standard");
 		
 		//method to publish Test Result
-		mngShortCode.testResult();
+		mngShortCode.publishTestResult();
 		
 		flag=true;
 	}

@@ -65,7 +65,7 @@ public class TC_ValidateRatingStandardMmsAppSandbox extends TestUtil {
 		mngShortCode.verifyRatingStandardMmsApp();
 		
 		//method to publish Test Result
-		mngShortCode.testResult();
+		mngShortCode.publishTestResult();
 		
 		flag=true;
 	}

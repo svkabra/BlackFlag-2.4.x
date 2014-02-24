@@ -67,7 +67,7 @@ public class TC_ValidateRatingStandardMmsAppProduction extends TestUtil {
 		mngShortCode.verifyRatingStandardMmsApp();
 		
 		//method to publish Test Result
-		mngShortCode.testResult();
+		mngShortCode.publishTestResult();
 		
 		flag=true;
 	}

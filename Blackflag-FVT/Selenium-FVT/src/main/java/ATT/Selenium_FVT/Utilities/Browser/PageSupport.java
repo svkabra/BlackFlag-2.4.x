@@ -213,16 +213,17 @@ public class PageSupport {
  	   return result;
  	}
     
-    protected void validateWebElementNotDisplayed(WebElement element){
-  	   
+    protected boolean validateWebElementNotDisplayed(WebElement element){
+    	boolean result=false;
   	   if( !element.isDisplayed()){
   	   
   		 storeVerificationResults(true, "Element is not displayed");	    
-  	   
+  		result=true;
   	    }else{
   	    	storeVerificationResults(false, "Element is displayed");
   	          
   	   }
+  	 return result;
   	}
     
     protected void validateWebElementPresent(String identifier, String method){
