@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_KeysButtonValidationOPA extends TestUtil{
 
-	/**  Verify that Sandbox App Key and Secret key is displayed when OPA clicks on Sandbox Key button on my apps page
+	/*  Verify that Sandbox App Key and Secret key is displayed when OPA clicks on Sandbox Key button on my apps page
 	 * Precondition : User should have atleast one app on my apps page */	
 	
 	@Test

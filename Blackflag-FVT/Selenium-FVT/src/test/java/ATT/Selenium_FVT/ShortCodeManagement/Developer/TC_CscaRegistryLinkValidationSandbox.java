@@ -52,8 +52,8 @@ public class TC_CscaRegistryLinkValidationSandbox extends TestUtil {
 		appPage.validateAppCreation(appName);
 		
 		// Validate if TL API is added to scope  		
-		appPage.isApiAdded(Constants.SMS);
-		appPage.isApiAdded(Constants.MMS);
+		appPage.validateIsApiAdded(Constants.SMS);
+		appPage.validateIsApiAdded(Constants.MMS);
 		
 		//select Manage ShortCode tab
 		ManageShortCodeTab mngShortCode =appPage.selectManageShortCodeTab();

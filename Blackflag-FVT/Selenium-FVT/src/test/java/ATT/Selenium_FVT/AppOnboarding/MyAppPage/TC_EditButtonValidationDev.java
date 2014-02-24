@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_EditButtonValidationDev extends TestUtil{
 
-	/**  Validate that a Dev can edit Sandbox apps by clicking on edit button for Sandbox app on My apps page 
+	/*  Validate that a Dev can edit Sandbox apps by clicking on edit button for Sandbox app on My apps page 
 	 *  Precondition : User should have atleast one app on my apps page*/	
 	
 	@Test

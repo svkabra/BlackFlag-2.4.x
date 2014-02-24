@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_CancelDeleteSandboxAppPlayground extends TestUtil{
 
-	/** To verify Playground can cancel deleting  a Sandbox app
+	/* To verify Playground can cancel deleting  a Sandbox app
 	 * * Precondition : User should have "0001_CancelDeleteApp" app on my apps page */	
 	
 	@Test
@@ -26,19 +26,14 @@ public class TC_CancelDeleteSandboxAppPlayground extends TestUtil{
 		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
 		apimLoginPage.playGroundLogInCancelDelete();
-		apimLoginPage.validateLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		apimLoginPage.validateMyAppsPage();
-			
+		apimLoginPage.validateMyAppsPage();			
 		// Method to Click on delete Sandbox App button 
-		myAppsPage.clickDeleteSandbox();
-		
+		myAppsPage.clickDeleteSandbox();		
 		// Method to click OrCancel button 
-		myAppsPage.clickOrCancelButton();
-		
+		myAppsPage.clickOrCancelButton();		
 		// Method to validate OrCancel button 
-		myAppsPage.validateCancelDeleteApp(Constants.CANCELDELETEAPP);
-		
+		myAppsPage.validateCancelDeleteApp(Constants.CANCELDELETEAPP);		
 		// Method to publish test result
 		apimLoginPage.publishTestResult();
 		myAppsPage.publishTestResult();	

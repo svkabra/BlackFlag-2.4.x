@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_KeysButtonValidationPlayground extends TestUtil{
 
-	/**  Verify that Sandbox App Key and Secret key is displayed when Playground clicks on Sandbox Key button on my apps page 
+	/*  Verify that Sandbox App Key and Secret key is displayed when Playground clicks on Sandbox Key button on my apps page 
 	 * Precondition : User should have atleast one app on my apps page*/	
 	
 	@Test
@@ -39,7 +39,7 @@ public class TC_KeysButtonValidationPlayground extends TestUtil{
     public void takeScreenShot() {
         // take the screenshot at the end of every test
         File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
+        // now save the screenshot to a file some place
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_KeysButtonValidationPlayground.png"));
 		} catch (IOException e) {

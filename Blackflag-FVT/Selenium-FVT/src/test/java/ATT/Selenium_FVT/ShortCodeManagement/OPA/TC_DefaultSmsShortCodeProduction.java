@@ -51,7 +51,7 @@ public class TC_DefaultSmsShortCodeProduction extends TestUtil {
 		appPage.validateAppCreation(appName);
 		
 		// Validate if TL API is added to scope  		
-		appPage.isApiAdded(Constants.SMS);	
+		appPage.validateIsApiAdded(Constants.SMS);	
 		
 		//Promoting the app to production
 		appPage.requestForProductionAccess();
@@ -69,7 +69,7 @@ public class TC_DefaultSmsShortCodeProduction extends TestUtil {
 		mngShortCode.validateRatingOfShortCode(rating, "zero_rated");
 		
 		//method to publish Test Result
-		mngShortCode.publishTestResult();
+		mngShortCode.testResult();
 		
 		flag=true;
 	}

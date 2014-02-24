@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_KeysButtonValidationDev extends TestUtil{
 
-	/**  Verify that Sandbox App Key and Secret key is displayed when Dev clicks on Sandbox Key button on my apps page 
+	/*  Verify that Sandbox App Key and Secret key is displayed when Dev clicks on Sandbox Key button on my apps page 
 	 *  Precondition : User should have atleast one app on my apps page*/	
 	
 	@Test
@@ -36,6 +36,7 @@ public class TC_KeysButtonValidationDev extends TestUtil{
 		apimLoginPage.publishTestResult();
 		myAppsPage.publishTestResult();
 	}
+	
 	@After
     public void takeScreenShot() {
         // take the screenshot at the end of every test

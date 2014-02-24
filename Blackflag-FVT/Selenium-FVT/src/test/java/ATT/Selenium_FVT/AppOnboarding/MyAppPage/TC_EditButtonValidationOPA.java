@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_EditButtonValidationOPA extends TestUtil{
 
-	/**  Validate that a OPA can edit Sandbox apps by clicking on edit button for Sandbox app on My apps page 
+	/*	 Validate that a OPA can edit Sandbox apps by clicking on edit button for Sandbox app on My apps page 
 	 *  Precondition : User should have atleast one app on my apps page*/	
 	
 	@Test
@@ -39,7 +39,7 @@ public class TC_EditButtonValidationOPA extends TestUtil{
     public void takeScreenShot() {
         // take the screenshot at the end of every test
         File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
+        // now save the screenshot to a file some place
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_EditButtonValidationOPA.png"));
 		} catch (IOException e) {

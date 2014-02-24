@@ -18,7 +18,7 @@ public class AppDetailsPage extends WebPage{
 	public WebElement myAppsLink;
 	
     //Page Object "0001_TestAPIs" 
-	@FindBy(how = How.LINK_TEXT, using="0001_TestAPIs")
+	@FindBy(how = How.LINK_TEXT, using="0001TestApp")
 	public WebElement testAIPsApp;
 	
 	//Page Object "Advertising"

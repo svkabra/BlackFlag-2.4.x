@@ -17,7 +17,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_AuthenticationMessageMyApps extends TestUtil{
 
-	/** Verify that "Successfully authenticated from Att account. " message is displayed when the user logs in to My apps page after successful authentication
+	/* Verify that "Successfully authenticated from Att account. " message is displayed when the user logs in to My apps page after successful authentication
 	 */
 	@Test
 	public void testAuthenticationMessage() {
@@ -38,7 +38,7 @@ public class TC_AuthenticationMessageMyApps extends TestUtil{
     public void takeScreenShot() {
         // take the screenshot at the end of every test
         File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
+        // now save the screenshot to a file some place
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CancelAppCreationDev.png"));
 		} catch (IOException e) {

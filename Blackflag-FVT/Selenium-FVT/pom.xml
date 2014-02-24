@@ -86,7 +86,7 @@
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>3.10-beta2</version>
+			<version>3.10-beta2</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 
 
@@ -150,6 +150,12 @@
 				<artifactId>cucumber-java</artifactId>
 				<version>1.0.0</version>
 			</dependency>
+			<dependency>
+	<groupId>org.slf4j</groupId>
+	<artifactId>slf4j-log4j12</artifactId>
+	<version>1.2</version>
+</dependency>
+            
 			<dependency>
 				<groupId>info.cukes</groupId>
 				<artifactId>cucumber-junit</artifactId>

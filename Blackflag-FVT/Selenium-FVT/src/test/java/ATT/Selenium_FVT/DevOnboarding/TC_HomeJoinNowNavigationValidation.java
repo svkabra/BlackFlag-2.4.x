@@ -10,7 +10,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
-import ATT.Selenium_FVT.Pages.JoinNowPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 import ATT.Selenium_FVT.Utilities.Component.Headers;

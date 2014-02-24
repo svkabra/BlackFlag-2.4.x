@@ -5,72 +5,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
+import ATT.Selenium_FVT.Utilities.Component.Constants;
 
-public class NewAppPage extends WebPage{
-	
-	@FindBy(id="app_name")
-	private WebElement app_Name;
-	
+public class NewAppPage extends WebPage {
+
+	@FindBy(id = "app_name")
+	private WebElement appName;
+
 	@FindBy(id = "app_description")
-	private WebElement app_description;
-	
-	@FindBy(id="app_service_ids_14")
-	private WebElement speech;
-	
-	@FindBy(id = "app_service_ids_21")
-	private WebElement STTC;
-	
-	@FindBy(id = "app_service_ids_1")
-	private WebElement MMS;
-	
-	@FindBy(id = "app_service_ids_25")
-	private WebElement STT;
-	
-	@FindBy(id = "app_service_ids_23")
-	private WebElement MIM;
-	
-	@FindBy(id = "app_service_ids_12")
-	private WebElement SMS;
-	
-	@FindBy(id = "app_service_ids_20")
-	private WebElement TTS;
-	
-	@FindBy(id = "app_service_ids_6")
-	private WebElement oAuth;
-	
-	@FindBy(id = "app_service_ids_5")
-	private WebElement ADS;
-	
-	@FindBy(id = "app_service_ids_2")
-	private WebElement Notary;
-	
-	@FindBy(id="app_service_ids_15")
-	private WebElement MOBO;
-	
-	@FindBy(id = "app_service_ids_3")
-	private WebElement TL;
-	
-	@FindBy(id="app_service_ids_7")
-	private WebElement DC;
-	
-	@FindBy(id = "app_service_ids_4")
-	private WebElement Payment;
-	
-	@FindBy(id="app_service_ids_29")
-	private WebElement STTA;
-	
-	@FindBy(id="app_service_ids_11")
-	private WebElement CallManagement;
-	
-	@FindBy(id="app_callback_url")
-	private WebElement callBackURL;
-	
-	@FindBy(name="commit")
-	private WebElement Setup_Application;
-	
+	private WebElement appDescription;
+
+	@FindBy(id = "app_callback_url")
+	private WebElement oAuthUrl;
+
+	@FindBy(name = "commit")
+	private WebElement setupApplication;
+
+	@FindBy(className = "debuttonfy")
+	private WebElement orCancel;
+
+	@FindBy(css = "div.headingsection > span.title")
+	private WebElement pageHeadingNewAppPage;
+
 	public NewAppPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -79,130 +37,170 @@ public class NewAppPage extends WebPage{
 	@Override
 	public void openURL() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	public void enterAppName(String appName){
-		app_Name.sendKeys(appName);
+
+	/* Method to enter App Name */
+	public NewAppPage enterAppName(String inputAppName) {
+		appName.sendKeys(inputAppName);
+		return this;
 	}
-	
-	public void enterDescription(String appDescription){
-		app_description.sendKeys(appDescription);
+
+	/* Method to enter Description */
+	public NewAppPage enterDescription(String inputAppDescription) {
+		appDescription.sendKeys(inputAppDescription);
+		return this;
 	}
-	
-	
+
 	/* Method to Select an API */
-	public void selectAPI(String api){
-	
-		String strAPIX = "//label[contains(text()," + "\'" + api + "\'" + ")]";	
-		
-			
-		String strForPropOfAPI = driver.findElement(By.xpath(strAPIX)).getAttribute("for");
-	//	System.out.println(strForPropOfAPI );
-		try{
-		if (!(driver.findElement(By.id(strForPropOfAPI)).getAttribute("checked") == "checked")){
-			
-		driver.findElement(By.id(strForPropOfAPI)).click();
+	public NewAppPage selectAPI(String api) {
+
+		String stringApix = "//label[contains(text()," + "\'" + api + "\'"
+				+ ")]";
+
+		String stringForPropOfApi = driver.findElement(By.xpath(stringApix))
+				.getAttribute("for");
+		// System.out.println(strForPropOfAPI );
+
+		if (!(driver.findElement(By.id(stringForPropOfApi)).getAttribute(
+				"checked") == "checked")) {
+
+			driver.findElement(By.id(stringForPropOfApi)).click();
+			implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		} else {
+			System.out.println("API is already selected");
+		}
+
+		return this;
+	}
+
+	/* Method to enter OAuth URL */
+	public NewAppPage setOAuthUrl(String InputOAuthUrl) {
+		oAuthUrl.sendKeys(InputOAuthUrl);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		return this;
+	}
+
+	/* Method to click on Setup App button */
+	public AppPage submitAppDetails() {
 		waitForAjaxInactivity();
-		}
-
-		}catch(Exception e){
-			e.printStackTrace(); 
-		}		
-		}
-	
-public void isOauthDisplayed(){
-		validateWebElementDisplayed(callBackURL);
-
-	}
-
-public void isOauthNotDisplayed(){
-	//validateWebElementNotPresent("app_callback_url","id");
-	validateWebElementNotDisplayed(callBackURL);
-}
-	
-
-/* Method to Publish test result*/
-
-public void displayTestResult(){
-	publishTestResult();
-}
-
-	public void setCallbackURL(String oAuthURL){
-		callBackURL.sendKeys(oAuthURL);
-		implicitWait(2);
-	}
-	
-		/*Method to validate whether error message is displayed when title field is kept blank*/
-	
-	public void validateIfTitleisBlank(){
-		String name = app_Name.getText();
-		if(name.isEmpty()){
-				Boolean flag = driver.findElement(By.cssSelector("small.help-inline")).isDisplayed();
-			if (flag == true)
-				storeVerificationResults(true, "Title field is blank and Error Message is displayed");	
-			else
-				storeVerificationResults(false, "Title field is not blank");	
-				
-			}
-		else {
-			storeVerificationResults(false, "Title field is not blank");
-			
-		}	
-	}
-	
-	/** Method to verify that error message is displayted on Submit button */
-	public void validateIfDescriptionIsBlank(){
-		String name = app_description.getText();
-		if(name.isEmpty()){
-			Boolean flag = driver.findElement(By.cssSelector("small.help-inline")).isDisplayed();
-		if (flag == true)
-			storeVerificationResults(true, "Description field is blank and Error Message is displayed");	
-		else
-			storeVerificationResults(false, "Description field is not blank");	
-			
-		}
-	else {
-		storeVerificationResults(false, "Description field is not blank");
-		
-	}		
-	}
-	
-	/** Method to click on Submit button */
-	
-	public AppPage submitAppDetails(){
-		waitForAjaxInactivity();
-		Setup_Application.click();
+		setupApplication.click();
 		waitForPageToLoad();
-		implicitWait(5);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		return PageFactory.initElements(driver, AppPage.class);
-		
+
 	}
-	
-	
-	/** Method to Validate Dev will land on New app creation page on clicking setup new app button*/
-	public void validateNewAppPage(){
-		WebElement element = driver.findElement(By.cssSelector("div.headingsection > span.title"));
-		element.getText();
-		validateText(element,"Setup New App" );
-		element.getText();
-		publishTestResult();
+
+	/*
+	 * Method to validate OAuth url is displayed when Consentable API is
+	 * selected
+	 */
+	public boolean isOauthDisplayed() {
+		boolean result;
+
+		result = validateWebElementDisplayed(oAuthUrl);
+		return result;
 	}
-	
-	/** Method to click and validate Cancel app creation*/
-	public void cancelAppCreation(String appName){
-		WebElement cancelbtn = driver.findElement(By.className("debuttonfy"));
-		cancelbtn.click();
+
+	/*
+	 * Method to validate OAuth url is not displayed when Non Consentable API is
+	 * selected
+	 */
+
+	public boolean isOauthNotDisplayed() {
+		boolean result;
+		result = validateWebElementNotDisplayed(oAuthUrl);
+		return result;
+	}
+
+	/*
+	 * Method to validate whether error message is displayed when Title field is
+	 * kept blank
+	 */
+	public boolean validateIfTitleisBlank() {
+		boolean result = false;
+		String name = appName.getText();
+		if (name.isEmpty()) {
+			result = driver.findElement(By.cssSelector("small.help-inline"))
+					.isDisplayed();
+			if (result) {
+				storeVerificationResults(true,
+						"Title field is blank and error message is displayed");
+			} else
+				storeVerificationResults(false,
+						"Title field is blank but error message is not displayed");
+
+		} else {
+			storeVerificationResults(false, "Title field is not blank");
+		}
+		return result;
+	}
+
+	/*
+	 * Method to validate whether error message is displayed when Description
+	 * field is kept blank
+	 */
+	public boolean validateIfDescriptionIsBlank() {
+		boolean result = false;
+		String description = appDescription.getText();
+		if (description.isEmpty()) {
+			result = driver.findElement(By.cssSelector("small.help-inline"))
+					.isDisplayed();
+			if (result)
+				storeVerificationResults(true,
+						"Description field is blank and Error Message is displayed");
+			else
+				storeVerificationResults(false,
+						"Description field is blank but error message is not displayed");
+
+		} else {
+			storeVerificationResults(false, "Description field is not blank");
+		}
+		return result;
+	}
+
+	/*
+	 * Method to Validate Dev will land on New app creation page on clicking
+	 * setup new app button
+	 */
+	public boolean validateNewAppPage() {
+		boolean result;
+		pageHeadingNewAppPage.getText();
+		result = validateText(pageHeadingNewAppPage, "Setup New App");
+		return result;
+	}
+
+	/* Method to click Cancel button */
+	public void clickOrCancel() {
+		orCancel.click();
 		waitForPageToLoad();
-		WebElement title = driver.findElement(By.id("location_header")).findElement(By.tagName("h1"));
-		validateText(title, "My Apps");
-		
-		if(driver.findElements(By.linkText(appName)).size() == 0)
-			storeVerificationResults(true, "App is not created");
-		else
-			storeVerificationResults(false, "App is created");
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+	}
+
+	/* Method to validate canceling an app creation */
+	public boolean validateOrCancel(String appName) {
+		boolean result = false;
+		WebElement title = driver.findElement(By.id("location_header"))
+				.findElement(By.tagName("h1"));
+		if (validateText(title, "My Apps")) {
+
+			if (driver.findElements(By.linkText(appName)).size() == 0) {
+				storeVerificationResults(true, "App is not created");
+				result=true;
+			} else {
+				storeVerificationResults(false, "App is created");
+			}
+		}
+		else {
+			storeVerificationResults(false, "My Apps Page is not displayed");
+		}
+		return result;
+	}
+
+	/* Method to Publish test result */
+
+	public void displayTestResult() {
 		publishTestResult();
 	}
-	
 
 }

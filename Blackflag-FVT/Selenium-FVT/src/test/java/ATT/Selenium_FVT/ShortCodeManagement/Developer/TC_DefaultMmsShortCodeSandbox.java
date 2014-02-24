@@ -51,7 +51,7 @@ public class TC_DefaultMmsShortCodeSandbox extends TestUtil {
 		appPage.validateAppCreation(appName);
 		
 		// Validate if TL API is added to scope  		
-		appPage.isApiAdded(Constants.MMS);	
+		appPage.validateIsApiAdded(Constants.MMS);	
 		
 		//select Manage ShortCode tab
 		ManageShortCodeTab mngShortCode =appPage.selectManageShortCodeTab();
@@ -66,7 +66,7 @@ public class TC_DefaultMmsShortCodeSandbox extends TestUtil {
 		mngShortCode.validateRatingOfShortCode(rating, "Standard");
 		
 		//method to publish Test Result
-		mngShortCode.publishTestResult();
+		mngShortCode.testResult();
 		flag=true;
 	}
 	

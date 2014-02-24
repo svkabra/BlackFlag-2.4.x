@@ -18,7 +18,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_SetupAppValidationDev extends TestUtil{
 
-	/**  Verify that Dev will land on New app creation page when  Setup Application button is clicked on My apps page */	
+	/*  Verify that Dev will land on New app creation page when  Setup Application button is clicked on My apps page */	
 	
 	@Test
 	public void testSetupAppButton() {
@@ -27,10 +27,16 @@ public class TC_SetupAppValidationDev extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
+		// Method to click Setup new App link
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
-		/** Method to Validate Dev will land on New app creation page on clicking setup new app button*/
+		// Method to Validate Dev will land on New app creation page on clicking setup new app button
 		newAppPage.validateNewAppPage();
+		// Method to Publish test result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
 	}
+	
 	@After
     public void takeScreenShot() {
         // take the screenshot at the end of every test

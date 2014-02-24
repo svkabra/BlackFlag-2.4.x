@@ -203,6 +203,8 @@ public class TechnicalLibraryPage extends WebPage{
 	
 	/*Method to click on links under Access Point Names*/
 	public void clkTechnicalLibraryLink(){
+		implicitWait(5);
+		waitForElement(technicalLibrary);
 		technicalLibrary.click();
 		waitForPageToLoad();
 	}

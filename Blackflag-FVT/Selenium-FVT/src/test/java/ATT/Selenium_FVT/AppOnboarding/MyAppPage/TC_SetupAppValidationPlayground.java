@@ -16,61 +16,41 @@ import ATT.Selenium_FVT.Pages.NewAppPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 
-public class TC_SetupAppValidationPlayground extends TestUtil {
 
-	/**
-	 * Verify that Playground will land on New app creation page when Setup
-	 * Application button is clicked on My apps page
-	 */
+public class TC_SetupAppValidationPlayground extends TestUtil{
 
+	/* Verify that Playground will land on New app creation page when  Setup Application button is clicked on My apps page */	
+	
 	@Before
-	public void setupPGEnvironment() {
-
-		APIMLoginPage apimLoginPage = new APIMLoginPage(
-				getNewDriver(Constants.BROWSER));
+	public void setupPGEnvironment(){
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
-		// method to log into Dev Portal as an OPA
 		apimLoginPage.playGroundLogin();
-
-		// method to validate LogIn
-		apimLoginPage.validateLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		myAppsPage.deleteSandboxAppPlayground();
-
-		apimLoginPage.publishTestResult();
-		myAppsPage.publishTestResult();
+		// Method to delete existing sandbox apps before creating new app since playground user can create upto 3 apps 
+		myAppsPage.deleteSandboxAppPlayground();		
 	}
-
+	
 	@Test
-	public void testSetupAppBtn() {
-
-		/*
-		 * APIMLoginPage apimLoginPage= new
-		 * APIMLoginPage(getNewDriver(Constants.BROWSER));
-		 * apimLoginPage.openURL(); apimLoginPage.pgLogIn(); MyAppsPage
-		 * myAppsPage = apimLoginPage.clickMyApps();
-		 */
+	public void testSetupAppBtn() {		
 		MyAppsPage myAppsPage = new MyAppsPage(getDriver());
-		NewAppPage newAppPage = myAppsPage.setUpNewAppAfterCleanup();
-		/**
-		 * Method to Validate Playground will land on New app creation page on
-		 * clicking setup new app button
-		 */
+		NewAppPage newAppPage =myAppsPage.setUpNewAppAfterCleanup();
+		// Method to Validate Dev will land on New app creation page on clicking setup new app button
 		newAppPage.validateNewAppPage();
+		// Method to Publish test result
+		newAppPage.publishTestResult();
+				
 	}
-
 	@After
-	public void takeScreenShot() {
-		// take the screenshot at the end of every test
-		File scrFile = ((TakesScreenshot) getDriver())
-				.getScreenshotAs(OutputType.FILE);
-		// now save the screenshot to a file some place
-		try {
-			FileUtils.copyFile(scrFile, new File(
-					"c:\\tmp\\TC_SetupAppValidationPlayground.png"));
+    public void takeScreenShot() {
+        // take the screenshot at the end of every test
+        File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
+        // now save the screenshot to a file some place
+        try {
+			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_SetupAppValidationPlayground.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+    }
 }

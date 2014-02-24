@@ -51,8 +51,8 @@ public class TC_MoUriFieldsOptionalProduction extends TestUtil {
 		appPage.validateAppCreation(appName);
 		
 		// Validate if TL API is added to scope  		
-		appPage.isApiAdded(Constants.SMS);
-		appPage.isApiAdded(Constants.MMS);
+		appPage.validateIsApiAdded(Constants.SMS);
+		appPage.validateIsApiAdded(Constants.MMS);
 		
 		//Promoting the app to production
 		appPage.requestForProductionAccess();

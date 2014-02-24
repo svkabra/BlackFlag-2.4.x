@@ -50,7 +50,7 @@ public class TC_ValidateRatingStandardMmsAppProduction extends TestUtil {
 		appPage.validateAppCreation(appName);
 		
 		// Validate if TL API is added to scope  
-		appPage.isApiAdded(Constants.MMS);
+		appPage.validateIsApiAdded(Constants.MMS);
 		
 		//Request for Production access
 		appPage.requestForProductionAccess();
@@ -66,7 +66,7 @@ public class TC_ValidateRatingStandardMmsAppProduction extends TestUtil {
 		mngShortCode.verifyRatingStandardMmsApp();
 		
 		//method to publish Test Result
-		mngShortCode.publishTestResult();
+		mngShortCode.testResult();
 		
 		flag=true;
 	}
