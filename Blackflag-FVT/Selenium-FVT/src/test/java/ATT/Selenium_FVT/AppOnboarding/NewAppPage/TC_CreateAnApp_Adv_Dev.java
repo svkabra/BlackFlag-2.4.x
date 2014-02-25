@@ -44,8 +44,7 @@ public class TC_CreateAnApp_Adv_Dev extends TestUtil{
 		// appPage.isApiAdded(Constants.ADVERTISING);		
 		// Method to Publish Test Result
 		apimLoginPage.publishTestResult();
-		appPage.publishTestResult();	
-		
+		appPage.publishTestResult();			
 		flag = true;
 				
 	}

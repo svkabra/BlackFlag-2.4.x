@@ -31,27 +31,34 @@ public class TC_EditAppAddNewApiMIM extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
-
+		apimLoginPage.validateMyAppsPage();
+		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
 		String appname =newApp.getNewAppName();
 		newApp.enterAppName(appname);
 		newApp.enterDescription(Constants.APP_DESCRIPTION);
 		newApp.selectAPI(Constants.ADVERTISING_API);
-		newApp.setOAuthUrl(Constants.OAUTH_URL);
 		AppPage appPage =newApp.submitAppDetails();
 
 
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();	
+		EditAppPage editAppPage = appPage.clickEditApp();	
 		// Select MIM api
-		edit.selectAPI(Constants.IN_APP_MESSAGING_MIM);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.IN_APP_MESSAGING_MIM);
+		newApp.setOAuthUrl(Constants.OAUTH_URL);
+		editAppPage.submitAppDetails();
 		
 		// Validate if MIM API is added to scope  		
 		appPage.valaidateIsApiEdited(Constants.IN_APP_MESSAGING_MIM);
 		
 		flag = true;
+		
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 
 	@After

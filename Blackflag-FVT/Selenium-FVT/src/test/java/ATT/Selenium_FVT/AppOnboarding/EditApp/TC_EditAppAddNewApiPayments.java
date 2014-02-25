@@ -31,6 +31,7 @@ public class TC_EditAppAddNewApiPayments extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
@@ -54,6 +55,12 @@ public class TC_EditAppAddNewApiPayments extends TestUtil{
 		
 		flag = true;
 		
+
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 	@After
     public void takeScreenShot() {

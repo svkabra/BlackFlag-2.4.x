@@ -23,14 +23,6 @@ public class MyAppsPage extends WebPage {
 	@FindBy(id= "add_an_resource")
 	public WebElement setupNewApp;
 	
-	//Page Object "App Key"
-	@FindBy(css = "span.appkey_label")
-	public WebElement AppKey;
-	
-	//Page Object "App Secret"
-	@FindBy(css= "span.appsecret_label")
-	public WebElement AppSecret;
-
 	//Page Object "Manage Sandbox button"
 	@FindBy(css= "a.myappsinfo.sandboxstatus-active")
 	public WebElement manageSandboxbutton;
@@ -173,7 +165,7 @@ public class MyAppsPage extends WebPage {
 	public NewAppPage setUpNewAppAfterCleanup() {
 		driver.findElement(By.id("add_an_resource")).click();
 		waitForPageToLoad();
-		implicitWait(3);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		return PageFactory.initElements(driver, NewAppPage.class);
 	}
 	
@@ -211,12 +203,15 @@ public class MyAppsPage extends WebPage {
 	public boolean validateAppKeyAppSecretDisplayed() {
 
 		boolean result = false;
-
-		if (validateWebElementDisplayed(AppKey)) {
-			result = validateWebElementDisplayed(AppSecret);
-
+		result = driver.findElements(By.cssSelector("input.icn-key")).size() > 0;
+		if (result) {
+			result = driver.findElements(By.cssSelector("input.icn-secret")).size() > 0;
+			storeVerificationResults(true, "App Key and Secret is displayed");
 		}
-		return result;
+		else{
+			storeVerificationResults(false, "App Key and Secret is not displayed");
+		}
+			return result;
 	}
 
 	/* Method to click on Manage Sandbox button */

@@ -21,7 +21,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 public class TC_ViewModifyOauthIVEEViaEditApp extends TestUtil{
 
 	/* Verify that Developer is able to view OAuth Redirect URL when IVEE  is selected on the Edit App Page */	
-	
+	boolean flag=false;
 	@Test
 	public void testAppCreation() {
 		
@@ -29,6 +29,7 @@ public class TC_ViewModifyOauthIVEEViaEditApp extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
@@ -36,23 +37,30 @@ public class TC_ViewModifyOauthIVEEViaEditApp extends TestUtil{
 		newAppPage.enterAppName(appname);
 		newAppPage.enterAppName(appname);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
-		newAppPage.selectAPI(Constants.SPEECH);
+		newAppPage.selectAPI(Constants.SPEECH_TO_TEXT);
 		AppPage appPage =newAppPage.submitAppDetails();
 		
 		//Navigate to edit app page and add IVEE API
 		EditAppPage editAppPage = appPage.clickEditApp();	
-		editAppPage.selectAPI(Constants.IVEE);
+		editAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);
 		
 		
 		//Validate if Developer is able to view OAuth Redirect URL when IVEE  is selected on the Edit App Page  
-		editAppPage.isOauthNotDisplayed();
+		editAppPage.validateIsOauthNotDisplayed();
+		flag=true;
+		
+		// publish result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 				
 	}
 	@After
     public void takeScreenShot() {
         // take the screenshot at the end of every test
         File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
+        // now save the screenshot to a file some place
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\ViewModify_Oauth_IVEE_ViaEditApp.png"));
 		} catch (IOException e) {
@@ -60,4 +68,14 @@ public class TC_ViewModifyOauthIVEEViaEditApp extends TestUtil{
 		}
     }
 	
+
+	@After
+	public void deleteCreatedApp() {
+		if (flag) {
+			EditAppPage edit = new EditAppPage(getDriver());
+			AppPage appPage = edit.clickOrCancel();
+			appPage.deleteSandboxApp();
+		}
+
+	}
 }

@@ -30,24 +30,21 @@ public class TC_CreateAnApp_Speech_IVEE_OPA extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.opaLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
+		apimLoginPage.validateMyAppsPage();		
+		//Create a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
 		String appName =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appName);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
 		newAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);
-		AppPage appPage =newAppPage.submitAppDetails();
-		
-		// Validate App is created Successfully	
-		appPage.validateAppCreation(appName);
-		
-		// Validate if TL API is added to scope  		
-		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);
-		
-		// Display Test Result
-		appPage.displayTestResult();
-		
+		AppPage appPage =newAppPage.submitAppDetails();		
+		// Method to validate App is created Successfully	
+		appPage.validateAppCreation(appName);		
+		// Validate if IVEE API is added to scope  		
+		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);		
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		appPage.publishTestResult();				
 		flag = true;
 				
 	}

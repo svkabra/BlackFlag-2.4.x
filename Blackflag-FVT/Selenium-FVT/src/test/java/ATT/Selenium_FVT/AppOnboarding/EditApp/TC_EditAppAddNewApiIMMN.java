@@ -17,64 +17,72 @@ import ATT.Selenium_FVT.Pages.NewAppPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 
+public class TC_EditAppAddNewApiIMMN extends TestUtil {
 
-public class TC_EditAppAddNewApiIMMN extends TestUtil{
+	/* Verify that user can Add IMMN api to existing sandbox Application */
 
-	/* Verify that user can  Add IMMN api to existing  sandbox Application */	
-	
 	public boolean flag = false;
-	
+
 	@Test
 	public void testEditApp() {
 
-		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage = new APIMLoginPage(
+				getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 
-		//Creating a new app
-		NewAppPage newApp =myapps.setUpNewApp();
-		String appname =newApp.getNewAppName();
+		// Creating a new app
+		NewAppPage newApp = myapps.setUpNewApp();
+		String appname = newApp.getNewAppName();
 		newApp.enterAppName(appname);
 		newApp.enterDescription(Constants.APP_DESCRIPTION);
 		newApp.selectAPI(Constants.MMS);
+		AppPage appPage = newApp.submitAppDetails();
+
+		// Adding new APIs to created app
+		EditAppPage editAppPage = appPage.clickEditApp();
+
+		// Select IMMN api
+		editAppPage.selectAPI(Constants.IN_APP_MESSAGING_IMMN);
 		newApp.setOAuthUrl(Constants.OAUTH_URL);
-		AppPage appPage =newApp.submitAppDetails();
+		editAppPage.submitAppDetails();
 
-
-		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();	
-
-		//Select IMMN api
-		edit.selectAPI(Constants.IN_APP_MESSAGING_IMMN);
-		edit.submitAppDetails();
-
-		// Validate if IMMN API is added to scope  		
+		// Validate if IMMN API is added to scope
 		appPage.valaidateIsApiEdited(Constants.IN_APP_MESSAGING_IMMN);
-		
+
 		flag = true;
+
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 
 	@After
-    public void takeScreenShot() {
-        // take the screenshot at the end of every test
-        File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
-        try {
-			FileUtils.copyFile(scrFile, new File("c:\\tmp\\EditApp_AddNewApi_IMMN.png"));
+	public void takeScreenShot() {
+		// take the screenshot at the end of every test
+		File scrFile = ((TakesScreenshot) getDriver())
+				.getScreenshotAs(OutputType.FILE);
+		// now save the screenshto to a file some place
+		try {
+			FileUtils.copyFile(scrFile, new File(
+					"c:\\tmp\\EditApp_AddNewApi_IMMN.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
 	@After
-	public void deleteCreatedApp(){
-		if (flag){
+	public void deleteCreatedApp() {
+		if (flag) {
 			AppPage appPage = new AppPage(getDriver());
 			appPage.deleteSandboxApp();
 		}
 
 	}
-	
+
 }

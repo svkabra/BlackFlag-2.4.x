@@ -29,30 +29,24 @@ public class TC_CreateAnApp_TL_OPA extends TestUtil{
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
 		apimLoginPage.opaLogin();
-		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
+		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();	
+		apimLoginPage.validateMyAppsPage();
+		//Create a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
 		String appName =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appName);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
 		newAppPage.selectAPI(Constants.TERMINAL_LOCATION);
-		
-		// Enter Oauth URL
 		newAppPage.setOAuthUrl(Constants.OAUTH_URL);
-		AppPage appPage =newAppPage.submitAppDetails();
-		
-		// Validate App is created Successfully	
-		appPage.validateAppCreation(appName);
-		
-		// Validate if TL API is added to scope  		
-		appPage.validateIsApiAdded(Constants.TERMINAL_LOCATION);
-		
-		// Display Test Result
-		appPage.displayTestResult();	
-		
+		AppPage appPage =newAppPage.submitAppDetails();		
+		// Method to validate App is created Successfully	
+		appPage.validateAppCreation(appName);		
+		// Method to validate if TL API is added to scope  		
+		appPage.validateIsApiAdded(Constants.TERMINAL_LOCATION);		
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		appPage.publishTestResult();			
 		flag = true;
-				
 	}
 
 	@After

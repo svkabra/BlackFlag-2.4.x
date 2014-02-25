@@ -27,19 +27,18 @@ public class TC_ViewModify_Oauth_MMS extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
+		apimLoginPage.validateMyAppsPage();
+		//Create a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
 		String appname =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appname);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
 		newAppPage.selectAPI(Constants.MMS);
-		
-		//Validate if Developer is able to view OAuth Redirect URL 
+		//Method to validate if Developer is able to view OAuth Redirect URL 
 		newAppPage.isOauthNotDisplayed();
-		
-		// Display Test Result
-		newAppPage.displayTestResult();
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();	
 			
 	}
 	

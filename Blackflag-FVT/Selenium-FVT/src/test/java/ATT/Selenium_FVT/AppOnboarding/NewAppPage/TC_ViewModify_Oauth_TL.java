@@ -27,22 +27,20 @@ public class TC_ViewModify_Oauth_TL extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
+		apimLoginPage.validateMyAppsPage();
+		// Create a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
 		String appname =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appname);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
-		newAppPage.selectAPI(Constants.TERMINAL_LOCATION);
-		
-		//Validate if Developer is able to view OAuth Redirect URL 
-		newAppPage.isOauthDisplayed();
-		
-		// Enter  Oauth URL
+		newAppPage.selectAPI(Constants.TERMINAL_LOCATION);		
+		// Method to validate if Developer is able to view OAuth Redirect URL 
+		newAppPage.isOauthDisplayed();		
+		// Method to enter  Oauth URL
 		newAppPage.setOAuthUrl(Constants.OAUTH_URL);
-		
-		// Display Test Result
-		newAppPage.displayTestResult();
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();		
 			
 	}
 	

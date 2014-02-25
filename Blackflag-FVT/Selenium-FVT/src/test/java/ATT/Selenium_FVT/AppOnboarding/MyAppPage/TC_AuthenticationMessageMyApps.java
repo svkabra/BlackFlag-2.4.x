@@ -24,7 +24,7 @@ public class TC_AuthenticationMessageMyApps extends TestUtil{
 		
 		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));	
 		apimLoginPage.openURL();		
-		apimLoginPage.playGroundLogin();
+		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
 		apimLoginPage.validateMyAppsPage();
 		// Method to validate Authentication message 

@@ -37,17 +37,14 @@ public class TC_CreateAnApp_Speech_IVEE_Dev extends TestUtil{
 		newAppPage.enterAppName(appName);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
 		newAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);
-		AppPage appPage =newAppPage.submitAppDetails();
-		
-		// Validate App is created Successfully	
-		appPage.validateAppCreation(appName);
-		
-		// Validate if TL API is added to scope  		
-		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);
-		
-		// Display Test Result
-		appPage.displayTestResult();	
-		
+		AppPage appPage =newAppPage.submitAppDetails();		
+		// Method to validate App is created Successfully	
+		appPage.validateAppCreation(appName);		
+		// Validate if IVEE API is added to scope  		
+		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM_IVEE);		
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		appPage.publishTestResult();				
 		flag = true;
 				
 	}

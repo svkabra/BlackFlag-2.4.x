@@ -31,6 +31,7 @@ public class TC_EditAppAddNewApiIVEE extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
@@ -38,20 +39,25 @@ public class TC_EditAppAddNewApiIVEE extends TestUtil{
 		newApp.enterAppName(appname);
 		newApp.enterDescription(Constants.APP_DESCRIPTION);
 		newApp.selectAPI(Constants.ADVERTISING_API);
-		newApp.setOAuthUrl(Constants.OAUTH_URL);
 		AppPage appPage =newApp.submitAppDetails();
 
 
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();	
+		EditAppPage editAppPage = appPage.clickEditApp();	
 		//Select IVEE api
-		edit.selectAPI(Constants.SPEECH);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.SPEECH);
+		editAppPage.submitAppDetails();
 		
 		// Validate if IVEE API is added to scope  		
 		appPage.valaidateIsApiEdited(Constants.SPEECH);
 		
 		flag = true;
+		
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 	@After
     public void takeScreenShot() {

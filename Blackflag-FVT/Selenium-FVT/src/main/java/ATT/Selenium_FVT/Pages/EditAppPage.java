@@ -7,66 +7,87 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
+import ATT.Selenium_FVT.Utilities.Component.Constants;
 
-public class EditAppPage extends WebPage{
-	
-	@FindBy(id="app_name")
+public class EditAppPage extends WebPage {
+
+	// Page Object "App Name"
+	@FindBy(id = "app_name")
 	private WebElement app_Name;
-	
-	@FindBy(id="app_service_ids_14")
+
+	// Page Object "Speech"
+	@FindBy(id = "app_service_ids_14")
 	private WebElement speech;
-	
+
+	// Page Object "App Description"
 	@FindBy(id = "app_description")
 	private WebElement app_description;
 
+	// Page Object "STTC"
 	@FindBy(id = "app_service_ids_21")
 	private WebElement STTC;
-	
+
+	// Page Object "MMS"
 	@FindBy(id = "app_service_ids_1")
 	private WebElement MMS;
-	
+
+	// Page Object "STT"
 	@FindBy(id = "app_service_ids_25")
 	private WebElement STT;
-	
+
+	// Page Object "MIM"
 	@FindBy(id = "app_service_ids_23")
 	private WebElement MIM;
-	
+
+	// Page Object "SMS"
 	@FindBy(id = "app_service_ids_12")
 	private WebElement SMS;
-	
+
+	// Page Object "TTS"
 	@FindBy(id = "app_service_ids_20")
 	private WebElement TTS;
-	
+
+	// Page Object "oAuth"
 	@FindBy(id = "app_service_ids_6")
 	private WebElement oAuth;
-	
+
+	// Page Object "ADS"
 	@FindBy(id = "app_service_ids_5")
 	private WebElement ADS;
-	
+
+	// Page Object "Notary"
 	@FindBy(id = "app_service_ids_2")
 	private WebElement Notary;
-	
-	@FindBy(id="app_service_ids_15")
+
+	// Page Object "MOBO"
+	@FindBy(id = "app_service_ids_15")
 	private WebElement MOBO;
-	
+
+	// Page Object "TL"
 	@FindBy(id = "app_service_ids_3")
 	private WebElement TL;
-	
-	@FindBy(id="app_service_ids_7")
+
+	// Page Object "DC"
+	@FindBy(id = "app_service_ids_7")
 	private WebElement DC;
-	
+
+	// Page Object "Payment"
 	@FindBy(id = "app_service_ids_4")
 	private WebElement Payment;
-	
-	@FindBy(id="app_service_ids_29")
+
+	// Page Object "STTA"
+	@FindBy(id = "app_service_ids_29")
 	private WebElement STTA;
-	
-	@FindBy(id="app_callback_url")
+
+	// Page Object "CallBackURL"
+	@FindBy(id = "app_callback_url")
 	private WebElement callBackURL;
-	
-	@FindBy(name="commit")
+
+	// Page Object "Setup Application"
+	@FindBy(name = "commit")
 	private WebElement Setup_Application;
-	
+
+	// Parameterized Constructor
 	public EditAppPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -75,92 +96,55 @@ public class EditAppPage extends WebPage{
 	@Override
 	public void openURL() {
 		// TODO Auto-generated method stub
-		
-	}
-	
-	public void enterAppName(String appName){
-		app_Name.sendKeys(appName);
-	}
-	
-	public void enterDescription(String appDescription){
-		app_description.sendKeys(appDescription);
-	}
-	
-	/* Method to Select an API */
-	public void selectAPI(String api){
-	
-		String strAPIX = "//label[contains(text()," + "\'" + api + "\'" + ")]";	
-		
-			
-		String strForPropOfAPI = driver.findElement(By.xpath(strAPIX)).getAttribute("for");
-	//	System.out.println(strForPropOfAPI );
-		try{
-		if (!(driver.findElement(By.id(strForPropOfAPI)).getAttribute("checked") == "checked")){
-			
-		driver.findElement(By.id(strForPropOfAPI)).click();
-		}
 
-		}catch(Exception e){
-			e.printStackTrace(); 
-		}		
-		}
-	
-public void isOauthDisplayed(){
-		
-		//validateWebElementPresent("app_callback_url","id");
-		validateWebElementDisplayed(callBackURL);
-		publishTestResult();
 	}
-	
-public void isOauthNotDisplayed(){
-	//validateWebElementNotPresent("app_callback_url","id");
-	validateWebElementNotDisplayed(callBackURL);
-	publishTestResult();
-}
-	
-	public void selectAllServices(){
-		MIM.click();
-		MMS.click();
-		implicitWait(1);
-		MOBO.click();
-		SMS.click();
-		STT.click();
-		STTC.click();
-		STTA.click();
-		DC.click();
-		TL.click();
-		speech.click();
-		implicitWait(2);
-		oAuth.click();
-		TTS.click();
-		Payment.click();
-		ADS.click();
-		Notary.click();
-		implicitWait(2);
-	}
-	
-	
-	public void setCallbackURL(String oAuthURL){
-		callBackURL.sendKeys(oAuthURL);
-		implicitWait(2);
-	}
-	
-	public AppPage submitAppDetails(){
+
+	// method to submit app details
+	public AppPage submitAppDetails() {
 		waitForAjaxInactivity();
 		Setup_Application.click();
-		implicitWait(5);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		waitForPageToLoad();
 		return PageFactory.initElements(driver, AppPage.class);
-		
+
 	}
-	
-	public AppPage clickOrCancel(){
+
+	// method to click Or Cancel App
+	public AppPage clickOrCancel() {
 		waitForAjaxInactivity();
 		driver.findElement(By.linkText("or Cancel")).click();
 		waitForPageToLoad();
 		return PageFactory.initElements(driver, AppPage.class);
-		
+
 	}
-	
+
+	/* Method to Select an API */
+	public EditAppPage selectAPI(String api) {
+
+		String strAPIX = "//label[contains(text()," + "\'" + api + "\'" + ")]";
+
+		String strForPropOfAPI = driver.findElement(By.xpath(strAPIX))
+				.getAttribute("for");
+
+		if (!(driver.findElement(By.id(strForPropOfAPI))
+				.getAttribute("checked") == "checked")) {
+
+			driver.findElement(By.id(strForPropOfAPI)).click();
+		}
+		return this;
+	}
+
+	// method to check if oAuth element is displayed
+	public boolean validateIsOauthDisplayed() {
+
+		boolean result = validateWebElementDisplayed(callBackURL);
+		return result;
+	}
+
+	// method to check if oAuth element is not displayed
+	public boolean validateIsOauthNotDisplayed() {
+		boolean result = validateWebElementNotDisplayed(callBackURL);
+		return result;
+	}
 
 }

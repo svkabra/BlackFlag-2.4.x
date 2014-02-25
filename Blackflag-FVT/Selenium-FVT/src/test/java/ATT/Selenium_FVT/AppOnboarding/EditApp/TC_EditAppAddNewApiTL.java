@@ -31,6 +31,7 @@ public class TC_EditAppAddNewApiTL extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
@@ -42,17 +43,23 @@ public class TC_EditAppAddNewApiTL extends TestUtil{
 		AppPage appPage =newApp.submitAppDetails();
 		
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();	
+		EditAppPage editAppPage = appPage.clickEditApp();	
 		
 
 		// Select TL api
-		edit.selectAPI(Constants.LOCATION);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.TERMINAL_LOCATION);
+		editAppPage.submitAppDetails();
 		
 		// Validate if TL API is added to scope  		
-		appPage.valaidateIsApiEdited(Constants.LOCATION);
+		appPage.valaidateIsApiEdited(Constants.TERMINAL_LOCATION);
 		
 		flag = true;
+
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 
 	@After

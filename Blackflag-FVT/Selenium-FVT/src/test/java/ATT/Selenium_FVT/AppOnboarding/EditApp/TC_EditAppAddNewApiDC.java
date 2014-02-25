@@ -31,6 +31,7 @@ public class TC_EditAppAddNewApiDC extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
@@ -42,17 +43,22 @@ public class TC_EditAppAddNewApiDC extends TestUtil{
 		AppPage appPage =newApp.submitAppDetails();
 		
 		//Adding new APIs to created app		
-		EditAppPage edit = appPage.clickEditApp();	
+		EditAppPage editAppPage = appPage.clickEditApp();	
 		
 //		 Select DC api
-		edit.selectAPI(Constants.DEVICE_CAPABILITIES);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.DEVICE_CAPABILITIES);
+		editAppPage.submitAppDetails();
 		
 // 		Validate if DC API is added to scope  		
 		appPage.valaidateIsApiEdited(Constants.DEVICE_CAPABILITIES);
 		
 		flag = true;
 		
+		//publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 
 	@After

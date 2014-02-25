@@ -17,11 +17,14 @@ import ATT.Selenium_FVT.Pages.NewAppPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 
+public class TC_ViewModifyOauthTLViaEditApp extends TestUtil {
 
-public class TC_ViewModifyOauthTLViaEditApp extends TestUtil{
+	/*
+	 * Verify that Developer is able to view OAuth Redirect URL when TL is
+	 * selected on the Edit App Page
+	 */
+	boolean flag = false;
 
-	/* Verify that Developer is able to view OAuth Redirect URL when TL  is selected on the Edit App Page */	
-	
 	@Test
 	public void testAppCreation() {
 		
@@ -29,6 +32,7 @@ public class TC_ViewModifyOauthTLViaEditApp extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
@@ -41,22 +45,40 @@ public class TC_ViewModifyOauthTLViaEditApp extends TestUtil{
 		
 		//Navigate to edit app page and add IVEE API
 		EditAppPage editAppPage = appPage.clickEditApp();	
-		editAppPage.selectAPI(Constants.LOCATION);
+		editAppPage.selectAPI(Constants.TERMINAL_LOCATION);
 		
 		
 		//Validate if Developer is able to view OAuth Redirect URL when STT  is selected on the Edit App Page  
-		editAppPage.isOauthDisplayed();
-				
+		editAppPage.validateIsOauthDisplayed();
+		flag=true;
+		// publish result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
+
 	@After
-    public void takeScreenShot() {
-        // take the screenshot at the end of every test
-        File scrFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
-        // now save the screenshto to a file some place
-        try {
-			FileUtils.copyFile(scrFile, new File("c:\\tmp\\ViewModify_Oauth_TL_ViaEditApp.png"));
+	public void takeScreenShot() {
+		// take the screenshot at the end of every test
+		File scrFile = ((TakesScreenshot) getDriver())
+				.getScreenshotAs(OutputType.FILE);
+		// now save the screenshto to a file some place
+		try {
+			FileUtils.copyFile(scrFile, new File(
+					"c:\\tmp\\ViewModify_Oauth_TL_ViaEditApp.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    }
+	}
+	
+	@After
+	public void deleteCreatedApp() {
+		if (flag) {
+			EditAppPage edit = new EditAppPage(getDriver());
+			AppPage appPage = edit.clickOrCancel();
+			appPage.deleteSandboxApp();
+		}
+
+	}
 }

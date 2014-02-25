@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,38 +23,33 @@ public class TC_CreateAnApp_STTC_Playground extends TestUtil{
 	/* Test case to verify that Playground User is able to create an application with the  Speech To Text Custom (STTC) API included in scope */	
 	
 	public boolean flag = false;
-
+	
+	@Before
+	public void setupPGEnvironment(){
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		apimLoginPage.openURL();
+		apimLoginPage.playGroundLogin();
+		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
+		// Method to delete existing sandbox apps before creating new app since playground user can create upto 3 apps 
+		myAppsPage.deleteSandboxAppPlayground();		
+	}
+	
 	@Test
 	public void testAppCreation() {
-		
-		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
-		apimLoginPage.openURL();
-		//method to log into Dev Portal as an OPA
-		apimLoginPage.playGroundLogin();
-		
-		//method to validate LogIn
-		apimLoginPage.validateLogin();
-		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
-		NewAppPage newAppPage =myAppsPage.setUpNewApp();
+		MyAppsPage myAppsPage = new MyAppsPage(getDriver());
+		//Create a new app
+		NewAppPage newAppPage =myAppsPage.setUpNewAppAfterCleanup();
 		String appName =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appName);
 		newAppPage.enterDescription(Constants.APP_DESCRIPTION);
 		newAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM);
-		AppPage appPage =newAppPage.submitAppDetails();
-		
-		// Validate App is created Successfully	
-		appPage.validateAppCreation(appName);
-		
-		// Validate if TL API is added to scope  		
-		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM);
-		
-		// Display Test Result
-		apimLoginPage.publishTestResult();
-		newAppPage.publishTestResult();
-		appPage.displayTestResult();
-		
+		AppPage appPage =newAppPage.submitAppDetails();		
+		// Method to validate App is created Successfully	
+		appPage.validateAppCreation(appName);		
+		// Method to validate if STTC API is added to scope  		
+		appPage.validateIsApiAdded(Constants.SPEECH_TO_TEXT_CUSTOM);		
+		// Method to Publish Test Result
+		appPage.publishTestResult();			
 		flag = true;
 				
 	}

@@ -31,6 +31,7 @@ public class TC_EditAppAddNewApiAdvertising extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
@@ -42,16 +43,22 @@ public class TC_EditAppAddNewApiAdvertising extends TestUtil{
 		AppPage appPage =newApp.submitAppDetails();
 		
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();	
+		EditAppPage editAppPage = appPage.clickEditApp();	
 		
 		//Select Advertising api
-		edit.selectAPI(Constants.ADVERTISING_API);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.ADVERTISING_API);
+		editAppPage.submitAppDetails();
 		
 		// Validate if Advertising API is added to scope  		
-		appPage.valaidateIsApiEdited(Constants.ADVERTISING_API);
+		//appPage.valaidateIsApiEdited(Constants.ADVERTISING_API);
 		
 		flag = true;
+		
+		//publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 
 	@After

@@ -25,19 +25,18 @@ public class TC_CreateApp_BlankDescription_Dev extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
-		//Creating a new app
+		apimLoginPage.validateMyAppsPage();
+		//Create a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
 		String appname =newAppPage.getNewAppName();
 		newAppPage.enterAppName(appname);
 		newAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM);
-		newAppPage.submitAppDetails();
-			
-		//Validate that user gets an error message "Can't be blank" under Description field 
-		newAppPage.validateIfDescriptionIsBlank();
-		
-		// Display Test Result
-		newAppPage.displayTestResult();			
+		newAppPage.submitAppDetails();			
+		//Method to validate that user gets an error message "Can't be blank" under Description field 
+		newAppPage.validateIfDescriptionIsBlank();		
+		// Method to Publish Test Result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();				
 	}
 	
 	@After

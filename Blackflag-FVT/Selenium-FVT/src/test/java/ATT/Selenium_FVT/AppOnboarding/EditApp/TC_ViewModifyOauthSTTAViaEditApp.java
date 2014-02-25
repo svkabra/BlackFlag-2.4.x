@@ -21,6 +21,7 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 public class TC_ViewModifyOauthSTTAViaEditApp extends TestUtil{
 
 	/* Verify that Developer is able to view OAuth Redirect URL when STTA  is selected on the Edit App Page */	
+	boolean flag=false;
 	
 	@Test
 	public void testAppCreation() {
@@ -29,6 +30,7 @@ public class TC_ViewModifyOauthSTTAViaEditApp extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
+		apimLoginPage.validateMyAppsPage();
 		
 		//Creating a new app
 		NewAppPage newAppPage =myAppsPage.setUpNewApp();
@@ -41,11 +43,17 @@ public class TC_ViewModifyOauthSTTAViaEditApp extends TestUtil{
 		
 		//Navigate to edit app page and add IVEE API
 		EditAppPage editAppPage = appPage.clickEditApp();	
-		editAppPage.selectAPI(Constants.STTA);
+		editAppPage.selectAPI(Constants.SPEECH_TO_TEXT_ASYNC);
 		
 		
 		//Validate if Developer is able to view OAuth Redirect URL when STTA  is selected on the Edit App Page  
-		editAppPage.isOauthNotDisplayed();
+		editAppPage.validateIsOauthNotDisplayed();
+		flag=true;
+		// publish result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 				
 	}
 	@After
@@ -59,4 +67,14 @@ public class TC_ViewModifyOauthSTTAViaEditApp extends TestUtil{
 			e.printStackTrace();
 		}
     }
+	
+	@After
+	public void deleteCreatedApp() {
+		if (flag) {
+			EditAppPage edit = new EditAppPage(getDriver());
+			AppPage appPage = edit.clickOrCancel();
+			appPage.deleteSandboxApp();
+		}
+
+	}
 }

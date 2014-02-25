@@ -31,7 +31,8 @@ public class TC_EditAppAddNewApiSTT extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
-
+		apimLoginPage.validateMyAppsPage();
+		
 		//Creating a new app
 		NewAppPage newAppPage =myapps.setUpNewApp();
 		String appname =newAppPage.getNewAppName();
@@ -43,16 +44,22 @@ public class TC_EditAppAddNewApiSTT extends TestUtil{
 
 
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();		
+		EditAppPage editAppPage = appPage.clickEditApp();		
 		
 		//Select STT api
-		edit.selectAPI(Constants.SPEECH);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.SPEECH);
+		editAppPage.submitAppDetails();
 		
 		// Validate if STT API is added to scope  		
 		appPage.valaidateIsApiEdited(Constants.SPEECH);	
 		
 		flag = true;
+		
+		// publish result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 	
 	@After	

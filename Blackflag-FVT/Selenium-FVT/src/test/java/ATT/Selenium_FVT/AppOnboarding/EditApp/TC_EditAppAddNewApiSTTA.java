@@ -31,7 +31,8 @@ public class TC_EditAppAddNewApiSTTA extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
-
+		apimLoginPage.validateMyAppsPage();
+		
 		//Creating a new app
 		NewAppPage newApp =myapps.setUpNewApp();
 		String appname =newApp.getNewAppName();
@@ -43,16 +44,22 @@ public class TC_EditAppAddNewApiSTTA extends TestUtil{
 
 
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();		
+		EditAppPage editAppPage = appPage.clickEditApp();		
 		
 		//Select STTA api
-		edit.selectAPI("Speech - STTA");
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.SPEECH_TO_TEXT_ASYNC);
+		editAppPage.submitAppDetails();
 		
 		// Validate if STTA API is added to scope  		
-		appPage.valaidateIsApiEdited("Speech - STTA");
+		appPage.valaidateIsApiEdited(Constants.SPEECH_TO_TEXT_ASYNC);
 		
 		flag = true;
+
+		// publish result
+		apimLoginPage.publishTestResult();
+		newApp.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();		
 	}
 	
 	@After	

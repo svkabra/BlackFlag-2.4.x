@@ -3,6 +3,7 @@ package ATT.Selenium_FVT.Pages;
 import java.io.File;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -119,14 +120,6 @@ public class AppPage extends WebPage {
 	@FindBy(xpath = "//*[@id='content']/div/div[3]/section[1]/ul/li[2]/a")
 	public WebElement production;
 
-	// Page Object "Delete Sandbox app button"
-	@FindBy(xpath = "//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]")
-	public WebElement deleteSandBoxApp;
-
-	// Page Object "Confirmation delete button"
-	@FindBy(id = "confirmationDeleteButton")
-	public WebElement confirmationDeleteButton;
-
 	// Page Object "App Details"
 	@FindBy(id = "app-details")
 	public WebElement appDetails;
@@ -143,9 +136,6 @@ public class AppPage extends WebPage {
 	@FindBy(css = "div.alert-box.warning")
 	public WebElement alertBoxWarning;
 
-	//Page Object "Details Services
-	@FindBy(css = "span.details_services")
-	public WebElement detailsServices;
 	//
 	
 	// Parameterized Constructor
@@ -175,12 +165,20 @@ public class AppPage extends WebPage {
 		return PageFactory.initElements(driver, RequestProductionAccessPage.class);
 	}
 
+	
 	/* method to click on Delete an App page */
 	public AppPage deleteSandboxApp() {
+		WebElement deleteSandBoxApp = driver
+				.findElement(By
+						.xpath("//a[contains(@class,'Sandbox myappsinfo') and contains(@original-title,'Trash')]"));
+
 		deleteSandBoxApp.click();
-		waitForAjaxInactivity();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_SHORT);
+		WebElement confirmationDeleteButton = driver.findElement(By
+				.id("confirmationDeleteButton"));
+
 		confirmationDeleteButton.click();
-		waitForAjaxInactivity();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		waitForPageToLoad();
 		return this;
 	}
@@ -301,7 +299,7 @@ public class AppPage extends WebPage {
 	public boolean validateIsApiAdded(String api) {
 		boolean result = false;
 		List<WebElement> myApi = driver.findElements(By
-				.cssSelector(""));
+				.cssSelector("span.details_services"));
 		String s = myApi.get(0).getText();
 
 		if (s.contains(api.toUpperCase())) {

@@ -160,7 +160,11 @@ public class APIMLoginPage extends WebPage {
 
 		signIn.click();
 		waitForPageToLoad();
-		signIn.click();
+		waitForElement(userNamePopup);
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.PG_USERNAME_CANCELDELELTE);
 		waitForElement(password);
@@ -284,6 +288,11 @@ public class APIMLoginPage extends WebPage {
 	public MyAppsPage login() {
 		signIn.click();
 		waitForPageToLoad();
+		waitForElement(userNamePopup);
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		myApps.click();
 		waitForPageToLoad();
 		return PageFactory.initElements(driver, MyAppsPage.class);
@@ -294,7 +303,11 @@ public class APIMLoginPage extends WebPage {
 
 		signIn.click();
 		waitForPageToLoad();
-		signIn.click();
+		waitForElement(userNamePopup);
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		userNamePopup.click();
 		userNamePopup.sendKeys(aUsername);
 		waitForElement(password);

@@ -31,7 +31,8 @@ public class TC_EditAppAddNewApiSTTC extends TestUtil{
 		apimLoginPage.openURL();
 		apimLoginPage.developerLogin();
 		MyAppsPage myapps = apimLoginPage.clickMyApps();
-
+		apimLoginPage.validateMyAppsPage();
+		
 		//Creating a new app
 		NewAppPage newAppPage =myapps.setUpNewApp();
 		String appname =newAppPage.getNewAppName();
@@ -43,16 +44,23 @@ public class TC_EditAppAddNewApiSTTC extends TestUtil{
 
 
 		//Adding new APIs to created app
-		EditAppPage edit = appPage.clickEditApp();		
+		EditAppPage editAppPage= appPage.clickEditApp();		
 		
 		//Select STTC api
-		edit.selectAPI(Constants.STTC);
-		edit.submitAppDetails();
+		editAppPage.selectAPI(Constants.SPEECH_TO_TEXT_CUSTOM);
+		editAppPage.submitAppDetails();
 		
 		// Validate if STTC API is added to scope  		
-		appPage.valaidateIsApiEdited(Constants.STTC);
+		appPage.valaidateIsApiEdited(Constants.SPEECH_TO_TEXT_CUSTOM);
 		
 		flag = true;
+		
+
+		// publish result
+		apimLoginPage.publishTestResult();
+		newAppPage.publishTestResult();
+		editAppPage.publishTestResult();
+		appPage.publishTestResult();
 	}
 	@After	
     public void takeScreenShot() {
