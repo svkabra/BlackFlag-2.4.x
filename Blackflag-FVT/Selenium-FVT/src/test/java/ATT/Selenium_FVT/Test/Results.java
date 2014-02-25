@@ -122,7 +122,7 @@ public class Results {
 							System.out.println(testScript + " - "
 									+ result.toString());
 						}
-						if (workbook.getSheetName(i).equalsIgnoreCase(
+						else if (workbook.getSheetName(i).equalsIgnoreCase(
 								"Playground")) {
 							if (testScript != null)
 								result = JUnitCore.runClasses(Class
