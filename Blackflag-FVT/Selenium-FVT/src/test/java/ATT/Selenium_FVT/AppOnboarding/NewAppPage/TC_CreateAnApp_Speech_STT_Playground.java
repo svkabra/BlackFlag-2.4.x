@@ -25,14 +25,14 @@ public class TC_CreateAnApp_Speech_STT_Playground extends TestUtil{
 	
 	@Test
 	public void testAppCreation() {
-		boolean result=false;
+		
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
 		//method to log into Dev Portal as an OPA
 		apimLoginPage.playGroundLogin();
 		
 		//method to validate LogIn
-		result=apimLoginPage.validateLogin();
+		apimLoginPage.validateLogin();
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
 		
 		//Creating a new app
