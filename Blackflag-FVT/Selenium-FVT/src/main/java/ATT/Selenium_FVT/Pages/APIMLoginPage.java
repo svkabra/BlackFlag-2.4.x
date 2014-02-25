@@ -107,7 +107,6 @@ public class APIMLoginPage extends WebPage {
 		waitForPageToLoad();
 		PageFactory.initElements(driver, this);
 	}
-	
 
 	/* Method to Initialize APIMLoginPage */
 	public Headers headers() {
@@ -125,7 +124,7 @@ public class APIMLoginPage extends WebPage {
 	/* Method to enter password in the popup */
 	public APIMLoginPage enterPassword(String pwd) {
 		passwordPopup.sendKeys(pwd);
-		return this;	
+		return this;
 	}
 
 	/* Method to enter username in the popup */
@@ -139,13 +138,13 @@ public class APIMLoginPage extends WebPage {
 	/* Playground Login Method for f3 Environment */
 	public APIMLoginPage playGroundLogin() {
 
-        signIn.click();
-        waitForPageToLoad();        
-        waitForElement(userNamePopup);           
-        if(!elementExist(userNamePopup)){
-               signIn.click();
-               waitForElement(userNamePopup);                        
-        }
+		signIn.click();
+		waitForPageToLoad();
+		waitForElement(userNamePopup);
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.PG_USERNAME);
 		waitForElement(password);
@@ -178,6 +177,11 @@ public class APIMLoginPage extends WebPage {
 		signIn.click();
 		waitForPageToLoad();
 		signIn.click();
+		waitForElement(userNamePopup);
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.DEV_USERNAME);
 		waitForElement(password);
@@ -195,10 +199,10 @@ public class APIMLoginPage extends WebPage {
 		waitForPageToLoad();
 		signIn.click();
 		waitForElement(userNamePopup);
-	      if(!elementExist(userNamePopup)){
-              signIn.click();
-              waitForElement(userNamePopup);                        
-       }
+		if (!elementExist(userNamePopup)) {
+			signIn.click();
+			waitForElement(userNamePopup);
+		}
 		userNamePopup.click();
 		userNamePopup.sendKeys(Constants.OPA_USERNAME);
 		waitForElement(password);
@@ -244,7 +248,6 @@ public class APIMLoginPage extends WebPage {
 		popupSignInButton.click();
 		return this;
 	}
-
 
 	/* Developer Login Method for developer account without application- Hemant */
 	public APIMLoginPage devLogInADVWOAPP() {
@@ -318,10 +321,8 @@ public class APIMLoginPage extends WebPage {
 		driver.findElement(By.id("logOut")).click();
 		waitForAjaxInactivity();
 		validateLogout();
-		
+
 	}
-
-
 
 	/* Method to check if alert pop up occurs */
 	public boolean isAlertPresent(WebDriver driver) {
@@ -387,8 +388,9 @@ public class APIMLoginPage extends WebPage {
 	public Boolean validateHackathonEventsPage() {
 		String titleExpected1 = PageTitleConstant.HACKATHONS_EVENTS_PAGE1;
 		String titleExpected2 = PageTitleConstant.HACKATHONS_EVENTS_PAGE2;
-		boolean result = validatePageTitle(titleExpected1)||validatePageTitle(titleExpected2);
-	
+		boolean result = validatePageTitle(titleExpected1)
+				|| validatePageTitle(titleExpected2);
+
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -398,31 +400,30 @@ public class APIMLoginPage extends WebPage {
 			storeVerificationResults(false, "Page Title not displayed");
 
 		}
-		
+
 		return result;
 	}
 
 	/* Method to validate LogIn Page */
 	public boolean validateLogin() {
-		boolean result=false;
+		boolean result = false;
 		String titleExpected = PageTitleConstant.LOGINPAGE;
 		int size = driver.findElements(By.className("field_error")).size();
 		if (size != 0) {
 			if (fieldError.isDisplayed()) {
 				validateWebElementDisplayed(fieldError);
 			}
-		}
-		 else {
-				if (validatePageTitle(titleExpected)) {
+		} else {
+			if (validatePageTitle(titleExpected)) {
 
-					storeVerificationResults(true, "Page Title displayed api");
-					result=true;
-				} else {
+				storeVerificationResults(true, "Page Title displayed api");
+				result = true;
+			} else {
 
-					storeVerificationResults(false, "Page Title not displayed");
+				storeVerificationResults(false, "Page Title not displayed");
 
-				}
 			}
+		}
 		return result;
 
 	}
@@ -430,8 +431,8 @@ public class APIMLoginPage extends WebPage {
 	/* Method to validate Get Started Free */
 	public boolean validateGetStartedFree() {
 		String titleExpected = PageTitleConstant.GETSTARTEDFREEPAGE;
-		
-		boolean result=validatePageTitle(titleExpected);
+
+		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -441,14 +442,14 @@ public class APIMLoginPage extends WebPage {
 			storeVerificationResults(false, "Page Title not displayed");
 
 		}
-		
+
 		return result;
 	}
 
 	/* Method to validate Manage My Account Page */
 	public boolean validateManageMyAccountPage() {
-		String titleExpected =PageTitleConstant.MANAGEMYACCOUNTPAGE;
-		boolean result=validatePageTitle(titleExpected);
+		String titleExpected = PageTitleConstant.MANAGEMYACCOUNTPAGE;
+		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -463,7 +464,7 @@ public class APIMLoginPage extends WebPage {
 	/* Method to validate My Apps Page */
 	public boolean validateMyAppsPage() {
 		String titleExpected = PageTitleConstant.MYAPPSPAGE;
-		boolean result=validatePageTitle(titleExpected);
+		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -478,7 +479,7 @@ public class APIMLoginPage extends WebPage {
 	/* Method to validate Success Stories Page */
 	public boolean validateSuccessStoriesPage() {
 		String titleExpected = PageTitleConstant.SUCCESSSTORIESPAGE;
-		boolean result=validatePageTitle(titleExpected);
+		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
 			storeVerificationResults(true, "Page Title displayed");
@@ -489,11 +490,12 @@ public class APIMLoginPage extends WebPage {
 		}
 		return result;
 	}
-	
-	/*Method to validate Logout*/
+
+	/* Method to validate Logout */
 	public boolean validateLogout() {
-		
-		boolean result=validateWebElementDisplayed(driver.findElement(By.linkText("Sign In")));
+
+		boolean result = validateWebElementDisplayed(driver.findElement(By
+				.linkText("Sign In")));
 		return result;
 	}
 
