@@ -28,7 +28,7 @@ public class TC_ATTAPISDKForAdobeView extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkATTAPISDKForAdobePhoneGapView();	
+		footersDocs.clickATTAPISDKForAdobePhoneGapView();	
 				
 	}
 

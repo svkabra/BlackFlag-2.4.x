@@ -77,7 +77,7 @@ public class TC_PromoteAnAppVerifyKeySecretDev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_PromoteAnAppSMSDev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

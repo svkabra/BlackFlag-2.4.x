@@ -85,7 +85,7 @@ public class TC_MoUriFieldsOptionalProduction extends TestUtil {
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_MoUriFieldsOptionalProduction.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

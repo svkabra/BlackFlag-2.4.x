@@ -63,7 +63,7 @@ public class TC_MyAppsLinkValidation extends TestUtil {
 
 		} catch (IOException e) {
 
-			// TODO Auto-generated catch block
+			
 
 			e.printStackTrace();
 

@@ -323,7 +323,7 @@ public class Headers extends WebPage {
 
 	// method to validate Success Stories page
 	public boolean validateSuccessStroiesPage() {
-		String titleExpected = PageTitleConstant.SUCCESSSTORIESPAGE;
+		String titleExpected = PageTitleConstant.SUCCESS_STORIES_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 

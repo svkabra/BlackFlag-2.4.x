@@ -16,7 +16,7 @@ import ATT.Selenium_FVT.Utilities.Component.PageTitleConstant;
 
 public class APIMLoginPage extends WebPage {
 
-	// Page Object "Support Oevrview"
+	// Page Object "Support Overview"
 	@FindBy(how = How.LINK_TEXT, using = "Support Overview")
 	public WebElement support;
 
@@ -92,8 +92,8 @@ public class APIMLoginPage extends WebPage {
 	@FindBy(how = How.LINK_TEXT, using = "Check out Events & Hackathons")
 	private WebElement checkOutHackathonEvents;
 
-	// Page Object "username" header
-	@FindBy(how = How.XPATH, using = "//*[@id='att-header']/nav/form/div/a")
+	// Page Object "username" header	
+	@FindBy(xpath ="//a[@class='login expands']")
 	private WebElement userNameHeader;
 
 	/* Parameterized Constructor */
@@ -101,6 +101,10 @@ public class APIMLoginPage extends WebPage {
 		super(driver);
 	}
 
+	//Page Object "ADV Analytics" 
+	@FindBy(id = "all_adv_apps_analytics") 
+	public WebElement buttonAdvAnalytics;
+	
 	@Override
 	public void openURL() {
 		driver.navigate().to(Constants.APIM_HOME_URL);
@@ -131,10 +135,18 @@ public class APIMLoginPage extends WebPage {
 	public APIMLoginPage enterUserName(String userName) {
 		signinLink.click();
 		implicitWait(Constants.PAGE_WAIT_AJAX);
-		userNamePopup.sendKeys(userName);
+		passwordPopup.sendKeys(userName);
 		return this;
 	}
 
+	/* Method to enter username in the popup */
+	public APIMLoginPage enterPasword(String userName) {
+		signinLink.click();
+		implicitWait(Constants.PAGE_WAIT_AJAX);
+		userNamePopup.sendKeys(userName);
+		return this;
+	}
+	
 	/* Playground Login Method for f3 Environment */
 	public APIMLoginPage playGroundLogin() {
 
@@ -155,32 +167,11 @@ public class APIMLoginPage extends WebPage {
 		return this;
 	}
 
-	/* Playground Login Method for f3 Environment */
-	public APIMLoginPage playGroundLogInCancelDelete() {
-
-		signIn.click();
-		waitForPageToLoad();
-		waitForElement(userNamePopup);
-		if (!elementExist(userNamePopup)) {
-			signIn.click();
-			waitForElement(userNamePopup);
-		}
-		userNamePopup.click();
-		userNamePopup.sendKeys(Constants.PG_USERNAME_CANCELDELELTE);
-		waitForElement(password);
-		passwordPopup.click();
-		passwordPopup.sendKeys(Constants.PG_PASSWORD__CANCELDELELTE);
-		waitForPageToLoad();
-		popupSignInButton.click();
-		return this;
-	}
-
 	/* Developer Login Method for f3 Environment */
 	public APIMLoginPage developerLogin() {
 
 		signIn.click();
 		waitForPageToLoad();
-		signIn.click();
 		waitForElement(userNamePopup);
 		if (!elementExist(userNamePopup)) {
 			signIn.click();
@@ -288,11 +279,6 @@ public class APIMLoginPage extends WebPage {
 	public MyAppsPage login() {
 		signIn.click();
 		waitForPageToLoad();
-		waitForElement(userNamePopup);
-		if (!elementExist(userNamePopup)) {
-			signIn.click();
-			waitForElement(userNamePopup);
-		}
 		myApps.click();
 		waitForPageToLoad();
 		return PageFactory.initElements(driver, MyAppsPage.class);
@@ -303,6 +289,7 @@ public class APIMLoginPage extends WebPage {
 
 		signIn.click();
 		waitForPageToLoad();
+		signIn.click();
 		waitForElement(userNamePopup);
 		if (!elementExist(userNamePopup)) {
 			signIn.click();
@@ -318,6 +305,223 @@ public class APIMLoginPage extends WebPage {
 		return this;
 	}
 
+	
+		/**
+	 *  Common Login Method 
+	 *  Input Environment : F3 or F4
+	 *  Input user : OPA , Developer, PG
+	 *  Input typeOfAcc : withoutApp or withApp or InCancelDelete or ""
+	 *  */
+	
+	public APIMLoginPage apimLogin(String environment, String user, String typeOfAcc) {
+		try{		
+		/*steps to Click on SignIn wait for dialog to appear*/		
+			try{
+				logout();
+				signIn.click();
+			}catch(Exception e){
+				logout();
+				signIn.click();
+			}        
+        waitForPageToLoad();        
+        waitForElement(userNamePopup);           
+        if(!elementExist(userNamePopup)){
+               signIn.click();
+               waitForElement(userNamePopup);                        
+        }
+		
+	    switch (user.toLowerCase()) {
+	    //OPA
+	    case "opa":	    	    									//OPA
+	    	switch(environment.toLowerCase()){	    	
+	    	case "f3":
+	    		//Condition for OPA and F3 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.OPA_USERNAME);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.OPA_PASSWORD);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}
+	    		//Condition for OPA and F3 and withApp
+	    		if(typeOfAcc.equalsIgnoreCase("withApp")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.OPA_USERNAME_ADV);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.OPA_PASSWORD_ADV);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}	    		
+	    		//Condition for OPA and F3 and withoutApp
+	    		if(typeOfAcc.equalsIgnoreCase("withoutApp")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.OPA_USERNAME_ADV_NO_APP);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.OPA_PASSWORD_ADV_NO_APP);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}	    		
+	    		//Condition for OPA and F3 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    		}	    		
+	    		break;
+	    	case "f4":	    		
+	    		//Condition for OPA and F4 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    		}
+	    		//Condition for OPA and F4 and withApp
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    		}	    		
+	    		//Condition for OPA and F4 and withoutApp
+	    		if(typeOfAcc.equalsIgnoreCase("withoutApp")){
+	    		}	    		
+	    		//Condition for OPA and F4 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    		}
+	    		break;	    	
+	    	}
+	    
+	        break; // break for OPA condition
+	        
+	    case "developer":	    												//Developer
+	    	switch(environment.toLowerCase()){
+	    	
+	    	case "f3":
+
+	    		//Condition for Developer and F3 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.DEV_USERNAME);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.DEV_PASSWORD);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}
+	    		//Condition for Developer and F3 and withApp
+	    		if(typeOfAcc.equalsIgnoreCase("withApp")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.DEV_USERNAME_ADV);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.DEV_PASSWORD_ADV);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}	    		
+	    		//Condition for Developer and F3 and withoutApp
+	    		if(typeOfAcc.equalsIgnoreCase("withoutApp")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.DEV_USERNAME_ADV_NO_APP);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.DEV_PASSWORD_ADV_NO_APP);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}
+	    		
+	    		//Condition for Developer and F3 and sandwithApp
+	    		if(typeOfAcc.equalsIgnoreCase("sandWithApp")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.DEV_USERNAME_ADV);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.DEV_PASSWORD_ADV);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}	    		
+	    		//Condition for Developer and F3 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    		}	    		
+	    		break;
+	    	case "f4":	    		
+	    		//Condition for Developer and F4 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    		}
+	    		//Condition for Developer and F4 and withApp
+	    		if(typeOfAcc.equalsIgnoreCase("withApp")){
+	    		}	    		
+	    		//Condition for Developer and F4 and withoutApp
+	    		if(typeOfAcc.equalsIgnoreCase("withoutApp")){
+	    		}	    		
+	    		//Condition for Developer and F4 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    		}
+	    		break;	    	
+	    	}	    
+	        break; // break for Developer condition
+	    
+	    case "pg":
+	    	switch(environment.toLowerCase()){
+	    	
+	    	case "f3":
+
+	    		//Condition for PG and F3 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.PG_USERNAME);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.PG_PASSWORD);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}
+	    		
+	    		//Condition for PG and F3 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    			userNamePopup.click();
+	    			userNamePopup.sendKeys(Constants.PG_USERNAME_CANCELDELELTE);
+	    			waitForElement(password);
+	    			passwordPopup.click();
+	    			passwordPopup.sendKeys(Constants.PG_PASSWORD__CANCELDELELTE);
+	    			waitForPageToLoad();
+	    			popupSignInButton.click();
+	    			return this;
+	    		}
+	    		
+	    		break;
+	    	case "f4":
+	    		
+	    		//Condition for PG and F4 and ""
+	    		if(typeOfAcc.equalsIgnoreCase("")){
+	    		}
+
+	    		//Condition for PG and F4 and withApp
+	    		if(typeOfAcc.equalsIgnoreCase("withApp")){
+	    		}
+	    		
+	    		//Condition for PG and F4 and withoutApp
+	    		if(typeOfAcc.equalsIgnoreCase("withoutApp")){
+	    		}
+	    		
+	    		//Condition for PG and F4 and InCancelDelete
+	    		if(typeOfAcc.equalsIgnoreCase("InCancelDelete")){
+	    		}
+
+	    		break;	    	
+	    	}	    
+	    }	
+	    storeVerificationResults(true, "Login has been successful");
+	    return this;	    
+		}catch(Exception e){
+			storeVerificationResults(false, "Login failure");
+			return this;
+		}
+	}    		
+
+	
+	
 	/* Method to open join now page */
 	public JoinNowPage clickGetStartedFree() {
 		getStartedFree.click();
@@ -329,11 +533,18 @@ public class APIMLoginPage extends WebPage {
 
 	/* Method to logout (Overriden Method) */
 	public void logout() {
-		waitForElement(userNameHeader);
-		Hover(userNameHeader);
-		driver.findElement(By.id("logOut")).click();
-		waitForAjaxInactivity();
-		validateLogout();
+		try{
+			if (elementExist(userNameHeader)){
+				waitForElement(userNameHeader);
+				Hover(userNameHeader);
+				driver.findElement(By.cssSelector("a.signout")).click();	
+				waitForPageToLoad();
+				waitForAjaxInactivity();
+				validateLogout();
+			}
+		}catch(Exception e){
+
+		}
 
 	}
 
@@ -420,7 +631,7 @@ public class APIMLoginPage extends WebPage {
 	/* Method to validate LogIn Page */
 	public boolean validateLogin() {
 		boolean result = false;
-		String titleExpected = PageTitleConstant.LOGINPAGE;
+		String titleExpected = PageTitleConstant.LOGIN_PAGE;
 		int size = driver.findElements(By.className("field_error")).size();
 		if (size != 0) {
 			if (fieldError.isDisplayed()) {
@@ -443,7 +654,7 @@ public class APIMLoginPage extends WebPage {
 
 	/* Method to validate Get Started Free */
 	public boolean validateGetStartedFree() {
-		String titleExpected = PageTitleConstant.GETSTARTEDFREEPAGE;
+		String titleExpected = PageTitleConstant.GET_STARTED_FREE_PAGE;
 
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
@@ -461,7 +672,7 @@ public class APIMLoginPage extends WebPage {
 
 	/* Method to validate Manage My Account Page */
 	public boolean validateManageMyAccountPage() {
-		String titleExpected = PageTitleConstant.MANAGEMYACCOUNTPAGE;
+		String titleExpected = PageTitleConstant.MANAGE_MY_ACCOUNT_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -476,22 +687,37 @@ public class APIMLoginPage extends WebPage {
 
 	/* Method to validate My Apps Page */
 	public boolean validateMyAppsPage() {
-		String titleExpected = PageTitleConstant.MYAPPSPAGE;
-		boolean result = validatePageTitle(titleExpected);
+		
+		boolean flag = true;
+		String titleExpected = PageTitleConstant.MY_APPS_PAGE;
+		boolean result=validatePageTitle(titleExpected);
+
+		if (!result) {
+			driver.navigate().to("http://devpgm-f3t-apimatrix.api-dev.mars.bf.sl.attcompute.com/");
+			waitForPageToLoad();
+			result=validatePageTitle(titleExpected);
+		}
+
+
 		if (result) {
 
-			storeVerificationResults(true, "Page Title displayed");
+			storeVerificationResults(true, "My Apps Page is displayed");
 
 		} else {
 
-			storeVerificationResults(false, "Page Title not displayed");
+			storeVerificationResults(false, "My Apps Page is not displayed");
+			flag = false;
 		}
-		return result;
+
+		
+
+		publishTestResult();
+		return flag;
 	}
 
 	/* Method to validate Success Stories Page */
 	public boolean validateSuccessStoriesPage() {
-		String titleExpected = PageTitleConstant.SUCCESSSTORIESPAGE;
+		String titleExpected = PageTitleConstant.SUCCESS_STORIES_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 

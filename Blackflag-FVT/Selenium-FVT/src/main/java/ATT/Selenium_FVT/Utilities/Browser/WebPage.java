@@ -8,7 +8,10 @@ import java.security.InvalidParameterException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -35,14 +38,27 @@ public abstract class WebPage extends PageSupport {
 		switch (driverType) {
 		case FIREFOX:
 			return new FirefoxDriver();
+		/*	
+			ProfilesIni allProfiles = new ProfilesIni();
+			FirefoxProfile profile = allProfiles.getProfile("ATTFVTADV");
+			FirefoxDriver FFdriver = new FirefoxDriver(profile);
+			return FFdriver; */
 		case SAFARI:
 			return new SafariDriver();
 		case CHROME:
-			File file = new File("src/test/resources/ATT/Selenium_FVT/PageTest/chromedriver.exe");
+			File file = new File("C:\\Setups\\chromedriver.exe");
 			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			return new ChromeDriver();
+			/*String userProfile= "C:\\Users\\hojha\\AppData\\Local\\Google\\Chrome\\User Data\\ATTFVTADV\\";
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("user-data-dir="+userProfile);
+			options.addArguments("--start-maximized");			
+			WebDriver driver = new ChromeDriver(options);
+			driver.manage().deleteAllCookies();
+			return driver;*/
+			
 		case IE:			
-			System.setProperty("webdriver.ie.driver", "src/test/resources/ATT/Selenium_FVT/PageTest/IEDriverServer.exe");
+			System.setProperty("webdriver.ie.driver", "C:\\Setups\\IEDriverServer.exe");
 			//return new InternetExplorerDriver();
 			DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 			ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);

@@ -18,24 +18,25 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 public class TC_CancelDeleteSandboxAppOPA extends TestUtil{
 
 	/* To verify OPA can cancel deleting  a Sandbox app
-	 * * Precondition : User should have atleast one app on my apps page */	
+	 * * Precondition : Developer should have an app with name "0001_CancelDeleteApp" on my apps page in F3 environment */	
 	
 	@Test
 	public void testCancelDeletion() {
 		
 		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
-		apimLoginPage.opaLogin();
-		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();			
+		apimLoginPage.testLogIn(Constants.OPA_USERNAME_CANCELDELELTE, Constants.OPA_PASSWORD__CANCELDELELTE);
+		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();	
+		apimLoginPage.validateMyAppsPage();
 		// Method to Click on delete Production button 
-		myAppsPage.clickDeleteSandbox();		
+		myAppsPage.clickDeleteSandbox();
 		// Method to click OrCancel button 
 		myAppsPage.clickOrCancelButton();		
 		// Method to validate OrCancel button 
 		myAppsPage.validateCancelDeleteApp(Constants.CANCELDELETEAPP);		
 		// Method to publish test result
+		apimLoginPage.publishTestResult();
 		myAppsPage.publishTestResult();	
-				
 	}
 	
 	@After
@@ -46,7 +47,7 @@ public class TC_CancelDeleteSandboxAppOPA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CancelDeleteSandboxAppDev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

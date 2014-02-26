@@ -13,6 +13,7 @@ import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.TechnicalLibraryPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
+import ATT.Selenium_FVT.Utilities.Component.Headers;
 
 public class TC_SecurityAndPrivacyLink extends TestUtil{
 
@@ -25,7 +26,9 @@ public class TC_SecurityAndPrivacyLink extends TestUtil{
 		APIMLoginPage apilogpage = technicalLibraryPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		technicalLibraryPage.clkSecurityAndPrivacyLink();
+		Headers headers=apilogpage.headers();
+		headers.clickLogo();
+		technicalLibraryPage.clickSecurityAndPrivacyLink();
 				
 	}
 

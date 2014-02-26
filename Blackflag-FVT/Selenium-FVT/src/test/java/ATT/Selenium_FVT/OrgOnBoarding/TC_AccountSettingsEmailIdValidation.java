@@ -70,7 +70,7 @@ public class TC_AccountSettingsEmailIdValidation extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

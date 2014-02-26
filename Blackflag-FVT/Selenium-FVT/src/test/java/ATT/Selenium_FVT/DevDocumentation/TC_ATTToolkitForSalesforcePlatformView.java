@@ -29,7 +29,7 @@ public class TC_ATTToolkitForSalesforcePlatformView extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkATTToolkitForSalesforcePlatformView();	
+		footersDocs.clickATTToolkitForSalesforcePlatformView();	
 				
 	}
 

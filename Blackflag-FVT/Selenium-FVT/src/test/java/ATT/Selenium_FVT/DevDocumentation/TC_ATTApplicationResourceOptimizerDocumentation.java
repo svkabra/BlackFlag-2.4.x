@@ -28,7 +28,7 @@ public class TC_ATTApplicationResourceOptimizerDocumentation extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkARODocumentation();	
+		footersDocs.clickARODocumentation();	
 				
 	}
 

@@ -62,7 +62,7 @@ public class TC_PromoteAnAppMMSOPA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_PromoteAnAppMMSOPA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

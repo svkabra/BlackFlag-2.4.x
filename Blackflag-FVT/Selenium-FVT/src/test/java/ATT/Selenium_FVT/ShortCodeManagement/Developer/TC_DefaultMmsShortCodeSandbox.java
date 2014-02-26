@@ -78,7 +78,7 @@ public class TC_DefaultMmsShortCodeSandbox extends TestUtil {
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_DefaultMmsShortCodeSandbox.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

@@ -69,7 +69,7 @@ public class TC_EditAppAddNewApiMIM extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\EditApp_AddNewApi_SMS.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

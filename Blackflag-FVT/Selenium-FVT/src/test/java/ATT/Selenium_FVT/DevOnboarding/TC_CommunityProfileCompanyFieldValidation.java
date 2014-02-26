@@ -67,7 +67,7 @@ public class TC_CommunityProfileCompanyFieldValidation extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

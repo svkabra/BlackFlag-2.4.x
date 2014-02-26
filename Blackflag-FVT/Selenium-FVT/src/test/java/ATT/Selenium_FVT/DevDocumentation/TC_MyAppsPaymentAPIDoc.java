@@ -26,9 +26,11 @@ public class TC_MyAppsPaymentAPIDoc extends TestUtil{
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.testLogIn("afrin2011", "welcome1");
+		apilogpage.testLogIn("afrinatt", "welcome1");
 		apilogpage.validateLogin();
-		appDetailsPage.clkPaymentAPIDocumentationMyApps();				
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickPaymentAPIDocumentationMyApps();				
 	}
 
 	@After

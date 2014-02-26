@@ -15,7 +15,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class PageSupport {
+import ATT.Selenium_FVT.Utilities.Component.Constants;
+
+public class PageSupport extends Constants{
 	
 	 protected String successMessage="";
 	 protected String errorMessage="";

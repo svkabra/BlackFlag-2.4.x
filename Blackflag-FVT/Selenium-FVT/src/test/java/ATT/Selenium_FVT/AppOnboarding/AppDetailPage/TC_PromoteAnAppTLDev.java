@@ -63,7 +63,7 @@ public class TC_PromoteAnAppTLDev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_PromoteAnAppTLDev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

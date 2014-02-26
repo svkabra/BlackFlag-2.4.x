@@ -22,11 +22,12 @@ public class TC_HeaderNavigationAPIsPaymentDocs extends TestUtil{
 	
 	@Test
 	public void testHeaderNavigation() {
-		Headers ft=new Headers(getNewDriver(Constants.BROWSER));
-		APIMLoginPage apilogpage = ft.apimLoginPage();
+		Headers headers=new Headers(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apilogpage = headers.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		ft.clickPaymentDocs();	
+		headers.clickLogo();
+		headers.clickPaymentDocs();	
 				
 	}
 

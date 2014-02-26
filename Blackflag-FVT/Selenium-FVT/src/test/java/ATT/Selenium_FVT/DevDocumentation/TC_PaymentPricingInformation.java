@@ -27,7 +27,7 @@ public class TC_PaymentPricingInformation extends TestUtil{
 		APIMLoginPage apilogpage = pricingPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		pricingPage.clkPaymentPricingInformation();				
+		pricingPage.clickPaymentPricingInformation();				
 	}
 
 	@After

@@ -43,7 +43,7 @@ public class TC_EditButtonValidationPlayground extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_EditButtonValidationPlayground.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

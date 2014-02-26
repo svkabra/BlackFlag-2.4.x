@@ -27,7 +27,7 @@ public class TC_SMSMMSPricingInformation extends TestUtil {
 		APIMLoginPage apilogpage = pricingPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		pricingPage.clkSMSMMSPricingInformation();				
+		pricingPage.clickSMSMMSPricingInformation();				
 	}
 
 	@After

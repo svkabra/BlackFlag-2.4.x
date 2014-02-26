@@ -69,7 +69,7 @@ public class TC_CreateAnApp_MultipleConsentableAPI_Playground extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CreateAnApp_MultipleConsentableAPI_Playground.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

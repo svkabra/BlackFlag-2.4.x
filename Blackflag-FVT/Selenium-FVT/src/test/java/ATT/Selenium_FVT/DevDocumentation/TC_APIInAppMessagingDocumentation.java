@@ -25,7 +25,7 @@ public class TC_APIInAppMessagingDocumentation extends TestUtil {
 		APIMLoginPage apilogpage = aPIPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		aPIPage.clkInAppMessagingDocumentation();	
+		aPIPage.clickInAppMessagingDocumentation();	
 				
 	}
 

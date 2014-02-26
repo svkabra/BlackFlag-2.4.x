@@ -26,9 +26,11 @@ public class TC_MyAppsMMSAPIDoc extends TestUtil {
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.testLogIn("afrin2011", "welcome1");
+		apilogpage.testLogIn("afrinatt", "welcome1");
 		apilogpage.validateLogin();
-		appDetailsPage.clkMMSAPIDocumentationMyApps();			
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickMMSAPIDocumentationMyApps();			
 	}
 
 	@After

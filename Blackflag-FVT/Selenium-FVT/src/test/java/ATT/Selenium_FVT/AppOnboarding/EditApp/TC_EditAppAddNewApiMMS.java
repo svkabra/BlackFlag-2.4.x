@@ -71,7 +71,7 @@ public class TC_EditAppAddNewApiMMS extends TestUtil {
 			FileUtils.copyFile(scrFile, new File(
 					"c:\\tmp\\EditApp_AddNewApi_MMS.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

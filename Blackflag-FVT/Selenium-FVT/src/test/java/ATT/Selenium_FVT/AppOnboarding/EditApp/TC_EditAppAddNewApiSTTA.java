@@ -71,7 +71,7 @@ public class TC_EditAppAddNewApiSTTA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_EditAppAddNewApiSTTA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

@@ -28,7 +28,7 @@ public class TC_ATTAPIModuleForAppceleratorTitaniumView extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkATTAPIModuleForAppceleratorTitaniumView();	
+		footersDocs.clickATTAPIModuleForAppceleratorTitaniumView();	
 				
 	}
 

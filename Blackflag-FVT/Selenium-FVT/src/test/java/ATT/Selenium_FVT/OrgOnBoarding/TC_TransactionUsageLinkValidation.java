@@ -62,7 +62,7 @@ public class TC_TransactionUsageLinkValidation extends TestUtil {
 
 		} catch (IOException e) {
 
-			// TODO Auto-generated catch block
+			
 
 			e.printStackTrace();
 

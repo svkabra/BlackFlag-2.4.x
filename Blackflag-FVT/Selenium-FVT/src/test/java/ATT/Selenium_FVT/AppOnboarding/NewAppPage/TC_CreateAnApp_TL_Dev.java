@@ -57,7 +57,7 @@ public class TC_CreateAnApp_TL_Dev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CreateAnApp_TL_Dev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

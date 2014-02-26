@@ -26,7 +26,7 @@ public class TC_SuccessStories extends TestUtil{
 		APIMLoginPage apilogpage = successStoriesPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		successStoriesPage.clkSuccessStories();	
+		successStoriesPage.clickSuccessStories();	
 				
 	}
 

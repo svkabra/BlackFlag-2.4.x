@@ -193,7 +193,7 @@ public class CommunityProfilePage extends WebPage {
 
 	/* Method to validate My Settings Page */
 	public boolean validateMySettingsPage() {
-		String titleExpected = PageTitleConstant.MYSETTINGSPAGE;
+		String titleExpected = PageTitleConstant.MY_SETTINGS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 

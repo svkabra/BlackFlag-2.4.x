@@ -56,7 +56,7 @@ public class TC_CreateAnApp_Speech_STTA_Dev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CreateAnApp_Speech_STTA_Dev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

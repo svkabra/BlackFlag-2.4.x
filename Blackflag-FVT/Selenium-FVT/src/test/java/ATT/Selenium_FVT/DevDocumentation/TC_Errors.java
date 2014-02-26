@@ -13,7 +13,6 @@ import ATT.Selenium_FVT.Pages.APIDocumentationPage;
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import ATT.Selenium_FVT.Utilities.Component.Headers;
 
 public class TC_Errors extends TestUtil {
 
@@ -28,9 +27,7 @@ public class TC_Errors extends TestUtil {
 		APIMLoginPage apilogpage = apiDocumentationPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		Headers headers=apilogpage.headers();
-		headers.clickLogo();
-		apiDocumentationPage.clkErrors();				
+		apiDocumentationPage.clickErrors();				
 	}
 
 	@After

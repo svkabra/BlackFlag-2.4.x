@@ -68,7 +68,7 @@ public class TC_AccountSettingsJobFuctionIndustryValidation extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

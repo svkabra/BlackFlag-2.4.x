@@ -66,7 +66,7 @@ public class TC_PromoteAnAppDCOPA extends TestUtil {
 			FileUtils.copyFile(scrFile, new File(
 					"c:\\tmp\\TC_PromoteAnAppDCOPA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

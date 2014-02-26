@@ -29,7 +29,7 @@ public class TC_ApplicationCertificationPoliciesLink extends TestUtil{
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		technicalLibraryPage.clkApplicationCertificationPoliciesLink();
+		technicalLibraryPage.clickApplicationCertificationPoliciesLink();
 				
 	}
 

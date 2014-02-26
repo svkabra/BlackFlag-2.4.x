@@ -55,7 +55,7 @@ public class APIDocumentationPage extends WebPage{
 	}
 	
 	/*Method to click on "FAQs" on the left Navigation Page of Documentation*/
-	public void clkFAQs(){
+	public APIDocumentationPage clickFAQs(){
 		String mwh=driver.getWindowHandle();
 		apis.click();
 		waitForPageToLoad();
@@ -82,12 +82,12 @@ public class APIDocumentationPage extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
-		
+		return this;
 	}
 
 	
 	/*Method to click on "Errors" on the left Navigation Page of Documentation*/
-	public void clkErrors(){
+	public APIDocumentationPage clickErrors(){
 		String mwh=driver.getWindowHandle();
 		apis.click();
 		waitForPageToLoad();
@@ -114,10 +114,12 @@ public class APIDocumentationPage extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		
+		return this;
 	}
 	
 	/*Method to click on Error code on Errors page*/
-	public void clkErrorcode(){
+	public APIDocumentationPage clickErrorCode(){
 		String mwh=driver.getWindowHandle();
 		apis.click();
 		waitForPageToLoad();
@@ -165,5 +167,6 @@ public class APIDocumentationPage extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 }

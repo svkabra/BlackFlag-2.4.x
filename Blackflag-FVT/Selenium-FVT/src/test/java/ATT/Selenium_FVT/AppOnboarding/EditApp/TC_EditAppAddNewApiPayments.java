@@ -70,7 +70,7 @@ public class TC_EditAppAddNewApiPayments extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\EditApp_AddNewApi_Payments.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

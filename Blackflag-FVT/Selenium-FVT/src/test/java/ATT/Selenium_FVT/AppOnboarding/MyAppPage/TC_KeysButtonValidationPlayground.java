@@ -43,7 +43,7 @@ public class TC_KeysButtonValidationPlayground extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_KeysButtonValidationPlayground.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

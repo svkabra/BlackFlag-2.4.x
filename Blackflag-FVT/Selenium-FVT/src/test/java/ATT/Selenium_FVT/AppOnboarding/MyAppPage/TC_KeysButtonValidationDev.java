@@ -45,7 +45,7 @@ public class TC_KeysButtonValidationDev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\KeysButton_Validation_Dev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

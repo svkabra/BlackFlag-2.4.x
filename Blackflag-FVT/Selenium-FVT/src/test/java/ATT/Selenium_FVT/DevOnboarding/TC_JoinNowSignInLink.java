@@ -21,11 +21,11 @@ public class TC_JoinNowSignInLink extends TestUtil{
 	
 	@Test
 	public void testEmailValidation() {
-		
+		boolean result=false;
 		APIMLoginPage apilogpage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apilogpage.openURL();			 
 		JoinNowPage joinNow =apilogpage.clickGetStartedFree();
-		apilogpage.validateGetStartedFree();	
+		result=apilogpage.validateGetStartedFree();	
 		joinNow.enterEmailID();
 		joinNow.clickJoinNow();
 		joinNow.validateEmail();

@@ -63,7 +63,7 @@ public class TC_ManageLegalAgreementPageValidation extends TestUtil {
 
 		} catch (IOException e) {
 
-			// TODO Auto-generated catch block
+			
 
 			e.printStackTrace();
 

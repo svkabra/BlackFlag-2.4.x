@@ -49,7 +49,7 @@ public class TC_ViewModify_Oauth_TTS extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_ViewModify_Oauth_TTS.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

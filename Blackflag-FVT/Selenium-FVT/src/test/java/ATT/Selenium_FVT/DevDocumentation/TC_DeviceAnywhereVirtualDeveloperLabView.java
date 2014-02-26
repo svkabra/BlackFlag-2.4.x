@@ -30,7 +30,7 @@ public class TC_DeviceAnywhereVirtualDeveloperLabView extends TestUtil{
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkDeviceAnywhereVirtualDeveloperLabView();	
+		footersDocs.clickDeviceAnywhereVirtualDeveloperLabView();	
 				
 	}
 

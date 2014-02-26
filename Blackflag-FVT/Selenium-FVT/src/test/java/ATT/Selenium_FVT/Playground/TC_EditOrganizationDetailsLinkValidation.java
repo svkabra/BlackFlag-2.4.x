@@ -18,7 +18,7 @@ public class TC_EditOrganizationDetailsLinkValidation extends TestUtil {
 
 	@Test
 	public void editOrganizationDetailsLinkValidation_test() {
-		
+		boolean result=false;
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		
 		//method to load the URL
@@ -28,7 +28,7 @@ public class TC_EditOrganizationDetailsLinkValidation extends TestUtil {
 		apimLoginPage.playGroundLogin();
 			
 		//method to validate LogIn
-		apimLoginPage.validateLogin();
+		result=apimLoginPage.validateLogin();
 		
 		//method to click on Manage My Account Link
 		ManageMyAccount manageMyAcct = apimLoginPage.clickManageMyAcctLink();
@@ -63,7 +63,7 @@ public class TC_EditOrganizationDetailsLinkValidation extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

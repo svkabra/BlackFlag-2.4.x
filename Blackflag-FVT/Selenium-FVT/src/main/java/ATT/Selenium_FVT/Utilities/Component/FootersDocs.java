@@ -127,16 +127,17 @@ public class FootersDocs extends WebPage{
 	}
 	
 	/*Method to click on a Documentation button for AT&T Application Resource Optimizer (ARO) */
-	public void clkARODocumentation(){
+	public FootersDocs clickARODocumentation(){
 		attAro.click();
 		waitForPageToLoad();
 		aRODocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("AT&T Application Resource Optimizer (ARO) Documentation | AT&T Developer");
+		return this;
 	}
 	
 	/*Method to click on a View Button for Microsoft SDK*/
-	public void clkMicrosoftSDKView(){
+	public FootersDocs clickMicrosoftSDKView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -159,10 +160,11 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 	
 	/*Method to click on a View Button for Advertising SDK for Android*/
-	public void clkAdvertisingSDKForAndroidView(){
+	public FootersDocs clickAdvertisingSDKForAndroidView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -185,10 +187,11 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 	
 	/*Method to click on a View Button for Advertising SDK for iOS*/
-	public void clkAdvertisingSDKForIOSView(){
+	public FootersDocs clickAdvertisingSDKForIOSView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -212,11 +215,12 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 	
 	
 	/*Method to click on a View Button for Speech SDK for Android*/
-	public void clkSpeechSDKForAndroidView(){
+	public FootersDocs clickSpeechSDKForAndroidView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -240,10 +244,11 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 	
 	/*Method to click on a View Button for Speech SDK for Android*/
-	public void clkSpeechSDKForIOSView(){
+	public FootersDocs clickSpeechSDKForIOSView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -267,10 +272,11 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 	
 	/*Method to click on a View Button for AT&T API SDK  for Adobe® PhoneGap®*/
-	public void clkATTAPISDKForAdobePhoneGapView(){
+	public FootersDocs clickATTAPISDKForAdobePhoneGapView(){
 		String mwh=driver.getWindowHandle();
 		sDKPluginsMore.click();
 		waitForPageToLoad();
@@ -294,10 +300,11 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 		
 		/*Method to click on a View Button for AT&T API Module for Appcelerator® Titanium®*/
-		public void clkATTAPIModuleForAppceleratorTitaniumView(){
+		public FootersDocs clickATTAPIModuleForAppceleratorTitaniumView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -321,10 +328,11 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}
 		
 		/*Method to click on a View Button for AT&T API SDKs for Windows®*/
-		public void clkATTAPISDKsForWindowsView(){
+		public FootersDocs clickATTAPISDKsForWindowsView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -348,10 +356,11 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}	
 		
 		/*Method to click on a View Button for AT&T Toolkit for Salesforce® Platform*/
-		public void clkATTToolkitForSalesforcePlatformView(){
+		public FootersDocs clickATTToolkitForSalesforcePlatformView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -375,11 +384,12 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}	
 		
 		
 		/*Method to click on a View Button for AT&T API Adapters for IBM® Worklight®*/
-		public void clkATTAPIAdaptersForIBMWorklightView(){
+		public FootersDocs clickATTAPIAdaptersForIBMWorklightView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -403,10 +413,11 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}
 		
 		/*Method to click on a View Button for DeviceAnywhere Virtual Developer Lab*/
-		public void clkDeviceAnywhereVirtualDeveloperLabView(){
+		public FootersDocs clickDeviceAnywhereVirtualDeveloperLabView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -430,11 +441,12 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}
 		
 		
 		/*Method to click on a View Button for Sencha Touch*/
-		public void clkSenchaTouchView(){
+		public FootersDocs clickSenchaTouchView(){
 			String mwh=driver.getWindowHandle();
 			sDKPluginsMore.click();
 			waitForPageToLoad();
@@ -457,10 +469,11 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}
 		
 		/*Method to View Document for "Testing Criteria for Android Applications" under Human Resources */
-		public void clkTestingCriForAndroidApps(){
+		public FootersDocs clickTestingCriForAndroidApps(){
 			String mwh=driver.getWindowHandle();
 			aTTCerSolCatForB2BApps.click();
 			waitForPageToLoad();
@@ -483,11 +496,12 @@ public class FootersDocs extends WebPage{
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 	}
 		
 	
 		/*Method to View Document for "AppCenter & Brew MP Developer Resources" under Human Resources */
-		public void clkAppCenBrewMPDevResourcesLink(){
+		public FootersDocs clickAppCenBrewMPDevResourcesLink(){
 			
 		String mwh1=driver.getWindowHandle();
 		aTTAppCenterForConApps.click();
@@ -602,6 +616,7 @@ public class FootersDocs extends WebPage{
 		                driver.switchTo().window(mwh5);
 		    }
 		}
+		return this;
 	}
 		
 	

@@ -25,8 +25,10 @@ public class TC_TextToSpeechAPIDocumentation extends TestUtil{
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.developerLogin();
-		appDetailsPage.clkTextToSpeechAPIDocumentation();				
+		apilogpage.testLogIn("afrinatt", "welcome1");
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickTextToSpeechAPIDocumentation();				
 	}
 
 	@After

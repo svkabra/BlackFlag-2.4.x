@@ -29,7 +29,7 @@ public class TC_AppCenBrewMPDevResourcesLink extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkAppCenBrewMPDevResourcesLink();
+		footersDocs.clickAppCenBrewMPDevResourcesLink();
 				
 	}
 

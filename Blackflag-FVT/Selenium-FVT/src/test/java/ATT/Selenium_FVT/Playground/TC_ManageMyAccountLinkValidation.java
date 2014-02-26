@@ -18,7 +18,7 @@ public class TC_ManageMyAccountLinkValidation extends TestUtil {
 
 	@Test
 	public void manageMyAccountLinkValidation_test() {
-		
+		boolean result=false;
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		
 		//method to load the URL
@@ -28,14 +28,13 @@ public class TC_ManageMyAccountLinkValidation extends TestUtil {
 		apimLoginPage.playGroundLogin();
 		
 		//method to validate LogIn
-		apimLoginPage.validateLogin();
+		result=apimLoginPage.validateLogin();
 		
 		//method to click on Manage My Account Link
 		ManageMyAccount manageMyAcct = apimLoginPage.clickManageMyAcctLink();
 		
 		
 		//method to publish test result
-		manageMyAcct.publishTestResult();
 		apimLoginPage.publishTestResult();
 			
 	}
@@ -56,7 +55,7 @@ public class TC_ManageMyAccountLinkValidation extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

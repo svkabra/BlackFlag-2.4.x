@@ -47,7 +47,7 @@ public class TC_CreateApp_BlankDescription_Dev extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CreateApp_BlankDescription_Dev.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

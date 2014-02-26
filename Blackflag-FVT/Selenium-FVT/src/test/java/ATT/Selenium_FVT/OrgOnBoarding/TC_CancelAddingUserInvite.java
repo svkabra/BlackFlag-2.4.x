@@ -69,7 +69,7 @@ public class TC_CancelAddingUserInvite extends TestUtil{
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

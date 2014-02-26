@@ -13,7 +13,6 @@ import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.TechnicalLibraryPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import ATT.Selenium_FVT.Utilities.Component.Headers;
 
 public class TC_ExternalAccessGatewayLink extends TestUtil {
 
@@ -26,9 +25,7 @@ public class TC_ExternalAccessGatewayLink extends TestUtil {
 		APIMLoginPage apilogpage = technicalLibraryPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		Headers headers=apilogpage.headers();
-		headers.clickLogo();
-		technicalLibraryPage.clkExternalAccessGatewayLink();
+		technicalLibraryPage.clickExternalAccessGatewayLink();
 				
 	}
 

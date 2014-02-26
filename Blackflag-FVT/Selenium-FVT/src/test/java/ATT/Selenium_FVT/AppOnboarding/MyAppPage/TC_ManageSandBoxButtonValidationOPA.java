@@ -45,7 +45,7 @@ public class TC_ManageSandBoxButtonValidationOPA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_ManageSandBoxButtonValidationOPA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

@@ -37,11 +37,12 @@ public class SuccessStoriesPage extends WebPage{
 	}
 
 	/*Method to click on a App (Voxy) on Success Stories Page*/
-	public void clkSuccessStories(){
+	public SuccessStoriesPage clickSuccessStories(){
 		stories.click();
 		waitForPageToLoad();
 		successStories.click();
 		waitForPageToLoad();
 		validatePageTitle("Voxy Success Story | AT&T Developer");
+		return this;
 	}
 }

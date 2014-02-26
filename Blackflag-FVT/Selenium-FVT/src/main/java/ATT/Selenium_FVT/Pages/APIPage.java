@@ -91,80 +91,88 @@ public class APIPage extends WebPage {
 	}
 	
 	// Method to click Go To My Apps button
-	public void clkGoToMyApp(){
+	public APIPage clickGoToMyApp(){
 		
 		goToMyAppLink.click();
 		waitForPageToLoad();
 		String title = driver.getTitle();
-		Assert.assertEquals("API Matrix", title);		
+		Assert.assertEquals("API Matrix", title);
+		return this;
 	}
 		
 	
 	/*Method to click on "Documentation" button for Speech*/
-	public void clkSpeechDocumentation(){
+	public APIPage clickSpeechDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		speechAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("Speech Documentation");
+		return this;
 	}
 	
 	/*Method to click on "Documentation" button for SMS*/
-	public void clkSMSDocumentation(){
+	public APIPage clickSMSDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		sMSAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("SMS Documentation");
+		return this;
 	}
 	
 	/*Method to click on "Documentation" button for MMS*/
-	public void clkMMSDocumentation(){
+	public APIPage clickMMSDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		mMSAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("MMS Documentation");
+		return this;
 	}
 
 	/*Method to click on "Documentation" button for In-App Messaging*/
-	public void clkInAppMessagingDocumentation(){
+	public APIPage clickInAppMessagingDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		inAppMessagingAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("In-App Messaging Documentation");
+		return this;
 	}
 
 	/*Method to click on "Documentation" button for Payment*/
-	public void clkPaymentDocumentation(){
+	public APIPage clickPaymentDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		paymentAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("Payment Documentation");
+		return this;
 	}
 	
 	/*Method to click on "Documentation" button for Advertising*/
-	public void clkAdvertisingDocumentation(){
+	public APIPage clickAdvertisingDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		advertisingAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("Advertising Documentation");
+		return this;
 	}
 	
 	/*Method to click on "Documentation" button for Device Capabilities*/
-	public void clkDeviceCapabilitiesDocumentation(){
+	public APIPage clickDeviceCapabilitiesDocumentation(){
 		apis.click();
 		waitForPageToLoad();
 		deviceCapabilitiesAPIDocumentation.click();
 		waitForPageToLoad();
 		validatePageTitle("Device Capabilities Documentation");
+		return this;
 	}
 	
 	/*Method to click on "Visit API Page" button for AT&T mHealth*/
-	public void clkATTmHealthAPIPage(){
+	public APIPage clickATTmHealthAPIPage(){
 		String mwh=driver.getWindowHandle();
 		apis.click();
 		waitForPageToLoad();
@@ -189,18 +197,20 @@ public class APIPage extends WebPage {
 		                driver.switchTo().window(mwh);
 		    }
 		}
+		return this;
 	}
 		/*Method to click on "Visit API Page" button for AT&T U-verse Enabled*/
-		public void clkATTUVerseAPIPage(){
+		public APIPage clickATTUVerseAPIPage(){
 			apis.click();
 			waitForPageToLoad();
 			aTTUVerseAPIPage.click();
 			waitForPageToLoad();
 			validatePageTitle("Get AT&T U-verse® Enabled SDK");
+			return this;
 		}
 		
 		/*Method to click on "Visit API Page" button for AT&T M2X(Beta)*/
-		public void clkATTM2XAPIPage(){
+		public APIPage clickATTM2XAPIPage(){
 			String mwh=driver.getWindowHandle();
 			apis.click();
 			waitForPageToLoad();
@@ -225,24 +235,27 @@ public class APIPage extends WebPage {
 			                driver.switchTo().window(mwh);
 			    }
 			}
+			return this;
 		}
 		
 		/*Method to click on "Visit API Page" button for AT&T Mobile Identity API Toolkit*/
-		public void clkATTMobileIdentityAPIToolkitAPIPage(){
+		public APIPage clickATTMobileIdentityAPIToolkitAPIPage(){
 			apis.click();
 			waitForPageToLoad();
 			aTTMobileIdentityAPIToolkitAPIPage.click();
 			waitForPageToLoad();
 			validatePageTitle("AT&T Mobile Identity API Toolkit | AT&T Developer");
+			return this;
 		}
 		
 		/*Method to click on "Visit API Page" button for AT&T Sponsored Data API*/
-		public void clkATTSponsoredDataAPIAPIPage(){
+		public APIPage clickATTSponsoredDataAPIAPIPage(){
 			apis.click();
 			waitForPageToLoad();
 			aTTSponsoredDataAPIAPIPage.click();
 			waitForPageToLoad();
 			validatePageTitle("AT&T Sponsored Data API | AT&T Developer");
+			return this;
 		}
 		
 }

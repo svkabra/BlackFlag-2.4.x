@@ -37,10 +37,10 @@ public class ExcelObject {
 				wrtSheet = wrtWorkBook.getSheet(sheetName);
 				
 			} catch (BiffException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 	}
@@ -61,10 +61,10 @@ public class ExcelObject {
 		try {
 			wrtSheet.addCell(new Label(colNumber,rowNumber, data));
 		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (WriteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -74,10 +74,10 @@ public class ExcelObject {
 			wrtWorkBook.close();
 			wrkBook.close();
 		} catch (WriteException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -87,7 +87,7 @@ public class ExcelObject {
 		try {
 			wrtWorkBook.write();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

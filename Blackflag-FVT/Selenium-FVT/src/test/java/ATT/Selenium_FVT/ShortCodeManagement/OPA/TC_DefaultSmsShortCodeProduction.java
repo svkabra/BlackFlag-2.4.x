@@ -85,7 +85,7 @@ public class TC_DefaultSmsShortCodeProduction extends TestUtil {
 			FileUtils.copyFile(scrFile, new File(
 					"c:\\tmp\\TC_DefaultSmsShortCodeProduction.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

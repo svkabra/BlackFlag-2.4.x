@@ -312,7 +312,7 @@ public class ManageMyAccount extends WebPage {
 	 * Account Settings link
 	 */
 	public boolean validateAccountSettingsPage() {
-		String titleExpected = PageTitleConstant.ACCOUNTSETTINGPAGE;
+		String titleExpected = PageTitleConstant.ACCOUNT_SETTING_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -334,7 +334,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateEditMerchantDetailsPage() {
 
-		String titleExpected = PageTitleConstant.EDITMERCHANTDETAILSPAGE;
+		String titleExpected = PageTitleConstant.EDIT_MERCHANT_DETAILS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -355,7 +355,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateMyAppsPage() {
 
-		String titleExpected = PageTitleConstant.MYAPPSPAGE;
+		String titleExpected = PageTitleConstant.MY_APPS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -374,7 +374,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateOrgDetailsPage() {
 
-		String titleExpected = PageTitleConstant.ORGANIZATIONDETAILSPAGE;
+		String titleExpected = PageTitleConstant.ORGANIZATION_DETAILS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -395,7 +395,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateEditOrgDetailsPage() {
 
-		String titleExpected = PageTitleConstant.EDITORGANIZATIONALDETAILSPAGE;
+		String titleExpected = PageTitleConstant.EDIT_ORGANIZATIONAL_DETAILS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -416,7 +416,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateCommunityProfilePage() {
 
-		String titleExpected = PageTitleConstant.COMMUNITYPROFILEPAGE;
+		String titleExpected = PageTitleConstant.COMMUNITY_PROFILE_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -437,7 +437,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateCancelMySubscriptionPage() {
 
-		String titleExpected = PageTitleConstant.CANCELMYSUBCRIPTIONPAGE;
+		String titleExpected = PageTitleConstant.CANCEL_MY_SUBCRIPTION_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -458,7 +458,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateTransactionUsagePage() {
 
-		String titleExpected = PageTitleConstant.TRANSACTIONUSAGEPAGE;
+		String titleExpected = PageTitleConstant.TRANSACTION_USAGE_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -479,7 +479,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validatePurchasePointsPage() {
 
-		String titleExpected = PageTitleConstant.PURCHASEPOINTPAGE;
+		String titleExpected = PageTitleConstant.PURCHASE_POINT_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -499,7 +499,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateSubscriptionDetailsPage() {
 
-		String titleExpected = PageTitleConstant.SUBSCRIPTIONDETAILSPAGE;
+		String titleExpected = PageTitleConstant.SUBSCRIPTION_DETAILS_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -520,7 +520,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateManageMyCreditCardPage() {
 
-		String titleExpected = PageTitleConstant.MANAGEMYCREDITCARDPAGE;
+		String titleExpected = PageTitleConstant.MANAGE_MY_CREDIT_CARD_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 
@@ -541,7 +541,7 @@ public class ManageMyAccount extends WebPage {
 	 */
 	public boolean validateCancelButtonUpdateMySubscriptionPage() {
 
-		String titleExpected = PageTitleConstant.MANAGEMYACCOUNT;
+		String titleExpected = PageTitleConstant.MANAGE_MY_ACCOUNT_PAGE;
 		boolean result = validatePageTitle(titleExpected);
 		if (result) {
 

@@ -2,21 +2,26 @@ package ATT.Selenium_FVT.Utilities.Component;
 
 public class Constants {
 
-	public static final String BROWSER = "FIREFOX";
-	//public static final String BROWSER = "CHROME";
+	//public static final String BROWSER = "FIREFOX";
+	public static final String BROWSER = "CHROME";
 	public static final String KEYWORD_FAIL = "Fail";
 	public static final String KEYWORD_PASS = "Pass";
 	public static final String ERROR_CODE = "00000";
-	public static final String APIM_HOME_URL = "https://devpgm-uat-app.eng.mobilephone.net/";
+	//public static final String APIM_HOME_URL = "https://devpgm-uat-app.eng.mobilephone.net/";
+	public static final String APIM_HOME_URL = "http://devpgm-f3t-apimatrix.api-dev.mars.bf.sl.attcompute.com/";
+
 	public static final String USERNAME_F4 = "Ruphus";
 	public static final String PASSWORD_F4 = "asf2012";
 	public static final String USERNAME_F3 = "test12345";
 	public static final String PASSWORD_F3 = "test12345";
 	public static final String PG_USERNAME = "afrin1";
 	public static final String PG_PASSWORD = "welcome1";
-	public static final String PG_USERNAME_CANCELDELELTE = "binny1";
-	public static final String PG_PASSWORD__CANCELDELELTE = "welcome1";
-
+	public static final String DEV_USERNAME_CANCELDELELTE = "testdev2";
+	public static final String DEV_PASSWORD__CANCELDELELTE = "test12345";
+	public static final String OPA_USERNAME_CANCELDELELTE = "testdev1";
+	public static final String OPA_PASSWORD__CANCELDELELTE = "test12345";
+	public static final String PG_USERNAME_CANCELDELELTE = "testpg";
+	public static final String PG_PASSWORD__CANCELDELELTE = "test12345";
 	public static final String DEV_USERNAME = "afrin";
 	public static final String DEV_PASSWORD = "welcome1";
 

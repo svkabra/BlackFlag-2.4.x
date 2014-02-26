@@ -49,7 +49,7 @@ public class TC_CancelAppCreationPlayground extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CancelAppCreationPlayground.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

@@ -18,7 +18,7 @@ import cucumber.annotation.After;
 public class TC_UpgradeToPremiumAccessButtonCommunityProfilePage extends TestUtil{
 	@Test
 	public void upgradeToPremiumAccessButtonCommunityProfilePage_test() {
-		
+		boolean result=false;
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		
 		//method to load the URL
@@ -28,7 +28,7 @@ public class TC_UpgradeToPremiumAccessButtonCommunityProfilePage extends TestUti
 		apimLoginPage.playGroundLogin();
 		
 		//method to validate LogIn
-		apimLoginPage.validateLogin();
+		result=apimLoginPage.validateLogin();
 		
 		//method to click on Manage My Account Link
 		ManageMyAccount manageMyAcct = apimLoginPage.clickManageMyAcctLink();
@@ -64,7 +64,7 @@ public class TC_UpgradeToPremiumAccessButtonCommunityProfilePage extends TestUti
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

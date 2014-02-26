@@ -30,7 +30,7 @@ public class TC_ATTAPIAdaptersForIBMWorklightView extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkATTAPIAdaptersForIBMWorklightView();	
+		footersDocs.clickATTAPIAdaptersForIBMWorklightView();	
 				
 	}
 

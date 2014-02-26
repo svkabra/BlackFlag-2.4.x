@@ -8,11 +8,12 @@ import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import cucumber.annotation.After;
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.ManageMyAccount;
+import ATT.Selenium_FVT.Pages.OrganizationDetailsPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import cucumber.annotation.After;
 
 public class TC_NavigateOrgDeatilsPage extends TestUtil {
 
@@ -59,7 +60,7 @@ public class TC_NavigateOrgDeatilsPage extends TestUtil {
 
 	} catch (IOException e) {
 
-	// TODO Auto-generated catch block
+	
 
 	e.printStackTrace();
 

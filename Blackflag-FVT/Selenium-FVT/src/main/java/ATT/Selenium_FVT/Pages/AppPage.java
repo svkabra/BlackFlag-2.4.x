@@ -3,7 +3,6 @@ package ATT.Selenium_FVT.Pages;
 import java.io.File;
 import java.util.List;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,63 +60,88 @@ public class AppPage extends WebPage {
 	public WebElement productionButton;
 
 	// Page Object " Sandbox API Analytics" -Hemant
-	@FindBy(xpath = "//*[@id='content']/div/div[3]/section[1]/ul/li[1]/a")
+	@FindBy(xpath="//a[@title='Advertising Analytics']") 
 	public WebElement sandBoxAPIAnalytics;
 
-	// Page Object " API Range From Date" -Hemant
-	@FindBy(id = "adv-analytics-api-form-from")
-	public WebElement dateRangeFromDetail;
+	//Page Object " API Range From Date" -Hemant
+	@FindBy(id="adv-analytics-api-form-from")
+	public WebElement dtRangeFromDetail;
 
-	// Page Object "API Range To Date" -Hemant
-	@FindBy(id = "adv-analytics-api-form-to")
-	public WebElement dateRangeToDetail;
+	//Page Object "API Range To Date" -Hemant
+	@FindBy(id="adv-analytics-api-form-to")
+	public WebElement dtRangeToDetail;
 
-	// Page Object "Done button of calender object"- Hemant
-	@FindBy(xpath = "//*[@id='ui-datepicker-div']/div[2]/button[2]")
-	public WebElement buttonDoneCalendar;
+	//Page Object "Done button of calender object"
+	@FindBy(xpath = "//a[@class='ui-datepicker-close']")
+	public WebElement btnDoneCal;
 
-	// Page Object "API Export CSV" -Hemant
-	@FindBy(xpath = "//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[1]/a")
-	public WebElement buttonExportCSV;
+	//Page Object "API Export CSV" 
+	@FindBy(xpath="//a[contains(text(),'Export CSV')]")
+	public WebElement btnExportCSV;
 
-	// Page Object "API Update Button" -Hemant
-	@FindBy(className = "update")
-	public WebElement buttonRefreshDetail;
+	//Page Object "API Update Button" -Hemant
+	@FindBy(css ="div.adv-headingsection > div.right > span.btn > a.update")
+	public WebElement btnRefreshDetail;
 
-	// Page Object "APIs DropDown" -Hemant
-	@FindBy(id = "analytics-api-form-trend")
-	public WebElement dropDownAPIs;
 
-	// Page Object "ADV Analytics" - Hemant
-	@FindBy(xpath = "//*[@id='content']/div/div[3]/section[2]/ul/li[3]/a")
-	public WebElement buttonADVAnalytics;
+	//Page Object "APIs DropDown" -Hemant
+	@FindBy(id="analytics-api-form-trend")
+	public WebElement ddAPIs;
 
-	// Page Object "All Apps Advertising Analytics Heading" - Hemant
-	@FindBy(className = "title")
-	public WebElement lableAppADVAnalytics;
 
-	// Page Object "ADV Export Button" -Hemant
-	@FindBy(className = "export")
-	public WebElement buttonADVExport;
+	//Page Object "ADV Analytics" - Hemant
+    @FindBy(linkText ="Advertising Analytics") 
+    public WebElement btnADVAnalytics;
 
-	// Page Object "View DropDown" -Hemant
-	@FindBy(id = "analytics-api-form-view")
-	public WebElement dropDownView;
+	//Page Object "All Apps Advertising Analytics Heading" - Hemant
+	@FindBy(css = "div.adv-headingsection > div.left > span.title") 
+	public WebElement lblAppADVAnalytics;
 
-	// Page Object "By DropDown" -Hemant
-	@FindBy(id = "chart")
-	public WebElement dropDownByChart;
 
-	// Page Object "API Export Excel" -Hemant
-	@FindBy(xpath = "//*[@id='app-list']/div[1]/div/form/div[1]/span[2]/div/div/span[2]/a")
-	public WebElement buttonExportExcel;
+	//Page Object "ADV Export Button" -Hemant
+//	@FindBy(className = "export")
+//	public WebElement btnADVExport;
+	public boolean clickButtonExport(){
+		boolean flag = false;
+		String btnName = "Export";
+		for(WebElement e:driver.findElements(By.xpath("//*[@class='export']"))){
+			if(e.getText().equalsIgnoreCase(btnName)){
+				e.click();
+				flag = true;
+				break;
+			}		
+		}
+		return flag;
+	}
 
-	// Page Object "Request For Production Access"
+	
+
+	//Page Object "View DropDown" -Hemant
+	@FindBy(id="analytics-api-form-view")
+	public WebElement ddView;
+
+	//Page Object "By DropDown" -Hemant
+	@FindBy(id="chart")
+	public WebElement ddByChart;
+
+
+	//Page Object "API Export Excel"
+	@FindBy(xpath="//a[@class='export']")
+	public WebElement btnExportExcel;
+
+	//Page Object "Request Production Access"
+	@FindBy(css ="input[value='Request Production Access']")
+	public WebElement reqForProdAccess;
+
+	//Page Object "Commit button"
+	@FindBy(xpath="//*[@name='commit']") 
+	public WebElement reqForProdAccessCommit;
+
 	@FindBy(xpath = "//*[@id='content']/div/div[2]/form[1]/input")
 	public WebElement requestForProductionAccessCommit;
 
-	// Page Object "Production"
-	@FindBy(xpath = "//*[@id='content']/div/div[3]/section[1]/ul/li[2]/a")
+	//Page Object "Production"
+	@FindBy(linkText = "Production") 
 	public WebElement production;
 
 	// Page Object "App Details"
@@ -136,8 +160,14 @@ public class AppPage extends WebPage {
 	@FindBy(css = "div.alert-box.warning")
 	public WebElement alertBoxWarning;
 
-	//
-	
+	//Page Object "Advertising Analytics"
+	@FindBy(linkText = "Advertising Analytics")
+	public WebElement lnkAdvertisingAnalytics;
+
+	//Page Object "Loading Image" 
+	@FindBy(xpath ="//*[@src='/images/ajax-loader.gif']")
+	public WebElement elementLoadingImage;
+
 	// Parameterized Constructor
 	public AppPage(WebDriver driver) {
 		super(driver);
@@ -333,23 +363,27 @@ public class AppPage extends WebPage {
 		}
 	}
 
-	// Function to Click on Sandbox Tab or Production Tab based on selection-
-	// Heamnt
-	// ***********************************************************************************************************************************
-	public boolean fnSelectSandboxProdTabAppDetails(String sTabName) {
+	//Function to Click on Sandbox Tab or Production Tab based on selection- Heamnt 
+	//***********************************************************************************************************************************                     
+	public boolean fnSelectSandboxProdTabAppDetails(String sTabName){
 
-		if (driver.findElement(By.linkText(sTabName)).isDisplayed()) {
-			driver.findElement(By.linkText(sTabName)).click();
-			waitForPageToLoad();
-			System.out.println("The tab  " + sTabName + " has been selected");
-			storeVerificationResults(true, "The tab  " + sTabName
-					+ " has been selected");
+		try{
+
+
+			if(driver.findElement(By.linkText(sTabName)).isDisplayed()){
+				driver.findElement(By.linkText(sTabName)).click();                   
+				waitForPageToLoad(); 
+				//System.out.println("The tab  "+ sTabName + " has been selected");
+				storeVerificationResults(true, "The tab  "+ sTabName + " has been selected");
+				return true;
+			}else{
+				//System.out.println("The tab  "+ sTabName + "does not exists");
+				storeVerificationResults(false, "The tab  "+ sTabName + "does not exists");
+				return false;
+			}
+		}catch(Exception e){
+			storeVerificationResults(true, "The tab  "+ sTabName + " has alresdy been selected");
 			return true;
-		} else {
-			System.out.println("The tab  " + sTabName + "does not exists");
-			storeVerificationResults(false, "The tab  " + sTabName
-					+ "does not exists");
-			return false;
 		}
 	}
 
@@ -373,7 +407,7 @@ public class AppPage extends WebPage {
 	// Function to Export the export.csv to Temp folder-Hemant
 	// ***********************************************************************************************************************************
 	public void fnExportcsv(String filePathString) {
-		buttonExportCSV.click();
+		btnExportExcel.click();
 
 		// wait for the file to get created
 		File f = new File(filePathString);
@@ -413,50 +447,58 @@ public class AppPage extends WebPage {
 
 	// ***********************************************************************************************************************************
 
-	// Function to select From Date from Range -Hemant
-	// ***********************************************************************************************************************************
-	public void fnSetFROMDateAppDetail(String sDate) {
 
-		try {
-			dateRangeFromDetail.clear();
-			dateRangeFromDetail.sendKeys(sDate);
 
-			if (buttonDoneCalendar.isDisplayed()) {
-				buttonDoneCalendar.click();
+	//Function to select From Date from Range -Hemant 
+	//***********************************************************************************************************************************                     
+	public boolean fnSetFROMDateAppDetail(String sDate){      
+
+		try{
+			//enter date value
+			dtRangeFromDetail.clear();
+			dtRangeFromDetail.sendKeys(sDate);
+
+			//click calender done button
+			try{
+				if(btnDoneCal.isDisplayed()){
+					btnDoneCal.click();}
+			}catch(Exception e){
 			}
-			wait(2000);
-			System.out.println("From date has been selected");
-			storeVerificationResults(true, "From date has been selected");
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			storeVerificationResults(false, "Error selecting from date");
+		}catch(Exception e){
+			storeVerificationResults(false, "From Date Range set failure");
+			return false;
 		}
-	}
+		return true;
 
-	// ***********************************************************************************************************************************
+	}      
+	//***********************************************************************************************************************************
 
-	// Function to select To Date from Range -Hemant
-	// ***********************************************************************************************************************************
-	public void fnSetTODateAppDetail(String sDate) {
 
-		try {
-			dateRangeToDetail.clear();
-			dateRangeToDetail.sendKeys(sDate);
+	//Function to select To Date from Range -Hemant 
+	//***********************************************************************************************************************************                     
+	public boolean fnSetTODateAppDetail(String sDate){ 
+		try{
+			//enter date value
+			dtRangeToDetail.clear();
+			dtRangeToDetail.sendKeys(sDate);
+			implicitWait(1);
 
-			if (buttonDoneCalendar.isDisplayed()) {
-				buttonDoneCalendar.click();
+			//click calender done button
+			try{
+				if(btnDoneCal.isDisplayed()){
+					btnDoneCal.click();}
+
+			}catch(Exception e){
 			}
-			wait(2000);
-			System.out.println("To date has been selected");
-			storeVerificationResults(true, "To date has been selected");
-		} catch (Exception e) {
-			storeVerificationResults(false, "Error selecting To date");
+		}catch(Exception e){
+			storeVerificationResults(false, "To Date Range set failure");
+			return false;
 		}
-
-	}
-
-	// ***********************************************************************************************************************************
+		return true;
+		
+	}      
+	//***********************************************************************************************************************************
 
 	// Function to Set the start and end date API-Hemant
 	// ***********************************************************************************************************************************
@@ -481,56 +523,49 @@ public class AppPage extends WebPage {
 
 	// ***********************************************************************************************************************************
 
-	// Function to Click on Refresh/Update -Hemant
-	// ***********************************************************************************************************************************
-	public void fnClickRefresh() {
+	//Function to Click on Refresh/Update -Hemant 
+	//***********************************************************************************************************************************                     
+	public void fnClickRefresh(){   
 
-		try {
-			// Click on Refresh Button
-			buttonRefreshDetail.click();
-			int i;
-			i = 0;
-			while (i < 5) {
-				// System.out.println("Wait for trend");
-				wait(2000);
-				i = i + 1;
-				storeVerificationResults(true,
-						"Successfully clicked on Refresh");
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			storeVerificationResults(false, "Error on click Refresh");
-		}
-	}
-
-	// ***********************************************************************************************************************************
+		//Click on Refresh Button
+		btnRefreshDetail.click();
+		
+		//wait till data not displayed
+		int i;
+		i=0;
+		while(elementLoadingImage.isDisplayed() && i<20){
+			//System.out.println("Wait for trend");
+			implicitWait(PAGE_WAIT_AJAX);
+			i=i+1;
+		}                    
+	}      
+	//***********************************************************************************************************************************
 
 	// Function to select API from API dropdown-Hemant
 	// ***********************************************************************************************************************************
 	public void fnSetAPI(String sAPI) {
 
-		try {
+		try{
 
-			Select s = new Select(dropDownAPIs);
+			Select s = new Select(ddAPIs);
 			s.selectByValue(sAPI);
 
-			dropDownAPIs.sendKeys(sAPI);
+			ddAPIs.sendKeys(sAPI);
 
-		} catch (Exception e) {
+		}catch(Exception e){
 
 			e.printStackTrace();
 			System.exit(0);
 		}
 
-	}
 
-	// ***********************************************************************************************************************************
+	}      
+	//***********************************************************************************************************************************
 
 	// Function to select Duration from View dropdown-Hemant
 	// ***********************************************************************************************************************************
 	public void fnSetView(String sView) {
-		Select s = new Select(dropDownView);
+		Select s = new Select(ddView);
 		s.selectByValue(sView);
 	}
 
@@ -539,7 +574,7 @@ public class AppPage extends WebPage {
 	// Function to select Daily, hourly from By dropdown-Hemant
 	// ***********************************************************************************************************************************
 	public void fnSetBy(String sBy) {
-		Select s = new Select(dropDownByChart);
+		Select s = new Select(ddByChart);
 		s.selectByValue(sBy);
 	}
 
@@ -548,170 +583,155 @@ public class AppPage extends WebPage {
 	// Function to click on ADV_Analytics link on App Details page and verify
 	// before and after clicking -Hemant-
 	// ***********************************************************************************************************************************
-	public void clkADVAnalyticsAlreadyCollapsed() {
+	public void verifyADVAnalyticsAlreadyCollapsed() {
 
-		// Verify Analytics is collapsed
-
-		boolean flagPresent = validateWebElementPresentBy(By.className("title"));
-		if (flagPresent) {
-
-			boolean x = lableAppADVAnalytics.isDisplayed();
-			if (!x) {
-				System.out.println("Pass - ADV-Analytics is collapsed");
-				storeVerificationResults(false, "ADV-Analytics is collapsed");
-			} else {
-				System.out.println("Fail - ADV-Analytics is not collapsed");
-				storeVerificationResults(false,
-						"ADV-Analytics is not collapsed");
-			}
-		} else {
-			storeVerificationResults(false,
-					"Advertising Analytics Title is not visible");
+		//code to check heading already collapsed
+		boolean x =  lblAppADVAnalytics.isDisplayed();
+		if (!x){	                
+			storeVerificationResults(true, "Pass - ADV-Analytics is collapsed by default in Application Details page");
+		}else{
+			storeVerificationResults(false, "Fail - ADV-Analytics is expanded by default in Application Details page");
 		}
 
-		// Click on ADV Analytics
+		//Click on ADV Analytics
+		btnADVAnalytics.click();
 
-		buttonADVAnalytics.click();
-
-		// wait till data not displayed
-		int i;
-		i = 0;
-		while (i < 5) {
-			// System.out.println("Wait for trend");
-			wait(2000);
-			i = i + 1;
+		try{
+			//code to wait till data not displayed
+			int i;
+			i=0;         
+			while(elementLoadingImage.isDisplayed() && i<20){
+				//System.out.println("Wait for trend");  
+				implicitWait(PAGE_WAIT_AJAX);
+				i=i+1;
+				//System.out.println("waiting for ajax to load");
+			}             
+		}catch(Exception e){
+			storeVerificationResults(false, "error while loading the data");
+			publishTestResult();
 		}
 
-		// Verify Analytics is expanded
-		flagPresent = validateWebElementPresentBy(By.className("title"));
-		if (flagPresent) {
-			boolean y = lableAppADVAnalytics.isDisplayed();
-			if (y) {
-				System.out.println("Pass - ADV-Analytics is expanded");
-				storeVerificationResults(true, "ADV-Analytics is expanded");
-			} else {
-				System.out.println("Fail - ADV-Analytics is not expanded");
-				storeVerificationResults(false, "ADV-Analytics is not expanded");
-			}
+		//Verify Analytics is expanded
+		boolean y =  lblAppADVAnalytics.isDisplayed();
+		if (y){
+			storeVerificationResults(true, "ADV-Analytics is expanded on clicking Advertising Analytics link");
+		}else{
+			storeVerificationResults(false, "ADV-Analytics does not expands on clicking Advertising Analytics link");
 		}
 	}
 
 	// ***********************************************************************************************************************************
 
-	// Function to check ADV_Analytics link is NOT displayed-Hemant-
-	// ***********************************************************************************************************************************
-	public void clkADVAnalyticsLinkNotDisplayed() {
-		int size = driver
-				.findElements(
-						By.xpath("//*[@id='content']/div/div[3]/section[2]/ul/li[3]/a"))
-				.size();
+	//Function to check ADV_Analytics link is NOT displayed-Hemant- 
+	//***********************************************************************************************************************************			
+	public boolean validateADVAnalyticsLinkNotDisplayed(){
 
-		if (size == 1) {
-
-			if (driver
-					.findElement(
-							By.xpath("//*[@id='content']/div/div[3]/section[2]/ul/li[3]/a"))
-					.isDisplayed()) {
-				storeVerificationResults(false,
-						"Advertising Analytics Link is visible");
-			} else {
-				storeVerificationResults(true,
-						"Advertising Analytics Link is NOT visible");
+		boolean flag = true;
+		try{
+			if(lnkAdvertisingAnalytics.isDisplayed()){
+				storeVerificationResults(false, "Advertising Analytics Link is visible, when user has no application with Adv API");
+			}else{			    		
+				storeVerificationResults(true, "Advertising Analytics Link is NOT visible, when user has application with Advertising API");
+				flag = false;
 			}
 
-		} else {
-			storeVerificationResults(true,
-					"Advertising Analytics Link is NOT visible");
+		}catch(Exception e){
+			storeVerificationResults(true, "Advertising Analytics Link is visible, when user has no application with Adv API");
+			flag = false;
 		}
+		return flag;
 	}
+	//***********************************************************************************************************************************	
 
-	// ***********************************************************************************************************************************
+	//Function to check ADV_Analytics link is displayed-Hemant- 
+	//***********************************************************************************************************************************			
+	public boolean validateADVAnalyticsLinkDisplayed(){
 
-	// Function to check ADV_Analytics link is displayed-Hemant-
-	// ***********************************************************************************************************************************
-	public void clkADVAnalyticsLinkDisplayed() {
-
-		int size = driver
-				.findElements(
-						By.xpath("//*[@id='content']/div/div[3]/section[2]/ul/li[3]/a"))
-				.size();
-
-		if (size == 1) {
-
-			if (driver
-					.findElement(
-							By.xpath("//*[@id='content']/div/div[3]/section[2]/ul/li[3]/a"))
-					.isDisplayed()) {
-				storeVerificationResults(true,
-						"Advertising Analytics Link is visible");
-			} else {
-				storeVerificationResults(false,
-						"Advertising Analytics Link is NOT visible");
+		boolean flag = true;
+		try{
+			if(lnkAdvertisingAnalytics.isDisplayed()){
+				storeVerificationResults(true, "Advertising Analytics Link is visible, when user has application with Adv");
+			}else{			    		
+				storeVerificationResults(false, "Advertising Analytics Link is NOT visible, when user has application with Advertising API");
+				flag = false;
 			}
 
-		} else {
-			storeVerificationResults(false,
-					"Advertising Analytics Link is NOT visible");
+		}catch(Exception e){
+			storeVerificationResults(false, "Advertising Analytics Link is NOT visible, when user has application with Advertising API");
+			flag = false;
 		}
+		return flag;
 	}
+	//***********************************************************************************************************************************	
 
-	// ***********************************************************************************************************************************
 
-	// Function to Export the export.xlsx to Temp folder for Advertising-Hemant
-	// ***********************************************************************************************************************************
-	public void fnExportFileADV(String filePathString) {
-		buttonADVExport.click();
 
-		// wait for the file to get created
+
+
+
+
+	//Function to Export the export.xlsx to Temp folder for Advertising-Hemant 
+	//***********************************************************************************************************************************                     
+	public void fnExportFileADV(String filePathString)
+	{
+		//btnADVExport.click();
+		
+		clickButtonExport();
+
+
+		//wait for the file to get created
 		File f = new File(filePathString);
 		f = new File(filePathString);
 		int iw;
 		iw = 0;
-		while (!f.exists() && iw < 10) {
+		while(!f.exists() && iw <10){
 			System.out.println("waiting ");
 			wait(2000);
 			iw = iw + 1;
 		}
 
-		if (f.exists()) {
+		if(f.exists()){                   
 			System.out.println("file is created");
-		} else {
+		}else{               
 			System.out.println("file not exists");
 		}
 
 	}
+	//***********************************************************************************************************************************
 
-	// ***********************************************************************************************************************************
 
-	// Function to Export the export.xlsx to Temp folder-Hemant
-	// ***********************************************************************************************************************************
-	public void fnExportFile(String filePathString) {
+	//Function to Export the export.xlsx to Temp folder-Hemant 
+	//***********************************************************************************************************************************                     
+	public void fnExportFile(String filePathString)
+	{
 
-		// Delete the existing export.xlsx file from Temp Folder
-		// String filePathString ;
-		// filePathString = "C:\\Temp\\export.xlsx";
-		// DeleteFile(filePathString);
+		//Delete the existing export.xlsx file from Temp Folder
+		//String filePathString ;
+		//filePathString = "C:\\Temp\\export.xlsx";
+		//DeleteFile(filePathString);
 
-		buttonExportExcel.click();
 
-		// wait for the file to get created
+		btnExportExcel.click();
+
+
+		//wait for the file to get created
 		File f = new File(filePathString);
 		f = new File(filePathString);
 		int iw;
 		iw = 0;
-		while (!f.exists() && iw < 10) {
+		while(!f.exists() && iw <10){
 			System.out.println("waiting ");
 			wait(2000);
 			iw = iw + 1;
 		}
 
-		if (f.exists()) {
+		if(f.exists()){                   
 			System.out.println("file is created");
-		} else {
+		}else{               
 			System.out.println("file not exists");
 		}
 
 	}
-	// ***********************************************************************************************************************************
+	//***********************************************************************************************************************************
 
 }

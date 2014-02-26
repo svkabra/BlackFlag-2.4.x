@@ -18,27 +18,25 @@ import ATT.Selenium_FVT.Utilities.Component.Constants;
 public class TC_CancelDeleteProductionAppOPA extends TestUtil{
 
 	/* To verify OPA can cancel deleting  a Production app
-	 * * Precondition : User should have atleast one app on my apps page */	
+	 * * Precondition : Developer should have an app with name "0001_CancelDeleteApp" on my apps page in F3 environment */	
 	
 	@Test
 	public void testCancelDeletion() {
 		
 		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		apimLoginPage.openURL();
-		apimLoginPage.opaLogin();
+		apimLoginPage.testLogIn(Constants.OPA_USERNAME_CANCELDELELTE, Constants.OPA_PASSWORD__CANCELDELELTE);
 		MyAppsPage myAppsPage = apimLoginPage.clickMyApps();
-		
+		apimLoginPage.validateMyAppsPage();		
 		// Method to Click on delete Production button 
-		myAppsPage.clickDeleteProduction();
-		
+		myAppsPage.clickDeleteProduction();		
 		// Method to click OrCancel button 
-		myAppsPage.clickOrCancelButton();
-		
+		myAppsPage.clickOrCancelButton();		
 		// Method to validate OrCancel button 
-		myAppsPage.validateCancelDeleteApp(Constants.CANCELDELETEAPP);
-		
+		myAppsPage.validateCancelDeleteApp(Constants.CANCELDELETEAPP);		
 		// Method to publish test result
-		myAppsPage.publishTestResult();
+		apimLoginPage.publishTestResult();
+		myAppsPage.publishTestResult();	
 	}
 
 	@After
@@ -49,7 +47,7 @@ public class TC_CancelDeleteProductionAppOPA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CancelDeleteProductionAppOPA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }

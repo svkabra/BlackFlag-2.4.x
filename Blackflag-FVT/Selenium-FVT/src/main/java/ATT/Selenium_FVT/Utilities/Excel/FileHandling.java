@@ -2,21 +2,26 @@ package ATT.Selenium_FVT.Utilities.Excel;
 
 import java.io.File;
 
-public class FileHandling {
+import org.openqa.selenium.WebDriver;
+
+import ATT.Selenium_FVT.Utilities.Browser.PageSupport;
+import ATT.Selenium_FVT.Utilities.Browser.WebPage;
+
+public class FileHandling extends PageSupport{
 
 	
-	
-	//Function check if export file already exists or not-Hemant 
+
+		//Function check if export file already exists or not-Hemant 
 	//***********************************************************************************************************************************			
 		public boolean fnCheckFileExists(String filePathString){													
 			try{
 				File f = new File(filePathString);
 
 				if(f.exists()){
-					System.out.println("File  " + filePathString + " Exists");
+					storeVerificationResults(true, "File  " + filePathString + " Exists");
 					return true;
 				}else{
-					System.out.println("File does not Exists");
+					storeVerificationResults(false, "File does not Exists");
 					return false;
 				}
 				
@@ -35,10 +40,10 @@ public class FileHandling {
 			File newfile =new File(sNewFilePath);
 	 
 			if(oldfile.renameTo(newfile)){
-				System.out.println("Rename succesful");
+				storeVerificationResults(true, "Rename of file succesful");
 				return true;
 			}else{
-				System.out.println("Rename failed");
+				storeVerificationResults(false, "Rename of file failed");
 				return false;
 			}		
 			

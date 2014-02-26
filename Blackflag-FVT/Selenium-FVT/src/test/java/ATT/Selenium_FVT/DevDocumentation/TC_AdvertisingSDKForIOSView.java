@@ -28,7 +28,7 @@ public class TC_AdvertisingSDKForIOSView extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkAdvertisingSDKForIOSView();	
+		footersDocs.clickAdvertisingSDKForIOSView();	
 				
 	}
 

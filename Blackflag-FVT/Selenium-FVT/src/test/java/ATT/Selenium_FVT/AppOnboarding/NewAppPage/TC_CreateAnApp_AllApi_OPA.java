@@ -78,7 +78,7 @@ public class TC_CreateAnApp_AllApi_OPA extends TestUtil{
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CreateAnApp_AllApi_OPA.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

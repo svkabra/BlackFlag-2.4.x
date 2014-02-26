@@ -26,8 +26,10 @@ public class TC_InApMessagingIMMNAPIDocumentation extends TestUtil {
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.developerLogin();
-		appDetailsPage.clkInAppMessagingIMMNAPIDocumentation();				
+		apilogpage.testLogIn("afrinatt", "welcome1");
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickInAppMessagingIMMNAPIDocumentation();				
 	}
 
 	@After

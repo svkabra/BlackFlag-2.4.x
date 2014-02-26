@@ -26,7 +26,7 @@ public class TC_SpeechPricingInformation extends TestUtil {
 		APIMLoginPage apilogpage = pricingPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		pricingPage.clkSpeechPricingInformation();				
+		pricingPage.clickSpeechPricingInformation();				
 	}
 
 	@After

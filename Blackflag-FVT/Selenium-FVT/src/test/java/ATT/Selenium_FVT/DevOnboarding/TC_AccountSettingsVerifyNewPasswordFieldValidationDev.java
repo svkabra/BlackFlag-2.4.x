@@ -71,7 +71,7 @@ public class TC_AccountSettingsVerifyNewPasswordFieldValidationDev extends
 
 		} catch (IOException e) {
 
-			// TODO Auto-generated catch block
+			
 
 			e.printStackTrace();
 

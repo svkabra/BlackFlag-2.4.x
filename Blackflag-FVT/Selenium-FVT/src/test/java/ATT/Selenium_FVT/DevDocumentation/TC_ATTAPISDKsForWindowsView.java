@@ -29,7 +29,7 @@ public class TC_ATTAPISDKsForWindowsView extends TestUtil{
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		footersDocs.clkATTAPISDKsForWindowsView();	
+		footersDocs.clickATTAPISDKsForWindowsView();	
 				
 	}
 

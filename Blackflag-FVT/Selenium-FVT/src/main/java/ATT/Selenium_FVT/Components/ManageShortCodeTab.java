@@ -8,50 +8,48 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import ATT.Selenium_FVT.Utilities.Component.Component;
+import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class ManageShortCodeTab extends Component {
 
-	WebElement me;
-
 	// WebElement shortCodeNewForm =
 	// me.findElement(By.id("shortcode_form_cont")).findElement(By.id("new_shortcode"));
-	
-	//Page Object "Short Code Description"
+
+	// Page Object "Short Code Description"
 	@FindBy(id = "shortcode_description")
 	WebElement shortCodeDescription;
 
-	//Page Object "SMS Mo Uri
+	// Page Object "SMS Mo Uri
 	@FindBy(id = "shortcode_sms_mobile_originated_uri")
 	WebElement smsMoUri;
 
-	//Page Object "SMS Delivery Notification URI
+	// Page Object "SMS Delivery Notification URI
 	@FindBy(id = "shortcode_sms_delivery_notification_uri")
 	WebElement smsDeliveryNotificationUri;
 
-	//Page Object "MMS MO URI"
+	// Page Object "MMS MO URI"
 	@FindBy(id = "shortcode_mms_mobile_originated_uri")
 	WebElement mmsMoUri;
 
-	//Page Object "MMS Delivery Notification URI"
+	// Page Object "MMS Delivery Notification URI"
 	@FindBy(id = "shortcode_mms_delivery_notification_uri")
 	WebElement mmsDeliveryNotificationUri;
 
-	//Page Object "Custom Short Code"
+	// Page Object "Custom Short Code"
 	@FindBy(id = "shortcode_shortcode")
 	WebElement customShortCode;
 
-	//Page Object "Short Code Type"
+	// Page Object "Short Code Type"
 	@FindBy(id = "shortcode_shortcode_type")
 	WebElement shortCodeType;
 
-	//Page Object "Short Code Rating"
+	// Page Object "Short Code Rating"
 	@FindBy(id = "shortcode_rating")
 	WebElement shortCodeRating;
 
-	//Default Constructor
+	// Default Constructor
 	public ManageShortCodeTab(WebDriver driver, WebElement manageShortCode) {
 		super(driver);
-		me = manageShortCode;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -65,8 +63,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to click Add button
 	 */
 	public ManageShortCodeTab clickAddShortCode() {
-		implicitWait(2);
-		me.findElement(By.className("add_shortcode")).click();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
+		driver.findElement(By.className("add_shortcode")).click();
 		waitForAjaxInactivity();
 		return this;
 
@@ -76,8 +74,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to click Edit button
 	 */
 	public ManageShortCodeTab clickEditShortCode() {
-		implicitWait(2);
-		me.findElement(By.id("edit_shortcode_btn_4255")).click();
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
+		driver.findElement(By.id("edit_shortcode_btn_4255")).click();
 		waitForAjaxInactivity();
 		return this;
 
@@ -87,7 +85,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to select ShortCode Rating
 	 */
 	public ManageShortCodeTab selectShortCodeRating(String ratingOption) {
-		Select rating = new Select(me.findElement(By.id("shortcode_rating")));
+		Select rating = new Select(
+				driver.findElement(By.id("shortcode_rating")));
 		rating.selectByValue(ratingOption);
 		waitForAjaxInactivity();
 		return this;
@@ -97,7 +96,7 @@ public class ManageShortCodeTab extends Component {
 	 * method to select ShortCode Type
 	 */
 	public ManageShortCodeTab selectShortCodeType(String typeOption) {
-		Select rating = new Select(me.findElement(By
+		Select rating = new Select(driver.findElement(By
 				.id("shortcode_shortcode_type")));
 		rating.selectByValue(typeOption);
 		waitForAjaxInactivity();
@@ -110,7 +109,7 @@ public class ManageShortCodeTab extends Component {
 	public ManageShortCodeTab enterShortCodeDescription(String description) {
 
 		driver.findElement(By.id("shortcode_rating")).sendKeys(Keys.TAB);
-		implicitWait(2);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		shortCodeDescription.click();
 		shortCodeDescription.sendKeys(description);
 		return this;
@@ -204,7 +203,7 @@ public class ManageShortCodeTab extends Component {
 	}
 
 	/*
-	 *method to validate MMS Delivery Notification URI is displayed
+	 * method to validate MMS Delivery Notification URI is displayed
 	 */
 	public ManageShortCodeTab MMSNotificationURIDisplayed() {
 		validateWebElementDisplayed(mmsDeliveryNotificationUri);
@@ -215,8 +214,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to return offline Shortcode
 	 */
 	public String getOfflineShortCode() {
-		implicitWait(10);
-		return me.findElement(By.className("shortcodetable"))
+		implicitWait(Constants.PAGE_WAIT_INTER_SYSTEM);
+		return driver.findElement(By.className("shortcodetable"))
 				.findElement(By.xpath("table/tbody/tr[2]/td[4]")).getText();
 
 	}
@@ -225,8 +224,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to return online Shortcode
 	 */
 	public String getOnlineShortCode() {
-		implicitWait(10);
-		return me.findElement(By.className("shortcodetable"))
+		implicitWait(Constants.PAGE_WAIT_INTER_SYSTEM);
+		return driver.findElement(By.className("shortcodetable"))
 				.findElement(By.xpath("table/tbody/tr[3]/td[4]")).getText();
 	}
 
@@ -234,8 +233,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to return Type of Shortcode
 	 */
 	public String getTypeOfShortCode() {
-		implicitWait(10);
-		return me.findElement(By.className("shortcodetable"))
+		implicitWait(Constants.PAGE_WAIT_INTER_SYSTEM);
+		return driver.findElement(By.className("shortcodetable"))
 				.findElement(By.xpath("table/tbody/tr/td")).getText();
 
 	}
@@ -244,8 +243,8 @@ public class ManageShortCodeTab extends Component {
 	 * method to return Type of Shortcode
 	 */
 	public String getRatingOfShortCode() {
-		implicitWait(10);
-		return me.findElement(By.className("shortcodetable"))
+		implicitWait(Constants.PAGE_WAIT_INTER_SYSTEM);
+		return driver.findElement(By.className("shortcodetable"))
 				.findElement(By.xpath("table/tbody/tr/td[2]")).getText();
 
 	}
@@ -313,11 +312,11 @@ public class ManageShortCodeTab extends Component {
 	 * method to save ShortCode details
 	 */
 	public ManageShortCodeTab clickCSCA_Link() {
-		me.findElement(By.linkText("CSCA")).click();
+		driver.findElement(By.linkText("CSCA")).click();
 
 		waitForAjaxInactivity();
 
-		implicitWait(2);
+		implicitWait(Constants.PAGE_WAIT_INTRA_SYSTEM_LONG);
 		String titleCaptured = driver.getTitle();
 
 		String titleActual = "Common Short Codes | Get a Short Code & Grow Mobile Marketing Revenue";
@@ -337,7 +336,7 @@ public class ManageShortCodeTab extends Component {
 	 * method to save ShortCode details
 	 */
 	public ManageShortCodeTab saveShortCodeDetails() {
-		me.findElement(By.id("submit_shortcode")).click();
+		driver.findElement(By.id("submit_shortcode")).click();
 		waitForAjaxInactivity();
 		return this;
 	}
@@ -346,11 +345,9 @@ public class ManageShortCodeTab extends Component {
 	 * method to save ShortCode details
 	 */
 	public ManageShortCodeTab cancelShortCodeDetails() {
-		me.findElement(By.id("cancel_shortcode")).click();
+		driver.findElement(By.id("cancel_shortcode")).click();
 		waitForAjaxInactivity();
 		return this;
 	}
 
-	
-	
 }

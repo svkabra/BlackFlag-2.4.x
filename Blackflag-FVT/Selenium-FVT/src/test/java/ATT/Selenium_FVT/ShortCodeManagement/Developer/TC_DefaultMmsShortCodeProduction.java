@@ -80,7 +80,7 @@ public class TC_DefaultMmsShortCodeProduction extends TestUtil {
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_DefaultMmsShortCodeProduction.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

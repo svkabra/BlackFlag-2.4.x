@@ -29,7 +29,7 @@ public class TC_AccessPointNamesLink extends TestUtil{
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		technicalLibraryPage.clkAccessPointNamesLink();
+		technicalLibraryPage.clickAccessPointNamesLink();
 				
 	}
 

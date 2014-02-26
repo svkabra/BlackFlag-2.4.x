@@ -27,7 +27,7 @@ public class TC_InAppMessagingPricingInformation extends TestUtil {
 		APIMLoginPage apilogpage = pricingPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		pricingPage.clkInAppMessagingPricingInformation();				
+		pricingPage.clickInAppMessagingPricingInformation();				
 	}
 
 	@After

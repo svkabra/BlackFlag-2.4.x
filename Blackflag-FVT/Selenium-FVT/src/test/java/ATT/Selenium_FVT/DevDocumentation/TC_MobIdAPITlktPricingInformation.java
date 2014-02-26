@@ -27,7 +27,7 @@ public class TC_MobIdAPITlktPricingInformation extends TestUtil{
 		APIMLoginPage apilogpage = pricingPage.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		pricingPage.clkMobIdTlktPricingInformation();		
+		pricingPage.clickMobIdTlktPricingInformation();		
 	}
 
 	@After

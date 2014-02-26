@@ -25,8 +25,10 @@ public class TC_TerminalLocationAPIDocumentation extends TestUtil{
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.developerLogin();
-		appDetailsPage.clkTerminalLocationAPIDocumentation();				
+		apilogpage.testLogIn("afrinatt", "welcome1");
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickTerminalLocationAPIDocumentation();				
 	}
 
 	@After

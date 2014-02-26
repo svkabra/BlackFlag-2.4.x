@@ -13,6 +13,7 @@ import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 import ATT.Selenium_FVT.Utilities.Component.FootersDocs;
+import ATT.Selenium_FVT.Utilities.Component.Headers;
 
 public class TC_SpeechSDKForIOSView extends TestUtil {
 
@@ -25,7 +26,9 @@ public class TC_SpeechSDKForIOSView extends TestUtil {
 		APIMLoginPage apilogpage = footersDocs.apimLoginPage();
 		apilogpage.openURL();			 
 		apilogpage.developerLogin();
-		footersDocs.clkSpeechSDKForIOSView();
+		Headers headers=apilogpage.headers();
+		headers.clickLogo();
+		footersDocs.clickSpeechSDKForIOSView();
 				
 	}
 

@@ -13,7 +13,6 @@ import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.AppDetailsPage;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import ATT.Selenium_FVT.Utilities.Component.Headers;
 
 public class TC_AdvertisingAPIDocumentation extends TestUtil{
 
@@ -28,10 +27,10 @@ public class TC_AdvertisingAPIDocumentation extends TestUtil{
 		AppDetailsPage appDetailsPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appDetailsPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.developerLogin();
-		Headers headers=apilogpage.headers();
-		headers.clickLogo();
-		appDetailsPage.clkAdvertisingAPIDocumentation();				
+		apilogpage.testLogIn("afrinatt", "welcome1");
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appDetailsPage.clickAdvertisingAPIDocumentation();				
 	}
 
 	@After

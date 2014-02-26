@@ -78,7 +78,7 @@ public class TC_ValidateRatingStandardMmsAppSandbox extends TestUtil {
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_ValidateRatingStandardMmsAppSandbox.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

@@ -29,7 +29,7 @@ public class TC_DeviceTechnologiesLink extends TestUtil {
 		apilogpage.developerLogin();
 		Headers headers=apilogpage.headers();
 		headers.clickLogo();
-		technicalLibraryPage.clkDeviceTechnologiesLink();
+		technicalLibraryPage.clickDeviceTechnologiesLink();
 				
 	}
 

@@ -34,7 +34,7 @@ public class TC_CscaRegistryLinkValidationProduction extends TestUtil {
 				
 		//method to open My Apps page
 		MyAppsPage myAppPage = apimLoginPage.clickMyApps();
-		
+		apimLoginPage.validateMyAppsPage();
 		//method to select the App
 		//AppPage appPageObj = myAppPageObj.clickTestAppProduction();
 		
@@ -86,7 +86,7 @@ public class TC_CscaRegistryLinkValidationProduction extends TestUtil {
         try {
 			FileUtils.copyFile(scrFile, new File("c:\\tmp\\TC_CscaRegistryLinkValidationProduction.png"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
     }	

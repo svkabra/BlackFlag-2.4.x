@@ -24,9 +24,11 @@ public class TC_MyAppsAdvertisingDoc extends TestUtil{
 		AppDetailsPage appPage=new AppDetailsPage(getNewDriver(Constants.BROWSER));
 		APIMLoginPage apilogpage = appPage.apimLoginPage();
 		apilogpage.openURL();			 
-		apilogpage.testLogIn("afrin2011", "welcome1");
+		apilogpage.testLogIn("afrinatt", "welcome1");
 		apilogpage.validateLogin();
-		appPage.clkAdvertisingAPIDocumentationMyApps();	
+		apilogpage.clickMyApps();
+		apilogpage.validateMyAppsPage();
+		appPage.clickAdvertisingAPIDocumentationMyApps();	
 				
 	}
 
