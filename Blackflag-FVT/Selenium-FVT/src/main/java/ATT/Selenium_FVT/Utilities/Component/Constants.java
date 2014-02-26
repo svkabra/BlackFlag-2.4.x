@@ -8,6 +8,8 @@ public class Constants {
 	public static final String KEYWORD_PASS = "Pass";
 	public static final String ERROR_CODE = "00000";
 	public static final String APIM_HOME_URL = "https://devpgm-uat-app.eng.mobilephone.net/";
+	//public static final String APIM_HOME_URL = "http://devpgm-f3t-apimatrix.api-dev.mars.bf.sl.attcompute.com/";
+
 	public static final String USERNAME_F4 = "Ruphus";
 	public static final String PASSWORD_F4 = "asf2012";
 	public static final String USERNAME_F3 = "test12345";
@@ -76,7 +78,7 @@ public class Constants {
 	public static final String OPA_USERNAME_ADV = "hojhaatt";
 	public static final String OPA_PASSWORD_ADV = "welcome1";
 
-	// CREDENTIALS for OPA, The user with applications having Ads API
+	// CREDENTIALS for OPA, The user with No applications having Ads API
 	public static final String OPA_USERNAME_ADV_NO_APP = "hojhaatt2";
 	public static final String OPA_PASSWORD_ADV_NO_APP = "welcome1";
 
@@ -95,5 +97,5 @@ public class Constants {
 	public static final String INVALID_JOB_TITLE = "Abbbbbccccccccwwwwwwwww1234567789087655efgtrgtrhtyhffnhtrjtyhjtyjsdsdsfrggttngh";
 
 	public static final String APP_CREATION_SUCCESS_MESSAGE = "Successfully created application";
-	public static final String APP_CREATION_MESSAGE_FOR_ADVERTISING = "Please note that you have selected the Advertising API, and provisioning for this API is in progress. Please check back in 10 minutes to see if API has been successfully provisioned.";
+	public static final String APP_CREATION_MESSAGE_FOR_ADVERTISING ="Please note that you have selected the Advertising API, and provisioning for this API is in progress. Please check back in 10 minutes to see if API has been successfully provisioned.";
 }

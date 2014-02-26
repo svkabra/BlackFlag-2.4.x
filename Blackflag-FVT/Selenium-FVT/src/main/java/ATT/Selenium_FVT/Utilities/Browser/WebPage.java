@@ -37,25 +37,11 @@ public abstract class WebPage extends PageSupport {
 	public static WebDriver getNewDriver(Driver driverType){
 		switch (driverType) {
 		case FIREFOX:
-			return new FirefoxDriver();
-		/*	
-			ProfilesIni allProfiles = new ProfilesIni();
-			FirefoxProfile profile = allProfiles.getProfile("ATTFVTADV");
-			FirefoxDriver FFdriver = new FirefoxDriver(profile);
-			return FFdriver; */
+			return new FirefoxDriver();			
 		case SAFARI:
 			return new SafariDriver();
 		case CHROME:
-			File file = new File("C:\\Setups\\chromedriver.exe");
-			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			return new ChromeDriver();
-			/*String userProfile= "C:\\Users\\hojha\\AppData\\Local\\Google\\Chrome\\User Data\\ATTFVTADV\\";
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("user-data-dir="+userProfile);
-			options.addArguments("--start-maximized");			
-			WebDriver driver = new ChromeDriver(options);
-			driver.manage().deleteAllCookies();
-			return driver;*/
 			
 		case IE:			
 			System.setProperty("webdriver.ie.driver", "C:\\Setups\\IEDriverServer.exe");
@@ -80,12 +66,66 @@ public abstract class WebPage extends PageSupport {
 		}
 	}
 	
+	
+	public static WebDriver getNewDriverProfile(Driver driverType){
+		switch (driverType) {
+		case FIREFOX:
+			//return new FirefoxDriver();
+			
+			ProfilesIni allProfiles = new ProfilesIni();
+			FirefoxProfile profile = allProfiles.getProfile("ATTFVTADV");
+			FirefoxDriver FFdriver = new FirefoxDriver(profile);
+			return FFdriver; 
+		case SAFARI:
+			return new SafariDriver();
+		case CHROME:
+			File file = new File("C:\\Setups\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+			//return new ChromeDriver();
+			String userProfile= "C:\\Users\\hojha\\AppData\\Local\\Google\\Chrome\\User Data\\ATTFVTADV\\";
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("user-data-dir="+userProfile);
+			options.addArguments("--start-maximized");			
+			WebDriver driver = new ChromeDriver(options);
+			driver.manage().deleteAllCookies();
+			return driver;
+			
+			//return new ChromeDriver();
+			
+		case IE:			
+			System.setProperty("webdriver.ie.driver", "C:\\Setups\\IEDriverServer.exe");
+			//return new InternetExplorerDriver();
+			DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
+			ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			ieCapabilities.setCapability("ensureCleanSession", true);
+			return new InternetExplorerDriver(ieCapabilities);
+			
+		case FFGRID:
+			DesiredCapabilities capability = DesiredCapabilities.firefox();
+			try {
+				return new RemoteWebDriver(new URL(""), capability);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		case HTMLUNIT:
+			return new HtmlUnitDriver(true);
+		default:
+			throw new InvalidParameterException("You must choose one of the defined driver types");
+		}
+	}
+
+	
 	public WebDriver getDriver(){
 		return driver;
 	}
 	
 	public static WebDriver getNewDriver(String Browser){
 		return getNewDriver(Driver.valueOf(Browser.toUpperCase()));
+	}
+	
+	public static WebDriver getNewDriverProfile(String Browser){
+		return getNewDriverProfile(Driver.valueOf(Browser.toUpperCase()));
 	}
 	
 	public void refresh(){
@@ -112,6 +152,7 @@ public abstract class WebPage extends PageSupport {
 	}
 	
 	public void closeBrowser(){
+		driver.close();
 		driver.quit();
 	}
 

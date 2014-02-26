@@ -1,8 +1,12 @@
 package ATT.Selenium_FVT.Test;
 
+import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.After;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
@@ -18,6 +22,18 @@ public class TestUtil {
 		driver.manage().deleteAllCookies();
 		return driver;
 	}
+	
+	
+	public WebDriver getNewDriverProfile(String Browser){
+	//	Driver driverType = Driver.FIREFOX;
+		driver  = WebPage.getNewDriverProfile(Browser);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		return driver;
+	}
+	
+	
+	
 	public WebDriver getDriver(){
 			return driver;
 		}
@@ -34,7 +50,9 @@ public class TestUtil {
 	@cucumber.annotation.After
 	public void closeBrowser() throws IOException{
 		try {
+			driver.close();;
 			  driver.quit();
+			  
 		} catch (Exception e){
 			//swallow
 		}
