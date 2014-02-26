@@ -41,6 +41,8 @@ public abstract class WebPage extends PageSupport {
 		case SAFARI:
 			return new SafariDriver();
 		case CHROME:
+			File file = new File("src/test/resources/ATT/Selenium_FVT/PageTest/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 			return new ChromeDriver();
 			
 		case IE:			
