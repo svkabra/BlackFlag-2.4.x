@@ -3,7 +3,6 @@ package ATT.Selenium_FVT.Pages;
 import java.util.Iterator;
 import java.util.Set;
 
-import junit.framework.Assert;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -95,8 +94,7 @@ public class APIPage extends WebPage {
 		
 		goToMyAppLink.click();
 		waitForPageToLoad();
-		String title = driver.getTitle();
-		Assert.assertEquals("API Matrix", title);
+		validatePageTitle("API Matrix");
 		return this;
 	}
 		
@@ -190,9 +188,7 @@ public class APIPage extends WebPage {
 		    {
 		                driver.switchTo().window(popupHandle);
 		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		        		Assert.assertEquals("Tour: Intro - AT&T mHealth", text);   
-		                System.out.println(text);
+		                validatePageTitle("Tour: Intro - AT&T mHealth");
 		                driver.close();
 		                driver.switchTo().window(mwh);
 		    }
@@ -228,9 +224,7 @@ public class APIPage extends WebPage {
 			    {
 			                driver.switchTo().window(popupHandle);
 			                /*here you can perform operation in pop-up window**/
-			                String text = driver.getTitle();
-			        		Assert.assertEquals("AT&T M2X", text);  
-			                System.out.println(text);
+			                validatePageTitle("AT&T M2X");
 			                driver.close();
 			                driver.switchTo().window(mwh);
 			    }

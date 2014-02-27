@@ -317,13 +317,13 @@ public class APIMLoginPage extends WebPage {
 		try{		
 		/*steps to Click on SignIn wait for dialog to appear*/		
 			try{
-				logout();
 				signIn.click();
 			}catch(Exception e){
 				logout();
 				signIn.click();
 			}        
         waitForPageToLoad();        
+                
         waitForElement(userNamePopup);           
         if(!elementExist(userNamePopup)){
                signIn.click();
@@ -365,6 +365,7 @@ public class APIMLoginPage extends WebPage {
 
         		//Condition for Developer and F3 and withApp
         		if(typeOfAcc.equalsIgnoreCase("withApp")){
+        	                	        
         			userNamePopup.click();
         			userNamePopup.sendKeys(Constants.DEV_USERNAME_ADV);
         			waitForElement(password);
@@ -576,19 +577,12 @@ public class APIMLoginPage extends WebPage {
 			result=validatePageTitle(titleExpected);
 		}
 
-
 		if (result) {
-
 			storeVerificationResults(true, "My Apps Page is displayed");
-
 		} else {
-
 			storeVerificationResults(false, "My Apps Page is not displayed");
 			flag = false;
 		}
-
-		
-
 		publishTestResult();
 		return flag;
 	}

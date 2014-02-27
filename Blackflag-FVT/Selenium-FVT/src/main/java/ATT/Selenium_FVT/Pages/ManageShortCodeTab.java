@@ -1,4 +1,4 @@
-package ATT.Selenium_FVT.Components;
+package ATT.Selenium_FVT.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

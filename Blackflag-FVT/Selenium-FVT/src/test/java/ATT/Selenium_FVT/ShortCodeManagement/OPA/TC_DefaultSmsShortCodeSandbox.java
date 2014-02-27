@@ -4,14 +4,14 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import cucumber.annotation.After;
-import ATT.Selenium_FVT.Components.ManageShortCodeTab;
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.AppPage;
+import ATT.Selenium_FVT.Pages.ManageShortCodeTab;
 import ATT.Selenium_FVT.Pages.MyAppsPage;
 import ATT.Selenium_FVT.Pages.NewAppPage;
 import ATT.Selenium_FVT.Test.TestUtil;

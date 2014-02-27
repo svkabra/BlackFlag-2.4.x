@@ -14,7 +14,7 @@ public class Constants {
 	public static final String PASSWORD_F4 = "asf2012";
 	public static final String USERNAME_F3 = "test12345";
 	public static final String PASSWORD_F3 = "test12345";
-	public static final String PG_USERNAME = "playgroundf3";
+	public static final String PG_USERNAME = "afrin1";
 	public static final String PG_PASSWORD = "welcome1";
 	public static final String DEV_USERNAME_CANCELDELELTE = "testdev2";
 	public static final String DEV_PASSWORD__CANCELDELELTE = "test12345";
@@ -57,9 +57,12 @@ public class Constants {
 	public static final String START_DATE = "1/23/2014";
 	public static final String END_DATE = "1/30/2014";
 	public static final String APPNAME = "AllAPITest";
-	public static final String FVTRESULTPATHADVERTISING = "C:\\FVT_Execution_Results\\FVT_Advertising_Analytics\\advertising_analytics.csv";
-	public static final String FVTRESULTPATHAPI = "C:\\FVT_Execution_Results\\FVT_Advertising_Analytics\\export.xls";
-
+	//public static final String FVTRESULTPATHADVERTISING = "C:\\FVT_Execution_Results\\FVT_Advertising_Analytics\\advertising_analytics.csv";
+	public static final String FVTRESULTPATHADVERTISING =	"src/test/resources/ATT/Selenium_FVT/DevAnalyticsExports/AdvertisingFirefox/advertising_analytics.csv"; 
+	public static final String FVTRESULTPATHADVERTISINGCH =	"src/test/resources/ATT/Selenium_FVT/DevAnalyticsExports/AdvertisingChrome/advertising_analytics.csv";
+	public static final String CHROMEDRIVERLOCATION =	"src/test/resources/ATT/Selenium_FVT/PageTest/chromedriver.exe";
+	
+	
 	// CREDENTIALS For Developer, The user with applications having Ads API
 	public static final String DEV_USERNAME_ADV = "testAdsDev";
 	public static final String DEV_PASSWORD_ADV = "welcome1";

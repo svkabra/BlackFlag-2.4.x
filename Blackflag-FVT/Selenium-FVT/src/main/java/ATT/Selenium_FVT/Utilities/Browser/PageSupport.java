@@ -15,8 +15,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+
+
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 
+@SuppressWarnings("deprecation")
 public class PageSupport extends Constants{
 	
 	 protected String successMessage="";
@@ -418,14 +421,14 @@ protected boolean validateWebElementEnabled(WebElement element){
 				
 				   System.out.println("\nStatus: FAILED "+"\nFailure were: "+errorMessage1+"\nSuccess were: "+successMessage1);
 		          
-		           int num = errorMessage1.length();
+		            errorMessage1.length();
 		           				
 					testIterationFailure=true;
 		           
 		     }else if(successMessage1.length()>2){
 		    System.out.println("\nStatus: PASSED "+"\nSuccess were: "+successMessage1);
 		    
-		    		int num = successMessage1.length();
+		    		successMessage1.length();
 		   
 		    		testIterationFailure=false;
 		}

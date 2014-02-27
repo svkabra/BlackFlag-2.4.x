@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,7 +22,7 @@ public class TC_Dev_ADV_Analytics_By_Default_Collapsed_My_Apps extends TestUtil{
 	public void test_Dev_ADV_Analytics_By_Default_Collapsed_My_Apps() {		
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 		
 		//method to open URL
 		apimLoginPage.openURL();
@@ -38,7 +37,7 @@ public class TC_Dev_ADV_Analytics_By_Default_Collapsed_My_Apps extends TestUtil{
 		apimLoginPage.validateMyAppsPage();
 				
 		//Method to validate that ADV Analytics is already collapsed		
-		myapps.clkADVAnalyticsAlreadyCollapsed();	
+		myapps.validateADVAnalyticsAlreadyCollapsed();	
 		
 		// method to publish test result
 		apimLoginPage.publishTestResult();

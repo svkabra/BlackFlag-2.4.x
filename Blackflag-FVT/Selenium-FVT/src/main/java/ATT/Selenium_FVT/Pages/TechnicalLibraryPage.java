@@ -2,9 +2,6 @@ package ATT.Selenium_FVT.Pages;
 
 import java.util.Iterator;
 import java.util.Set;
-
-import junit.framework.Assert;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -357,11 +354,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh1)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"AT&T Developer Program Home | Certified Solutions Catalog | Home",
-						text);
-				System.out.println(text);
+				validatePageTitle("AT&T Developer Program Home | Certified Solutions Catalog | Home");
 				driver.close();
 				driver.switchTo().window(mwh1);
 			}
@@ -379,11 +372,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh2)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"AT&T Cloud Architect, AT&T cloud architect, cloud architecture & development-small business & developers",
-						text);
-				System.out.println(text);
+				validatePageTitle("AT&T Cloud Architect, AT&T cloud architect, cloud architecture & development-small business & developers");
 				driver.close();
 				driver.switchTo().window(mwh2);
 			}
@@ -402,11 +391,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh3)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"Cloud Services, AT&T Cloud-based Solutions, Enterprise Cloud Services",
-						text);
-				System.out.println(text);
+				validatePageTitle("Cloud Services, AT&T Cloud-based Solutions, Enterprise Cloud Services");
 				driver.close();
 				driver.switchTo().window(mwh3);
 			}
@@ -425,9 +410,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh4)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals("Emerging Devices", text);
-				System.out.println(text);
+				validatePageTitle("Emerging Devices");
 				driver.close();
 				driver.switchTo().window(mwh4);
 			}
@@ -446,11 +429,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh5)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"AT&T Foundry Innovation Centers to Accelerate Technology | AT&T",
-						text);
-				System.out.println(text);
+				validatePageTitle("AT&T Foundry Innovation Centers to Accelerate Technology | AT&T");
 				driver.close();
 				driver.switchTo().window(mwh5);
 			}
@@ -488,11 +467,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"Seven Common Errors Around Creating Mobile User Experience - Forums Blogs Events News | AT&T Developer Program",
-						text);
-				System.out.println(text);
+				validatePageTitle("Seven Common Errors Around Creating Mobile User Experience - Forums Blogs Events News | AT&T Developer Program");
 				driver.close();
 				driver.switchTo().window(mwh);
 			}
@@ -516,10 +491,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh1)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals("best-practices-3g-4g-app-development.pdf",
-						text);
-				System.out.println(text);
+				validatePageTitle("best-practices-3g-4g-app-development.pdf");
 				driver.close();
 				driver.switchTo().window(mwh1);
 			}
@@ -537,9 +509,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh2)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals("difabbrizio-icassp2012.pdf", text);
-				System.out.println(text);
+				validatePageTitle("difabbrizio-icassp2012.pdf");
 				driver.close();
 				driver.switchTo().window(mwh2);
 			}
@@ -558,9 +528,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh3)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals("att-drop-in-media-case-study.pdf", text);
-				System.out.println(text);
+				validatePageTitle("att-drop-in-media-case-study.pdf");
 				driver.close();
 				driver.switchTo().window(mwh3);
 			}
@@ -583,10 +551,7 @@ public class TechnicalLibraryPage extends WebPage {
 			if (!popupHandle.contains(mwh4)) {
 				driver.switchTo().window(popupHandle);
 				/* here you can perform operation in pop-up window* */
-				String text = driver.getTitle();
-				Assert.assertEquals(
-						"getting-started-with-web-applications.pdf", text);
-				System.out.println(text);
+				validatePageTitle("getting-started-with-web-applications.pdf");
 				driver.close();
 				driver.switchTo().window(mwh4);
 			}

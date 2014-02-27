@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,7 +12,6 @@ import org.openqa.selenium.TakesScreenshot;
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.MyAppsPage;
 import ATT.Selenium_FVT.Test.TestUtil;
-import ATT.Selenium_FVT.Utilities.Browser.PageSupport;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 
 public class TC_Dev_ADV_Analytics_Collapsible_Expandable_My_Apps extends TestUtil{
@@ -25,7 +23,7 @@ public class TC_Dev_ADV_Analytics_Collapsible_Expandable_My_Apps extends TestUti
 
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 
 		//method to open URL
 		apimLoginPage.openURL();
@@ -40,7 +38,7 @@ public class TC_Dev_ADV_Analytics_Collapsible_Expandable_My_Apps extends TestUti
 		apimLoginPage.validateMyAppsPage();
 
 		//Method to validate that ADV Analytics is already collapsed
-		myapps.clkADVAnalyticsExpandedCollapsed();
+		myapps.validateADVAnalyticsExpandedCollapsed();
 		
 		// method to publish test result
 		apimLoginPage.publishTestResult();	

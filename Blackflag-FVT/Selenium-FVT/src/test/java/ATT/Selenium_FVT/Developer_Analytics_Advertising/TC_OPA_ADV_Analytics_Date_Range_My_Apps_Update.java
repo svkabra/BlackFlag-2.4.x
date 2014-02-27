@@ -12,7 +12,6 @@ import org.openqa.selenium.TakesScreenshot;
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.MyAppsPage;
 import ATT.Selenium_FVT.Test.TestUtil;
-import ATT.Selenium_FVT.Utilities.Browser.PageSupport;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
 import ATT.Selenium_FVT.Utilities.Excel.FileHandling;
 
@@ -23,7 +22,7 @@ public class TC_OPA_ADV_Analytics_Date_Range_My_Apps_Update extends TestUtil{
 	public void testAnalyticsGraphFor_My_Apps_Advertising_V1_ATTr2() {		
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 
 		//method to open URL
 		apimLoginPage.openURL();
@@ -38,7 +37,7 @@ public class TC_OPA_ADV_Analytics_Date_Range_My_Apps_Update extends TestUtil{
 		apimLoginPage.validateMyAppsPage();
 
 		//Step: Expand the Advertising Analytics and set the date range		
-		myapps.clkADVAnalyticsAlreadyCollapsed();
+		myapps.validateADVAnalyticsAlreadyCollapsed();
 
 		//Set the date range
 		String sStartDate = Constants.START_DATE;

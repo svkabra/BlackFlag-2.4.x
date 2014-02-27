@@ -1,7 +1,5 @@
 package ATT.Selenium_FVT.Pages;
 
-import junit.framework.Assert;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,51 +19,51 @@ public class PricingPage extends WebPage {
 	public WebElement pricing;
 
 	// Page Object "SpeechPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[1]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-speech')]")
 	public WebElement speechPricingInformation;
 
 	// Page Object "DeviceCapabilitiesPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[2]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-deviceCapability')]")
 	public WebElement deviceCapabilitiesPricingInformation;
 
 	// Page Object "InAppMessagingPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[3]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-inAppMessaging')]")
 	public WebElement inAppMessagingPricingInformation;
 
 	// Page Object "SMSMMSPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[4]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-messaging')]")
 	public WebElement sMSMMSPricingInformation;
 
 	// Page Object "AdvertisingPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[5]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-advertising')]")
 	public WebElement advertisingPricingInformation;
 
 	// Page Object "PaymentPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[6]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-payment')]")
 	public WebElement paymentPricingInformation;
 
 	// Page Object "ATTmHealthPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[7]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-mHealth')]")
 	public WebElement aTTmHealthPricingInformation;
 
 	// Page Object "ATTM2XPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[8]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-m2x')]")
 	public WebElement aTTM2XPricingInformation;
 
 	// Page Object "ATTUverseEnabledPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[9]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-uverseEnabled')]")
 	public WebElement aTTUverseEnabledPricingInformation;
 
 	// Page Object "ATTAROPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[10]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/details#pricingDetails-aro')]")
 	public WebElement aTTAROPricingInformation;
 
 	// Page Object "MobileIdentityAPIToolkitPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[11]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/mobile-identity-toolkit-pricing-details')]")
 	public WebElement mobIdAPITlktPricingInformation;
 
 	// Page Object "ATTSponsoredDataPricingInformation"
-	@FindBy(how = How.XPATH, using = "//*[@id='content-sections']/section/div/div/section[2]/div/div[2]/ul/li[12]/ul/li[2]/a")
+	@FindBy(how = How.XPATH, using = "//a[contains(@href, '/pricing/sponsored-data-pricing-details')]")
 	public WebElement aTTSponsoredDataPricingInformation;
 
 	// Parameterized Constructor
@@ -91,8 +89,7 @@ public class PricingPage extends WebPage {
 
 		goToMyAppLink.click();
 		waitForPageToLoad();
-		String title = driver.getTitle();
-		Assert.assertEquals("API Matrix", title);
+		validatePageTitle("API Matrix");
 		return this;
 	}
 

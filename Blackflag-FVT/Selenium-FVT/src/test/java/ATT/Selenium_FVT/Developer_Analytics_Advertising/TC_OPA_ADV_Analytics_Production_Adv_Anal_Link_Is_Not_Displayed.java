@@ -21,7 +21,7 @@ public class TC_OPA_ADV_Analytics_Production_Adv_Anal_Link_Is_Not_Displayed exte
 	public void testAnalyticsGraphFor_My_Apps_Advertising_V1_ATTr2() {		
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 
 		//method to open URL
 		apimLoginPage.openURL();

@@ -10,10 +10,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
-import ATT.Selenium_FVT.Components.ManageShortCodeTab;
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
+import ATT.Selenium_FVT.Utilities.Excel.FileHandling;
 
 public class AppPage extends WebPage {
 
@@ -668,70 +667,124 @@ public class AppPage extends WebPage {
 
 
 
+	//Function to API Export the export.xlsx to Temp folder-Hemant 
+	//***********************************************************************************************************************************                     
+	public void fnExportFile(String filePathString)
+	{
+		btnExportExcel.click();
+		//wait for the file to get created
+		File f = new File(filePathString);
+		f = new File(filePathString);
+		int iw;
+		iw = 0;
+		while(!f.exists() && iw <10){
+			System.out.println("waiting ");
+			wait(2000);
+			iw = iw + 1;
+		}
+
+		if(f.exists()){                   
+			System.out.println("file is created");
+		}else{               
+			System.out.println("file not exists");
+		}
+
+	}
+	//***********************************************************************************************************************************
+
+	
+
+
+	
+	//Function to Export the export.xlsx to Temp folder for Advertising-Hemant 
+	//***********************************************************************************************************************************                     
+	public boolean fnExportFileADV(String filePathString)
+	{
+		boolean flag = true;
+
+
+		//Code to create the folder
+		int in  = filePathString.lastIndexOf("\\");            
+		String folderPathString =  filePathString.substring(0, in);
+
+
+		File dir=new File(folderPathString );
+		if(dir.exists()){
+			//System.out.println("A folder with name" + folderPathString + "is already exist in the path");
+		}else{
+			dir.mkdir();
+		}
+
+		clickButtonExport();
+		//wait for the file to get created                     
+		File f = new File(filePathString);
+		f = new File(filePathString);
+		int iw;
+		iw = 0;
+		while(!f.exists() && iw <10){
+			implicitWait(PAGE_WAIT_AJAX + 1);
+			iw = iw + 1;
+		}
+
+		if(f.exists()){                   
+			storeVerificationResults(true, "Excel/CSV file has been exported to location " + folderPathString);
+		}else{               
+			storeVerificationResults(false, "Excel/CSV file has not been exported ");
+			flag = true;
+		}
+
+		return flag;
+	}
+	//***********************************************************************************************************************************
 
 
 	//Function to Export the export.xlsx to Temp folder for Advertising-Hemant 
 	//***********************************************************************************************************************************                     
-	public void fnExportFileADV(String filePathString)
-	{
-		//btnADVExport.click();
+
+	public boolean exportAdvertisingAnalytics(String className){
+
+		//Verify the folder if exits, click the export button and verify file has been created	
+		//Set the download location
+		String filePathString;	
+		filePathString = Constants.FVTRESULTPATHADVERTISING;			
+		File file1 = new File("./" + filePathString);
+		String dirPath = file1.getAbsolutePath();
+		System.out.println(dirPath.replace(".\\", ""));
+		filePathString = dirPath.replace(".\\", "");
+		int in  = filePathString.lastIndexOf("\\");            
+		String folderPathString =  filePathString.substring(0, in);
+	
+		fnExportFileADV(filePathString);
+
+		//Check if file has been exported successfully			
+		FileHandling file = new FileHandling();			
+		boolean x = file.fnCheckFileExists(filePathString);
+
+		//Get the Name of the current class
+		//String className = this.getClass().getSimpleName();
+
+		String sOldFilePath, sNewFilePath;
+		sNewFilePath = null;
+		if(x){							
+			sOldFilePath = filePathString;
+
+//			int in  = filePathString.lastIndexOf("\\");            
+//			String folderPathString =  filePathString.substring(0, in);
+
+			sNewFilePath = folderPathString + "\\" + className+".csv";  
+			file.fnCheckFileRenamed(sOldFilePath, sNewFilePath);
+			storeVerificationResults(true, "File Export successful");
+			return true;
+		}else{       			
+			storeVerificationResults(false, "Failed to Export the file");
+			return false;
+		}
 		
-		clickButtonExport();
-
-
-		//wait for the file to get created
-		File f = new File(filePathString);
-		f = new File(filePathString);
-		int iw;
-		iw = 0;
-		while(!f.exists() && iw <10){
-			System.out.println("waiting ");
-			wait(2000);
-			iw = iw + 1;
-		}
-
-		if(f.exists()){                   
-			System.out.println("file is created");
-		}else{               
-			System.out.println("file not exists");
-		}
+		
 
 	}
-	//***********************************************************************************************************************************
-
-
-	//Function to Export the export.xlsx to Temp folder-Hemant 
 	//***********************************************************************************************************************************                     
-	public void fnExportFile(String filePathString)
-	{
-
-		//Delete the existing export.xlsx file from Temp Folder
-		//String filePathString ;
-		//filePathString = "C:\\Temp\\export.xlsx";
-		//DeleteFile(filePathString);
 
 
-		btnExportExcel.click();
-
-
-		//wait for the file to get created
-		File f = new File(filePathString);
-		f = new File(filePathString);
-		int iw;
-		iw = 0;
-		while(!f.exists() && iw <10){
-			System.out.println("waiting ");
-			wait(2000);
-			iw = iw + 1;
-		}
-
-		if(f.exists()){                   
-			System.out.println("file is created");
-		}else{               
-			System.out.println("file not exists");
-		}
-
-	}
-	//***********************************************************************************************************************************
-
+	
 }

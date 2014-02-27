@@ -22,7 +22,7 @@ public class TC_Dev_ADV_Analytics_Sandbox_Adv_Anal_Link_Is_Displayed extends Tes
 	public void testAnalyticsGraphFor_My_Apps_Advertising_V1_ATTr2() {		
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 
 		//method to open URL
 		apimLoginPage.openURL();

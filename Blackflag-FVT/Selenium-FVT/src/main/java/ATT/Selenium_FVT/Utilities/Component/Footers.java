@@ -2,11 +2,13 @@ package ATT.Selenium_FVT.Utilities.Component;
 
 import java.util.Iterator;
 import java.util.Set;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
 import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.SupportOverviewPage;
 import ATT.Selenium_FVT.Utilities.Browser.WebPage;
@@ -132,10 +134,10 @@ public class Footers extends WebPage{
 		String mwh=driver.getWindowHandle();
 		privacyPolicy.click();		
 		waitForPageToLoad();	
-		Set s=driver.getWindowHandles();
+		Set<String> s=driver.getWindowHandles();
 		//this method will you handle of all opened windows
 
-		Iterator ite=s.iterator();
+		Iterator<String> ite=s.iterator();
 
 		while(ite.hasNext())
 		{
@@ -237,10 +239,10 @@ public class Footers extends WebPage{
 		String mwh=driver.getWindowHandle();
 		intProperty.click();
 		waitForPageToLoad();
-		Set s=driver.getWindowHandles();
+		Set<String> s=driver.getWindowHandles();
 		//this method will you handle of all opened windows
 
-		Iterator ite=s.iterator();
+		Iterator<String> ite=s.iterator();
 
 		while(ite.hasNext())
 		{

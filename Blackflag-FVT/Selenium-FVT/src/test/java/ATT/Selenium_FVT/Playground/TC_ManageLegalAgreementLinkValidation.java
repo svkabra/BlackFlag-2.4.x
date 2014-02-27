@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,23 +14,22 @@ import ATT.Selenium_FVT.Pages.ManageLegalAgreementPage;
 import ATT.Selenium_FVT.Pages.ManageMyAccount;
 import ATT.Selenium_FVT.Test.TestUtil;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import cucumber.annotation.After;
 
 public class TC_ManageLegalAgreementLinkValidation extends TestUtil {
 
 	@Test
 	public void manageLegalAgreementValidation_test() {
-		boolean result=false;
+	
 		APIMLoginPage apimLoginPage = new APIMLoginPage(getNewDriver(Constants.BROWSER));
 		
 		//method to load the URL
 		apimLoginPage.openURL();
 		
-		//method to log into Dev Portal as an OPA
+		//method to log into Dev Portal as an Playground
 		apimLoginPage.playGroundLogin();
 		
 		//method to validate LogIn
-		result=apimLoginPage.validateLogin();
+		apimLoginPage.validateLogin();
 		
 		//method to click on Manage My Account Link
 		ManageMyAccount manageMyAcct = apimLoginPage.clickManageMyAcctLink();

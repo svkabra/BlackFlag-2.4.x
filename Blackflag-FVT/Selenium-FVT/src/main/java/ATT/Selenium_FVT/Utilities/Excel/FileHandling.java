@@ -2,16 +2,13 @@ package ATT.Selenium_FVT.Utilities.Excel;
 
 import java.io.File;
 
-import org.openqa.selenium.WebDriver;
-
 import ATT.Selenium_FVT.Utilities.Browser.PageSupport;
-import ATT.Selenium_FVT.Utilities.Browser.WebPage;
 
 public class FileHandling extends PageSupport{
 
 	
 
-		//Function check if export file already exists or not-Hemant 
+	//Function check if export file already exists or not-Hemant 
 	//***********************************************************************************************************************************			
 		public boolean fnCheckFileExists(String filePathString){													
 			try{
@@ -51,6 +48,16 @@ public class FileHandling extends PageSupport{
 	//***********************************************************************************************************************************		
 
 
-		
+		public String getAbsolutePath(String revPath){
+
+			String relPathAdvExport = revPath;				
+			File file1 = new File(relPathAdvExport);
+			String absPathAdvExport = file1.getAbsolutePath().replace(".\\", "");
+			return absPathAdvExport;
+//			file1 = new File(absPathAdvExport);
+//			String dirPath = file1.getParent();
+//			System.out.println(dirPath);
+			
+		}
 		
 }

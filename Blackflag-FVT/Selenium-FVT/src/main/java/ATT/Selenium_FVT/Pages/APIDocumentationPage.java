@@ -1,10 +1,8 @@
 package ATT.Selenium_FVT.Pages;
 
 import java.util.Iterator;
+
 import java.util.Set;
-
-import junit.framework.Assert;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -75,9 +73,7 @@ public class APIDocumentationPage extends WebPage{
 		    {
 		                driver.switchTo().window(popupHandle);
 		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		        		Assert.assertEquals("Speech API FAQs | AT&T Developer", text);  
-		                System.out.println(text);
+		                validatePageTitle("Speech API FAQs | AT&T Developer");
 		                driver.close();
 		                driver.switchTo().window(mwh);
 		    }
@@ -107,9 +103,7 @@ public class APIDocumentationPage extends WebPage{
 		    {
 		                driver.switchTo().window(popupHandle);
 		                /*here you can perform operation in pop-up window**/
-		                String text = driver.getTitle();
-		        		Assert.assertEquals("Errors", text);  
-		                System.out.println(text);
+		                validatePageTitle("Errors");
 		                driver.close();
 		                driver.switchTo().window(mwh);
 		    }
@@ -155,9 +149,7 @@ public class APIDocumentationPage extends WebPage{
 		            		    {
 		            		                driver.switchTo().window(popupHandle1);
 		            		                /*here you can perform operation in pop-up window**/
-		            		                String text = driver.getTitle();
-		            		                Assert.assertEquals("HTTP/1.1: Status Code Definitions", text);  
-		            		                System.out.println(text);
+		            		                validatePageTitle("HTTP/1.1: Status Code Definitions");
 		            		                driver.close();
 		            		                driver.switchTo().window(mwh1);
 		            		    }

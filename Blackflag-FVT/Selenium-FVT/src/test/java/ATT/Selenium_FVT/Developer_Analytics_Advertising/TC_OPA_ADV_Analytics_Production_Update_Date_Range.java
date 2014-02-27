@@ -13,9 +13,7 @@ import ATT.Selenium_FVT.Pages.APIMLoginPage;
 import ATT.Selenium_FVT.Pages.AppPage;
 import ATT.Selenium_FVT.Pages.MyAppsPage;
 import ATT.Selenium_FVT.Test.TestUtil;
-import ATT.Selenium_FVT.Utilities.Browser.PageSupport;
 import ATT.Selenium_FVT.Utilities.Component.Constants;
-import ATT.Selenium_FVT.Utilities.Excel.FileHandling;
 
 public class TC_OPA_ADV_Analytics_Production_Update_Date_Range extends TestUtil{
 
@@ -23,7 +21,7 @@ public class TC_OPA_ADV_Analytics_Production_Update_Date_Range extends TestUtil{
 	public void testAnalyticsGraphFor_My_Apps_Advertising_V1_ATTr2() {		
 
 		//method to launch browser
-		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriver(Constants.BROWSER));
+		APIMLoginPage apimLoginPage= new APIMLoginPage(getNewDriverProfile(Constants.BROWSER));
 
 		//method to open URL
 		apimLoginPage.openURL();
@@ -52,36 +50,17 @@ public class TC_OPA_ADV_Analytics_Production_Update_Date_Range extends TestUtil{
 		appPage.fnClickRefresh();
 
 
-
-		//Verify the folder if exits, click the export button and verify file has been created
-		String filePathString;	
-		filePathString = Constants.FVTRESULTPATHADVERTISING;	
-		myapps.fnExportFileADV(filePathString);
-
-		//Check if file has been exported successfully			
-		FileHandling file = new FileHandling();			
-		boolean x = file.fnCheckFileExists(filePathString);
-
 		//Get the Name of the current class
 		String className = this.getClass().getSimpleName();
+		
+		//Export Excel of Advertising Analytics
+		appPage.exportAdvertisingAnalytics(className);
 
-		String sOldFilePath, sNewFilePath;
-		sNewFilePath = null;
-		if(x){							
-			sOldFilePath = filePathString;
-			int in  = filePathString.lastIndexOf("\\");            
-			String folderPathString =  filePathString.substring(0, in);
-			sNewFilePath = folderPathString + "\\" + className+".csv";  
-			file.fnCheckFileRenamed(sOldFilePath, sNewFilePath);
-
-		}else{
-			file.storeVerificationResults(false, "File does not exists");
-		}
-
+		
 		// method to publish test result
 		apimLoginPage.publishTestResult();
-		myapps.publishTestResult();			
-		file.publishTestResult();
+		myapps.publishTestResult();		
+		appPage.publishTestResult();	
 
 	}	
 
